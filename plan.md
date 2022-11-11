@@ -33,5 +33,3 @@ Backend:
 * Pull weather info from an API
 * Make a JSON of art to display a random "image of the day"
 * Make a JSON of interesting facts
-
-Buy - Broadband and Entertainment - Journey
