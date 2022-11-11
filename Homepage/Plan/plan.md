@@ -1,0 +1,27 @@
+- [X] Create a new react app
+- [X] Install node modules
+
+FOLDER TREE:
+- [X] Components
+    - [X] App
+        - [X] index.js
+    - [X] Main
+        - [X] index.js
+    - [X] Header
+        - [X] index.js
+    - [X] Footer
+        - [X] index.js
+    - [X] Weather
+        - [X] index.js
+    - [X] Gallery
+        - [X] index.js
+    - [X] Poetry
+        - [X] index.js
+    - [X] Favourites
+        - [X] index.js
+    - [X] Ideas
+        - [X] index.js
+    - [X] Tasks
+        - [X] index.js
+    - [X] Goals
+        - [X] index.js
