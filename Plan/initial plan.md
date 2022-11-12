@@ -2,21 +2,18 @@ Personal Dashboard
 
 What:
 A personal homepage to store useful info links and resources such as:
-    * A customisable to-do list
-    * Weather for your location
-    * Date and time
-    * Interesting facts
-    * Favourite websites: 
-        * lichess.org
-        * codewars.com
-        * cabinet magazine
-    * Art of the day
-    * Something to do generator
+    - A customisable to-do list
+    - Weather for your location
+    - Date and time
+    - Interesting facts
+    - Favourite websites 
+    - Art of the day
+    - Something to do generator
 
 Ideas for features:
-    * Toggle dark mode on and off
-    * Add and remove "widgets" 
-    * Add and remove links
+    - Toggle dark mode on and off
+    - Add and remove "widgets" 
+    - Add and remove links
 
 How:
 Frontend:
