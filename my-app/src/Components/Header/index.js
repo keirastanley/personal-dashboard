@@ -1,5 +1,7 @@
 import { React, useState } from "react";
-//import Time from "../Time";
+import Nav from "../Nav bar/index";
+
+
 function Header() {
     const d = new Date();
     const options = {
@@ -12,7 +14,7 @@ function Header() {
       };
     const date = d.toLocaleString('en-GB', options)
     const [time, setTime] = useState(date);
-    setInterval(newTime, 1000);
+    setInterval(newTime, 60000);
 
     function newTime() {
         const d2 = new Date();
@@ -22,6 +24,7 @@ function Header() {
 
   return (
     <header>
+      <Nav/>
       <h1>Home</h1>
       <p>{time}</p>
     </header>
