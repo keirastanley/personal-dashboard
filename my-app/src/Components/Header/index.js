@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import Nav from "../Nav bar/index";
-
+import './index.css'
 
 function Header() {
     const d = new Date();

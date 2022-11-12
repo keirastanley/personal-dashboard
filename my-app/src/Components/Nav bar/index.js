@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import { IoMenuOutline } from "react-icons/io5";
+import './index.css'
 
 const pages = [
   { page: "Home", href: "#" },
