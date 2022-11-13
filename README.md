@@ -14,9 +14,9 @@ A personal homepage to store useful info links and resources such as a customisa
 - [X] nav bar that opens and closes on click of icon
 - [X] ``<h1>`` containing title
 #### Footer
-- [ ] footer with ``<p>`` containing info about website
+- [X] footer with ``<p>`` containing info about website
 #### Weather
-- [ ] weather widget
+- [X] weather widget
 #### Gallery
 - [ ] gallery
 #### Poetry
