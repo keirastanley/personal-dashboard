@@ -1,4 +1,16 @@
+a{
+    display: block; 
+    position: relative; 
+    height: 211px; 
+    padding: 0px; 
+    overflow: hidden; 
+    text-align: left; 
+    text-indent: -299rem;
+}
+
 iframe{
-    width: 500px;
-    border: none;
+    display: block; 
+    position: absolute; 
+    top: 0px; 
+    height: 211px;
 }

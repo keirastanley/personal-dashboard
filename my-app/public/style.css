@@ -2,11 +2,3 @@
     display: flex;
     flex-direction: column;
 }
-
-.weather{
-    order: 2;
-}
-
-.footer{
-    order: 3;
-}
