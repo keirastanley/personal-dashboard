@@ -1,0 +1,31 @@
+#gallery-background{
+    background-color: #DAD3D0;
+    width: 330px;
+    height: 250px;
+}
+
+#gallery-image{
+    max-width: 320px;
+    border: 8px solid #DAD3D0;
+}
+
+#gallery-info-container{
+    display: flex;
+    align-items: center;
+}
+
+#icons-container{
+    display: flex;
+    align-items: center;
+}
+
+#heart-icon{
+    font-size: 25px;
+}
+#gallery-icon{
+    font-size: 20px;
+}
+#refresh-icon{
+    font-size: 25px;
+}
+

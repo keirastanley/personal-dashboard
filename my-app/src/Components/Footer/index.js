@@ -1,7 +1,11 @@
-import React from "react";
+import "./index.css";
 
-function Footer(){
-    return <p className="footer">Keira Stanley</p>
+function Footer() {
+  return (
+    <footer>
+      <p className="footer">Keira Stanley</p>
+    </footer>
+  );
 }
 
-export default Footer; 
+export default Footer;

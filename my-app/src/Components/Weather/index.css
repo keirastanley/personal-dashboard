@@ -1,4 +1,4 @@
-a{
+/*.weatherwidget-io > a{
     display: block; 
     position: relative; 
     height: 211px; 
@@ -8,9 +8,14 @@ a{
     text-indent: -299rem;
 }
 
-iframe{
+.weatherwidget-io-frame > iframe{
     display: block; 
     position: absolute; 
     top: 0px; 
     height: 211px;
+    width: 500px;
+}*/
+
+.weather-container{
+    width: 500px;
 }

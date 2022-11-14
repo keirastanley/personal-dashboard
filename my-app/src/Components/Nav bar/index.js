@@ -1,6 +1,6 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import { IoMenuOutline } from "react-icons/io5";
-import './index.css'
+import "./index.css"
 
 const pages = [
   { page: "Home", href: "#" },
@@ -17,19 +17,19 @@ const pages = [
 function Nav() {
   const [toggle, SetToggle] = useState(false);
 
-  function GetNav({ toggle }) {
+  function GetNav({toggle}) {
     if (toggle === true) {
       return pages.map((page, index) => (
-        <NavItem page={page.page} href={page.href} key={index + 1} />
+        <NavItem page={page.page} href={page.href} key={index + 1}/>
       ));
     }
   }
 
-  function NavItem(props) {
+  function NavItem({page, href}) {
     return (
       <li className="nav-item">
-        <a className="nav-link" href={props.href}>
-          {props.page}
+        <a className="nav-link" href={href}>
+          {page}
         </a>
       </li>
     );
@@ -48,9 +48,11 @@ function Nav() {
   }
 
   return (
-    <nav>
+    <nav className="navbar">
       <NavIcon />
-      <GetNav toggle={toggle} />
+      <div className = "navdropdown">
+        <GetNav toggle={toggle} />
+      </div>
     </nav>
   );
 }
