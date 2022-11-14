@@ -14,10 +14,9 @@ const pages = [
   { page: "Help", href: "#" },
 ];
 
-function Nav() {
-  const [toggle, SetToggle] = useState(false);
+function Nav({toggle}) {
 
-  function GetNav({toggle}) {
+  function GetNav() {
     if (toggle === true) {
       return pages.map((page, index) => (
         <NavItem page={page.page} href={page.href} key={index + 1}/>
@@ -35,23 +34,12 @@ function Nav() {
     );
   }
 
-  function handleClick() {
-    SetToggle(!toggle);
-  }
-
-  function NavIcon() {
-    return (
-      <button onClick={handleClick}>
-        <IoMenuOutline size="3em" />
-      </button>
-    );
-  }
-
   return (
     <nav className="navbar">
-      <NavIcon />
       <div className = "navdropdown">
-        <GetNav toggle={toggle} />
+        <ul>
+          <GetNav/>
+        </ul>
       </div>
     </nav>
   );

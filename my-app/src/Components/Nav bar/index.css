@@ -6,12 +6,7 @@
 
 .navdropdown {
     width: 100px;
-}
-
-.navbar > button{
-    background-color: transparent;
-    border: none;
-    padding: 20px;
+    background-color:  #DAD3D0;
 }
 
 .nav-link {
