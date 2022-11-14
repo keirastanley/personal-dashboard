@@ -3,7 +3,9 @@ import "./index.css";
 function Footer() {
   return (
     <footer>
-      <p className="footer">Keira Stanley</p>
+      <div className="footer-container">
+        <p className="footer">Keira Stanley</p>
+      </div>
     </footer>
   );
 }

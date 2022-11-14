@@ -1,9 +1,8 @@
 import { useState } from "react";
-import NavIcon from "../Nav Icon/index"
 import './index.css'
 
-function Header({toggle, setToggle}) {
-  
+function Header() {
+
     const d = new Date();
     const options = {
         weekday: 'short',
@@ -23,17 +22,11 @@ function Header({toggle, setToggle}) {
         setTime(date2);
     }
 
-    function handleClick() {
-      console.log(toggle)
-      setToggle(!toggle);
-    }
-
   return (
-    <header>
-      <NavIcon handleClick={handleClick}/>
+   <header>
       <h1>Home</h1>
       <p>{time}</p>
-    </header>
+   </header>
   );
 }
 

@@ -2,13 +2,11 @@ import Weather from "../Weather/index"
 import Gallery from "../Gallery/index"
 import "./index.css"
 
-function Main(){
+function Main({toggle}){
     return (
       <main>
-        <div className = "container-top">
-          <Weather/>
-          <Gallery/>
-        </div>
+        <Weather/>
+        <Gallery/>
       </main>
       );
 }

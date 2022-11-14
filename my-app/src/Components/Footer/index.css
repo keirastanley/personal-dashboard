@@ -1,6 +1,8 @@
-footer{
+footer {
     display: flex;
     justify-content: space-between;
-    background-color: #DAD3D0;
+    align-items: center;
+    background-color: var(--header);
     padding: 20px;
-}
+    grid-area: footer;
+  }

@@ -1,31 +1,44 @@
 #gallery-background{
-    background-color: #DAD3D0;
+    background-color: var(--header);
     width: 330px;
     height: 250px;
-}
-
-#gallery-image{
+  }
+  
+  #gallery-image{
     max-width: 320px;
-    border: 8px solid #DAD3D0;
-}
-
-#gallery-info-container{
+    border: 8px solid var(--header);
+  }
+  
+  #gallery-info-container{
     display: flex;
     align-items: center;
-}
-
-#icons-container{
+  }
+  
+  #icons-container{
     display: flex;
     align-items: center;
-}
-
-#heart-icon{
+  }
+  
+  #heart-icon{
     font-size: 25px;
-}
-#gallery-icon{
+  }
+  #heart-icon-filled{
+    font-size: 25px;
+    color: var(--filled-heart)
+  }
+  
+  .gallery-icon-button{
+    background-color: transparent;
+    border: none;
+  }
+  
+  .gallery-icon-button:hover{
+    color: white;
+  }
+  
+  #gallery-icon{
     font-size: 20px;
-}
-#refresh-icon{
+  }
+  #refresh-icon{
     font-size: 25px;
-}
-
+  }

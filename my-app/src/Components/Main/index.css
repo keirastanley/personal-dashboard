@@ -1,4 +1,3 @@
-.container-top{
-    display: flex;
-    flex-direction: row;
+main {
+    grid-area: main;
 }

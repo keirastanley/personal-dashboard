@@ -1,19 +1,17 @@
 import './App.css';
-import { React, useState } from "react";
+import React from "react";
 import Header from "../Header/index"
+import Nav from '../Nav Bar';
 import Main from '../Main';
 import Footer from "../Footer/index"
-import Nav from '../Nav Bar';
-
 
 function App() {
-  const [toggle, setToggle] = useState(false);
 
   return (
-    <div id="app">
-      <Header toggle={toggle} setToggle={setToggle}/>
-      <Nav toggle={toggle}/>
-      <Main/>
+    <div className="page-container">
+      <Header />
+      <Nav/>
+      <Main />
       <Footer/>
     </div>
   )

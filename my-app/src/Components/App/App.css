@@ -1,3 +1,27 @@
 .App {
   text-align: center;
 }
+
+.page-container {
+  display: grid;
+  width: 1440px;
+  height: 1024px;
+  border: 1px solid black;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 
+    23px 
+    44px 
+    67px 
+    761px 
+    67px 
+    44px 
+    23px;
+  grid-template-areas: 
+  "nav    space  space"
+  "nav    header space1"
+  "nav    space2 space1"
+  "nav    main   space1"
+  "space3 space3 space3"
+  "space4 footer space5"
+  ;
+}

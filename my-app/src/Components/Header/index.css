@@ -1,16 +1,17 @@
 header {
+    grid-area: header;
     display: flex;
     justify-content: space-between;
-    background-color: #DAD3D0;
+    align-items: center;
+    background-color: var(--header);
 }
 
-
-  
 header > h1 {
-    font-size: 20px;
-    padding: 20px;
+font-size: 20px;
+text-align: center;
+padding: 20px;
 }
 
 header > p {
-    padding: 20px;
+padding: 20px;
 }
