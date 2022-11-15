@@ -1,4 +1,5 @@
 .gallery-section {
+  grid-area: gallery;
   background-color: var(--header);
   width: 278px;
   height: 240px;

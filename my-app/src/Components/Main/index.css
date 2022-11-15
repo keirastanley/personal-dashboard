@@ -1,3 +1,20 @@
 main {
     grid-area: main;
+    display: flex;
+}
+
+.content-container{
+    width: 1152px;
+    height: 761px;
+    display: grid;
+    grid-template-columns: 330px 493px 288px;
+    grid-template-rows: 123px 99px 28px 170px 170px;
+    grid-template-areas: "weather poetry gallery"
+    "weather goals gallery"
+    "idea goal gallery"
+    "idea goal favourite"
+    "things things favourite"
+    ;
+    align-items: center;
+    justify-content: center;
 }

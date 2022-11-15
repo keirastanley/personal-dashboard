@@ -17,6 +17,7 @@
 }*/
 
 .weather-container{
+    grid-area: weather;
     width: 320px;
 }
   

@@ -5,6 +5,7 @@
 }
 
 .poetry-container {
+    grid-area: poetry;
     background-color: #CFD4DB;
     width: 483px;
     height: 113px;

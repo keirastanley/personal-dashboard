@@ -22,11 +22,17 @@ function Poetry() {
         <div className="poetry-info">
         <div className="poetry-text">
             <p>
-            Ye lovers of the picturesque, away and see Beautiful Balmoral, near by
-            the River Dee; There ye will see the deer browsing on the heathery
-            hills While adown their sides run clear sparkling rills.
+            Ye lovers of the picturesque, away and see
             <br></br>
-            From Beautiful Balmoral by William Topaz McGonagall
+            Beautiful Balmoral, near by
+            the River Dee;
+            <br></br>
+            There ye will see the deer browsing on the heathery
+            hills
+            <br></br>
+            While adown their sides run clear sparkling rills.
+            <br></br>
+            <i>From Beautiful Balmoral by William Topaz McGonagall</i>
             </p>
       </div>
       <div className="poetry-icons">

@@ -6,9 +6,11 @@ import "./index.css"
 function Main(){
     return (
       <main>
-        <Weather/>
-        <Poetry/>
-        <Gallery/>
+          <div className="content-container">
+            <Weather/>
+            <Poetry/>
+            <Gallery/>
+        </div>
       </main>
       );
 }
