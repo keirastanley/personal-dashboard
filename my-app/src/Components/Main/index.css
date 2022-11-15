@@ -11,8 +11,8 @@ main {
     grid-template-rows: 123px 99px 28px 170px 170px;
     grid-template-areas: "weather poetry gallery"
     "weather goals gallery"
-    "idea goal gallery"
-    "idea goal favourite"
+    "idea goals gallery"
+    "idea goals favourite"
     "things things favourite"
     ;
     align-items: center;
