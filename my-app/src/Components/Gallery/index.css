@@ -1,44 +1,66 @@
-#gallery-background{
-    background-color: var(--header);
-    width: 330px;
-    height: 250px;
-  }
+.gallery-section {
+  background-color: var(--header);
+  width: 278px;
+  height: 240px;
+}
   
-  #gallery-image{
-    max-width: 320px;
-    border: 8px solid var(--header);
-  }
+.gallery-section > img {
+  max-width: 267px;
+  height: 190px;
+  display: block;
+  margin: auto;
+  border-top: 5px solid var(--header)
+}
   
-  #gallery-info-container{
-    display: flex;
-    align-items: center;
-  }
+.gallery-info-container{
+  display: flex;
+  align-items: center;
+  width: 278px;
+  height: 40px;
+}
+
+.gallery-info{
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 40px;
+  font-size: 11px;
+  padding: 3px;
+}
+
+.icons-container {
+  display: flex;
+  justify-content: center;
+  gap: 0px;
+  width: 80px;
+}
+
+.icons-container > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  width: 25px;
+  padding: 1px;
+}
+
+.icons-container > button:hover {
+  color: white;
+}
   
-  #icons-container{
-    display: flex;
-    align-items: center;
-  }
-  
-  #heart-icon{
-    font-size: 25px;
-  }
-  #heart-icon-filled{
-    font-size: 25px;
-    color: var(--filled-heart)
-  }
-  
-  .gallery-icon-button{
-    background-color: transparent;
-    border: none;
-  }
-  
-  .gallery-icon-button:hover{
-    color: white;
-  }
-  
-  #gallery-icon{
-    font-size: 20px;
-  }
-  #refresh-icon{
-    font-size: 25px;
-  }
+#heart-icon{
+  font-size: 25px;
+}
+#heart-icon-filled{
+  font-size: 25px;
+  color: var(--filled-heart)
+}
+
+#gallery-icon{
+  font-size: 20px;
+}
+
+#refresh-icon{
+  font-size: 25px;
+}

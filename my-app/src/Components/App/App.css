@@ -6,7 +6,7 @@
   display: grid;
   width: 1440px;
   height: 1024px;
-  border: 1px solid black;
+  border: 5px solid var(--header);
   grid-template-columns: 10% 80% 10%;
   grid-template-rows: 
     23px 

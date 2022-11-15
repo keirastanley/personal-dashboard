@@ -1,0 +1,59 @@
+.poetry-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.poetry-container {
+    background-color: #CFD4DB;
+    width: 483px;
+    height: 113px;
+  }
+    
+  .poetry-text {
+    background: var(--background);
+    border: 2px solid #CFD4DB;
+    width: 430px;
+    height: 109px;
+  }
+
+  .poetry-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0px;
+    width: 50px;
+    height: 112px;
+  }
+  
+  .poetry-icons > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    width: 35px;
+    height: 40px;
+    padding: 1px;
+  }
+  
+  .poetry-icons > button:hover {
+    color: white;
+  }
+    
+  #poetry-heart-icon{
+    font-size: 25px;
+  }
+  #poetry-heart-icon-filled{
+    font-size: 25px;
+    color: var(--filled-heart)
+  }
+  
+  #poetry-gallery-icon{
+    font-size: 20px;
+  }
+  
+  #poetry-refresh-icon{
+    font-size: 25px;
+  }
