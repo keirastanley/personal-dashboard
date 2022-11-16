@@ -20,9 +20,10 @@
   
   .progress-buttons{
     display: flex;
-    gap: 5px;
+    gap: 2px;
+    font-size: 18px;
   }
-  
+
   .star-icon{
     color: white;
   }

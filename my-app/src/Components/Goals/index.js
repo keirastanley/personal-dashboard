@@ -76,7 +76,7 @@ function Goals() {
         <a href="www.temporarygoallink.com">See all</a>
         </div>
         <div className ="goals-content">
-          <GoalsContent goals={goals} setStars={setStars}/>
+          <GoalsContent initialGoals={goals} setStars={setStars}/>
         </div>
       </div>
     </div>

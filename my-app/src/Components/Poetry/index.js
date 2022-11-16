@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { GrGallery } from "react-icons/gr";
+import { GoBook } from "react-icons/go";
 import { TbRefresh } from "react-icons/tb";
 import "./index.css";
 
@@ -38,7 +38,7 @@ function Poetry() {
       <div className="poetry-icons">
         <button onClick={handleClick}>{heart}</button>
         <button>
-          <GrGallery id="poetry-gallery-icon" />
+          <GoBook id="poetry-book-icon" />
         </button>
         <button>
           <TbRefresh id="poetry-refresh-icon" />
