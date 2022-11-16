@@ -18,14 +18,18 @@ A personal homepage to store useful info links and resources such as a customisa
 #### Weather
 - [X] weather widget
 #### Gallery
-- [ ] gallery
+- [X] gallery displays image and info
+- [X] heart button turns red on click
 #### Poetry
-- [ ] poetry
+- [X] poetry displays poem snippet and info
+- [X] heart button turns red on click
 #### Favourites
 - [ ] favourites
 #### Idea generator
 - [ ] idea generator
 #### Goals
- - [ ] goals
+ - [ ] inputs and buttons to add new goal
+ - [ ] select to choose the order of results
+ - [ ] see all button (currently leads nowhere)
 #### Things to do
 - [ ] things to do

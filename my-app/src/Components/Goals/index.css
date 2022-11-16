@@ -33,12 +33,7 @@
   border: 1px solid #969696;
 }
 
-.goals-background select {
-  background:#F1E2E5;
-  border: 1px solid #969696;
-}
-
-.goals-content a {
+.goals-top > a {
   color: black;
   font-size: 12px;
 }
@@ -47,6 +42,25 @@
   list-style-type: none;
   padding: 0;
   margin: 10px;
+}
+
+.list-item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 450px;
+  padding: 3px;
+}
+
+.goal-star{
+  display: flex;
+  gap: 5px;
+}
+
+.progress-buttons{
+  display: flex;
+  gap: 5px;
 }
 
 .star-icon{
