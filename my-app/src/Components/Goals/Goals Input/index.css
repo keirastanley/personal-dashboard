@@ -1,0 +1,15 @@
+.goals-input-section{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 483px;
+    height: 48px;
+  }
+  
+  .goals-input-section > h3 {
+    padding: 5px;
+  }
+  
+  .goals-input-section > button {
+    background-color: #F9DFDF;
+  }

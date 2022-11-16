@@ -1,25 +1,22 @@
 import "./index.css";
-import { IoStarSharp } from "react-icons/io5";
-import { RiDeleteBinLine } from "react-icons/ri";
-import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai"
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
+import GoalsInput from "./Goals Input";
+import GoalsOrderSelect from "./Goals Order Select";
+import GoalsContent from "./Goals Content";
 
 const initialGoals = [
-  { goal: "Learn Algebra", starred: false, className: "star-icon", progress: 0, id: 1 },
-  { goal: "Create a personal portfolio", starred: false, className: "star-icon", progress: 0, id: 2 },
-  { goal: "Reach 4kyu on Codewars", starred: false, className: "star-icon", progress: 0, id: 3 },
-  { goal: "Learn to play tennis", starred: false, className: "star-icon", progress: 0, id: 4 },
-  { goal: "Exercise everyday", starred: false, className: "star-icon", progress: 0, id: 5 },
+  { goal: "Learn Algebra", starred: false, className: "star-icon", progress: 0, classNameP: "progress-1", id: 1 },
+  { goal: "Create a personal portfolio", starred: false, className: "star-icon", progress: 0, classNameP: "progress-1", id: 2 },
+  { goal: "Reach 4kyu on Codewars", starred: false, className: "star-icon", progress: 0, classNameP: "progress-1", id: 3 },
+  { goal: "Learn to play tennis", starred: false, className: "star-icon", progress: 0, classNameP: "progress-1", id: 4 },
+  { goal: "Exercise everyday", starred: false, className: "star-icon", progress: 0, classNameP: "progress-1", id: 5 },
 ];
 
 function Goals() {
-  const [toggle, setToggle] = useState(true);
-  const [star, setStarOld] = useState("star-icon")
 
   const [goals, dispatch] = useReducer(setGoals, initialGoals);
 
   function setGoals(state, action){
-    console.log(state, action)
     switch (action.type){
       case "SET_STARS":
         return action.payload
@@ -37,9 +34,7 @@ function Goals() {
   function setStars(event){
     const newGoals = goals.map((goal) => {
       if (Number(event.target.parentElement.id) === goal.id){
-          setToggle(!goal.starred)
           goal.starred = !goal.starred;
-          console.log(goal)
           if (goal.starred === true){
             goal.className = "star-icon-selected"
           }
@@ -74,39 +69,14 @@ function Goals() {
 
   return (
     <div className="goals-section">
-      <div className="goals-input-section">
-        <h3>My Goals</h3>
-        <input type="text" placeholder="Enter a goal..."></input>
-        <input type="text" placeholder="(Optional) Enter a link.."></input>
-        <button>Add new</button>
-      </div>
+      <GoalsInput/>
       <div className="goals-background">
         <div className="goals-top">
-        <select name="goals-order" onChange={orderArray}>
-          <option>Order by</option>
-          <option value="name">Name</option>
-          <option value="starred">Starred</option>
-          <option value="progress">Progress</option>
-        </select>
+        <GoalsOrderSelect orderArray={orderArray}/>
         <a href="www.temporarygoallink.com">See all</a>
         </div>
         <div className ="goals-content">
-            <ul>{goals.map((goal) => (
-                <li key={goal.id}>
-                  <div className ="list-item-container">
-                    <div className = "goal-star">
-                      <IoStarSharp className={goal.className} id={goal.id} onClick={setStars}/> {goal.goal}
-                    </div>
-                    <div className="progress-buttons">
-                      <div className="progress"></div>
-                      <AiOutlinePlusSquare className="progress-update"/>
-                      <AiOutlineMinusSquare className="progress-update"/>
-                      <RiDeleteBinLine/>
-                    </div>
-                  </div>
-                </li>
-            ))}
-            </ul>
+          <GoalsContent goals={goals} setStars={setStars}/>
         </div>
       </div>
     </div>
