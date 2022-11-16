@@ -35,7 +35,7 @@ function Goals() {
             {goals.map((goal) => (
                 <li key={goal.id}>
                 <IoStarSharp className="star-icon"/> {goal.goal}
-                <div className="progress"></div>
+                {/*<div className="progress"></div>*/}
                 </li>
             ))}
             </ul>
