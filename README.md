@@ -29,7 +29,7 @@ A personal homepage to store useful info links and resources such as a customisa
 - [X] idea generator displays an idea 
 - [X] on click of refresh button the idea changes
 #### Goals
- - [X] inputs and buttons to add new goal
+ - [X] inputs and buttons can be used to add a new goal
  - [X] select options change the order of the list items
  - [X] on click, the stars change colour and flag the list item as "starred" so that the user can put them to the top of the list if desired using one of the select options mentioned above
  - [X] see all button (currently leads nowhere)

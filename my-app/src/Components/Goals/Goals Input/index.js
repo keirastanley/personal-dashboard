@@ -1,11 +1,11 @@
 import "./index.css"
 
-function GoalsInput(){
+function GoalsInput({handleInput, handleClick}){
     return <div className="goals-input-section">
                 <h3>My Goals</h3>
-                <input type="text" placeholder="Enter a goal..."></input>
-                <input type="text" placeholder="(Optional) Enter a link.."></input>
-                <button>Add new</button>
+                <input name="goal" type="text" placeholder="Enter a goal..." onChange={handleInput}></input>
+                <input name="goal-link" type="text" placeholder="(Optional) Enter a link.." onChange={handleInput}></input>
+                <button onClick={handleClick}>Add new</button>
             </div>
 }
 

@@ -15,7 +15,7 @@ function GoalsList({ goals, handleProgress, setStars }) {
                 id={goal.id}
                 onClick={setStars}
               />
-              {goal.goal}
+              <a href={goal.href}>{goal.goal}</a>
             </div>
             <div className="progress-buttons">
               <div className="progress">

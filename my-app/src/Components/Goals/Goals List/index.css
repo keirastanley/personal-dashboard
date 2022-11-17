@@ -3,6 +3,10 @@
     padding: 0;
     margin: 10px;
   }
+
+  .goal-star > a {
+    color: black;
+  }
   
   .list-item-container {
     display: flex;
