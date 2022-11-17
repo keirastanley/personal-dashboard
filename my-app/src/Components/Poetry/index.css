@@ -16,6 +16,8 @@
     border: 2px solid #CFD4DB;
     width: 430px;
     height: 109px;
+    font-size: 14px;
+    text-indent: 4px;
   }
 
   .poetry-icons {
@@ -57,4 +59,8 @@
   
   #poetry-refresh-icon{
     font-size: 25px;
+  }
+
+  .lines {
+    line-height: 1px;
   }
