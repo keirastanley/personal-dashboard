@@ -26,10 +26,12 @@ A personal homepage to store useful info links and resources such as a customisa
 #### Favourites
 - [ ] favourites
 #### Idea generator
-- [ ] idea generator
+- [X] idea generator displays an idea 
+- [X] on click of refresh button the idea changes
 #### Goals
- - [ ] inputs and buttons to add new goal
- - [ ] select to choose the order of results
- - [ ] see all button (currently leads nowhere)
+ - [X] inputs and buttons to add new goal
+ - [X] select options change the order of the list items
+ - [X] on click, the stars change colour and flag the list item as "starred" so that the user can put them to the top of the list if desired using one of the select options mentioned above
+ - [X] see all button (currently leads nowhere)
 #### Things to do
 - [ ] things to do

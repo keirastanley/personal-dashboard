@@ -1,0 +1,21 @@
+.favourites-container{
+    grid-area: favourites;
+    width: 279px; 
+    height: 478px;
+    background-color: #DAB9BF;
+}
+
+.favourites-input-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.favourites-link-input{
+    width: 245px;
+}
+
+.favourites-display-input{
+    width: 180px;
+}

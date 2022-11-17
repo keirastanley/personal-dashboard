@@ -8,12 +8,13 @@ main {
     height: 761px;
     display: grid;
     grid-template-columns: 330px 493px 288px;
-    grid-template-rows: 123px 99px 28px 170px 170px;
-    grid-template-areas: "weather poetry gallery"
+    grid-template-rows: 123px 99px 28px 170px 325px;
+    grid-template-areas: 
+    "weather poetry gallery"
     "weather goals gallery"
     "ideas goals gallery"
-    "ideas goals favourite"
-    "things things favourite"
+    "ideas goals favourites"
+    "things things favourites"
     ;
     align-items: center;
     justify-content: center;

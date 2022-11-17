@@ -14,7 +14,7 @@ function Header() {
       };
     const date = d.toLocaleString('en-GB', options)
     const [time, setTime] = useState(date);
-    setInterval(newTime, 60000);
+    setInterval(newTime, 1000);
 
     function newTime() {
         const d2 = new Date();

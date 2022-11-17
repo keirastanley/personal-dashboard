@@ -2,13 +2,15 @@ import { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { GrGallery } from "react-icons/gr";
 import { TbRefresh } from "react-icons/tb";
+import images from "./gallery-images";
 import "./index.css";
 
 function Gallery() {
   const [toggle, setToggle] = useState(true);
   const [heart, setHeart] = useState(<AiOutlineHeart id="heart-icon" />);
-
-  function handleClick() {
+  const [id, setId] = useState(0);
+  
+  function handleHeart() {
     if (toggle === true) {
       setHeart(<AiFillHeart id="heart-icon-filled"/>);
     } else {
@@ -17,26 +19,31 @@ function Gallery() {
     setToggle(!toggle);
   }
 
+  function handleRefresh() {
+    const randomNumber = Math.floor(Math.random() * images.length)
+    setId(randomNumber)
+  }
+
   return (
     <div className="gallery-section">
       <img 
-        src="https://d1j88w5k23s1nr.cloudfront.net/eyJidWNrZXQiOiJhcnRzeS1tZWRpYS1hc3NldHMiLCJrZXkiOiJxUUwtdHN6RXVWa2RDdGtnUV91cWhRL25vcm1hbGl6ZWQuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6NTEzLCJmaXQiOiJpbnNpZGUifX19"
-        alt="Claude Monet Waterloo Bridge, London, At Dusk">
+        src={images[id].src}
+        alt={images[id].alt}>
         </img>
       <div className="gallery-info-container">
         <div className="gallery-info">
           <p>
-            Waterloo Bridge, London, at Dusk,<br></br> Claude Monet, Oil on canvas, 1904
+            {images[id].title}<br></br>{images[id].artist}, {images[id].medium}, {images[id].year}
           </p>
         </div>
         <div className="icons-container">
-          <button onClick={handleClick}>
+          <button onClick={handleHeart}>
             {heart}
           </button>
           <button>
             <GrGallery id="gallery-icon"/>
           </button>
-          <button>
+          <button onClick={handleRefresh}>
             <TbRefresh id="refresh-icon"/>
           </button>
         </div>
