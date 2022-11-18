@@ -14,7 +14,7 @@ https://user-images.githubusercontent.com/93473519/202558273-f7ed0751-b260-47c8-
 ## Prototypes
 These prototypes were designed on Figma.
 
-<img src="https://github.com/keirastanley/personal-dashboard/blob/main/Prototypes/Desktop%20homepage%20prototype.png?raw=true"/>
+<img src="https://github.com/keirastanley/personal-dashboard/blob/main/Prototypes%20and%20screengrabs/Desktop%20homepage%20prototype.png?raw=true"/>
 <img width="2560" alt="Screenshot 2022-11-17 at 21 02 12" src="https://user-images.githubusercontent.com/93473519/202559300-d2be234c-64f5-481c-9015-4db852886a06.png">
 <img width="2560" alt="Screenshot 2022-11-17 at 21 02 31" src="https://user-images.githubusercontent.com/93473519/202559374-8ad1bc09-37a3-46bf-b118-b227f768aba1.png">
 
