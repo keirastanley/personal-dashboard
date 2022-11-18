@@ -1,13 +1,14 @@
 import { IoStarSharp } from "react-icons/io5";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
+import { v4 as uuidv4 } from 'uuid';
 import "./index.css";
 
 function GoalsList({ goals, handleProgress, setStars }) {
   return (
     <ul>
       {goals.map((goal) => (
-        <li key={goal.id}>
+        <li key={uuidv4()}>
           <div className="list-item-container">
             <div className="goal-star">
               <IoStarSharp

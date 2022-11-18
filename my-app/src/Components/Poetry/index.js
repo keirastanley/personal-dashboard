@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { GoBook } from "react-icons/go";
 import { TbRefresh } from "react-icons/tb";
+import { v4 as uuidv4 } from 'uuid';
 import "./index.css";
 import poems from "./poems";
 
@@ -26,7 +27,7 @@ function Poetry() {
 
   function Lines(){
     const lines = poems[id].lines.filter((line, ind, arr) => ind < 4);
-    return lines.map(line => <p className="lines">{line}</p>)
+    return lines.map(line => <p key={uuidv4()} className="lines">{line}</p>)
   }
 
   return (

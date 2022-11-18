@@ -11,9 +11,6 @@ function Goals() {
   const [link, setLink] = useState("");
   const [count, setCount] = useState(initialGoals.length + 1);
 
-  //NEW GOALS ADDED HAVE NON-FUNCTIONAL BUTTONS
-  console.log(goals)
-
   function setGoals(state, action) {
     switch (action.type) {
       case "ADDED_NEW_GOAL":
@@ -143,11 +140,13 @@ function Goals() {
               return goal;
             }
           case "delete":
-            const goalsDelete = [...arr.slice(0, ind), ...arr.slice(ind + 1)];
-            dispatch({
-              type: "PLUS",
-              payload: goalsDelete,
-            });
+            if (window.confirm("Are you sure you want to delete this?")){
+              const goalsDelete = [...arr.slice(0, ind), ...arr.slice(ind + 1)];
+              dispatch({
+                type: "PLUS",
+                payload: goalsDelete,
+              });
+            }
             return goal;
           default:
             return goal;

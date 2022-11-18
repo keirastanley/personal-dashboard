@@ -5,7 +5,7 @@
     background-color: #DAB9BF;
     display: grid;
     grid-template-columns: 280px;
-    grid-template-rows: 37px 50px 330px 63px;
+    grid-template-rows: 40px 50px 330px 60px;
     grid-template-areas: 
     "title"
     "select"
@@ -24,14 +24,31 @@
     justify-items: center;
     padding: 10px;
     gap: 5px;
+    align-self: center;
 }
 
 .favourites-top-level > a{
-    font-size: 13px;
+    font-size: 12px;
     color: black;
 }
 
-.favourites-input-section{
+.favourites-top-level > select {
+    background:#F1E2E5;
+    border: 1px solid #969696;
+  }
+
+.favourites > ul {
+    align-self: start;
+    list-style-type: none;
+    padding: 0;
+    margin: 10px;
+}
+
+.favourites > li > a {
+    color: black;
+}
+
+.favourites-input-section {
     display: flex;
     justify-content: center;
     align-content: center;
