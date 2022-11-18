@@ -140,10 +140,10 @@ function Goals() {
               return goal;
             }
           case "delete":
-            if (window.confirm("Are you sure you want to delete this?")){
+            if (window.confirm(`Are you sure you want to delete ${goal.goal}?`)){
               const goalsDelete = [...arr.slice(0, ind), ...arr.slice(ind + 1)];
               dispatch({
-                type: "PLUS",
+                type: "DELETE",
                 payload: goalsDelete,
               });
             }

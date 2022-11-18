@@ -44,7 +44,19 @@
     margin: 10px;
 }
 
-.favourites > li > a {
+.favourites ul > li {
+    display: flex;
+    justify-content:space-between;
+    line-height: 25px;
+}
+
+.fave-star {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.fave-star > a {
     color: black;
 }
 

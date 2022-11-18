@@ -40,6 +40,12 @@ function Favourites(){
                 return action.payload
             case "SET_STARS":
                 return action.payload
+            case "DELETE":
+                return action.payload
+            case "ORDER_BY_NAME":
+                return action.payload
+            case "ORDER_BY_STAR":
+                return action.payload
             default:
                 return favourites;
         }
@@ -88,14 +94,59 @@ function Favourites(){
         });
       }
 
+      function handleDelete(event){
+        let compare = 0;
+        if (event.target.id.length > 0) {
+            compare = Number(
+                event.target.id
+                .split("")
+                .filter((el) => Number.isInteger(Number(el)))
+                .join(""));
+        }
+        favourites.map((favourite, ind, arr) => {
+            if (compare === favourite.id) {
+                if (window.confirm(`Are you sure you want to delete ${favourite.display}?`)){
+                    const favesDelete = [...arr.slice(0, ind), ...arr.slice(ind + 1)];
+                    dispatch({
+                        type: "DELETE",
+                        payload: favesDelete,
+                    });
+                }
+            }
+        }) 
+        }
+
+        function orderArray(event){
+            if (event.target.value === "name") {
+                const newFaves = [
+                  ...favourites.sort((a, b) =>
+                    a.display > b.display ? 1 : b.display > a.display ? -1 : 0
+                  ),
+                ];
+                dispatch({
+                  type: "ORDER_BY_NAME",
+                  payload: newFaves,
+                });
+              }
+              if (event.target.value === "starred") {
+                const newFaves = [
+                  ...favourites.filter(favourite => favourite.starred === true),
+                  ...favourites.filter(favourite => favourite.starred === false),
+                ];
+                dispatch({
+                  type: "ORDER_BY_STAR",
+                  payload: newFaves,
+                });
+              }
+        }
 
     return <div className="favourites-container">
                 <h3>Favourites</h3>
                 <div className="favourites-top-level">
                     <a href="www.temporarylink.com">See all</a>
-                    <FavouritesOrder/>
+                    <FavouritesOrder orderArray={orderArray}/>
                 </div>
-                <FavouritesList favourites={favourites} setStars={setStars}/>
+                <FavouritesList favourites={favourites} setStars={setStars} handleDelete={handleDelete}/>
                 <FavouritesInput handleChange={handleChange} handleClick={handleClick}/>
             </div>
 }
