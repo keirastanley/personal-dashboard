@@ -1,5 +1,6 @@
 import PriorityIcon from "../Priority Icon/index";
 import StatusSelect from "../Status Select/index";
+import TaskDate from "./Task Date";
 import { v4 as uuidv4 } from 'uuid';
 
 export default function TaskList({ tasks, handleStatus }) {
@@ -18,7 +19,7 @@ export default function TaskList({ tasks, handleStatus }) {
               handleStatus={handleStatus}
               id={task.id}
             />
-            <p className="deadline">{task.deadline}</p>
+            <TaskDate deadline={task.deadline}/>
           </div>
         </li>
       ))}

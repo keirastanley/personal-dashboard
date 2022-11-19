@@ -118,14 +118,19 @@ function Tasks() {
       ];
       setTasks(newArr)
     }
-    /*if (event.target.value === "status") {
+    if (event.target.value === "status") {
+      console.log("true")
         const newArr = [
-          ...tasks.filter(task => task.priority === "not-started"),
-          ...tasks.filter(task => task.priority === "in-progress"),
-          ...tasks.filter(task => task.priority === "completed")
+          ...tasks.filter(task => task.status === "not-started"),
+          ...tasks.filter(task => task.status === "in-progress"),
+          ...tasks.filter(task => task.status === "completed")
         ];
         setTasks(newArr)
-      }*/
+      }
+    if (event.target.value === "deadline") {
+        const newArr = [...tasks.sort((a, b) => Number(a.deadline.replaceAll("-", "")) - Number(b.deadline.replaceAll("-", "")))]
+        setTasks(newArr)
+    }
   }
 
   return (

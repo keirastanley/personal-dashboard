@@ -1,7 +1,8 @@
 .goals-content > ul {
     list-style-type: none;
     padding: 0;
-    margin: 10px;
+    margin-top: 0px;
+    margin-left: 10px;
   }
 
   .goal-star > a {

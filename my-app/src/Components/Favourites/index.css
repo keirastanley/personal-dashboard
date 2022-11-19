@@ -37,6 +37,10 @@
     border: 1px solid #969696;
   }
 
+.favourites{
+    overflow-y: scroll;
+}
+
 .favourites > ul {
     align-self: start;
     list-style-type: none;
