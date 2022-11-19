@@ -1,0 +1,128 @@
+.tasks-container {
+    grid-area: tasks;
+    width: 811px;
+    height: 321px;
+    background-color: #C7C7C7;
+    display: grid;
+    grid-template-columns: 811px;
+    grid-template-rows: 51px 270px;
+    grid-template-areas: 
+    "tasks-input"
+    "tasks-content";
+}
+.tasks-top-level {
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+}
+
+.tasks-input-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.tasks-input-section > button {
+    background-color: #F9DFDF;
+  }
+  
+.tasks-input-section > select {
+    background:white;
+    border: 1px solid #969696;
+  }
+
+.tasks-top-level > select {
+    background:white;
+    border: 1px solid #969696;
+}
+
+.tasks-text-input {
+    width: 300px;
+    height: 17px;
+}
+
+.tasks-section{
+    grid-area: tasks-content;
+    background: white;
+    width: 771px;
+    height: 250px;
+    justify-self: center;
+}
+
+.tasks-section > .tasks-top-level{
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.tasks{
+    overflow-y: scroll;
+    height: 226px;
+}
+
+.tasks > ul {
+    margin-top: 0px;
+    margin-left: 10px;
+    padding: 0px;
+    line-height: 0px;
+}
+
+.tasks > ul > li {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15px;
+}
+
+.tasks-top-level > a{
+    color: black;
+    font-size: 12px;
+}
+
+.priority-task {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.priority-deadline {
+    display: flex;
+    width: 200px;
+    gap: 10px;
+    align-items: center;
+}
+
+.low-priority{
+    font-size: 10px;
+    color: white;
+    stroke: #818181;
+    stroke-width: 30px;
+}
+.med-priority{
+    font-size: 10px;
+    color: #FFB265;
+}
+.high-priority{
+    font-size: 20px;
+    color: red;
+    justify-self:flex-start;
+    width: 10px;
+}
+
+.priority-deadline {
+    display: flex;
+}
+
+.not-started {
+    background-color: #FCC7C4;
+    border: none;
+}
+
+.in-progress {
+    background-color: #F7EECF;
+    border: none;
+}
+
+.completed {
+    background-color: #D0E6C0;
+    border: none;
+}

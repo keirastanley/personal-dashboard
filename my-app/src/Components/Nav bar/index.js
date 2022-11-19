@@ -1,6 +1,6 @@
 import "./index.css"
 import {useState} from "react";
-import NavIcon from "../Nav Icon";
+import NavIcon from "./Nav Icon";
 
 const pages = [
   { page: "Home", href: "#" },

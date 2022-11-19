@@ -3,7 +3,8 @@ import Gallery from "../Gallery/index"
 import Poetry from "../Poetry/index"
 import Goals from "../Goals/index"
 import Ideas from "../Ideas/index"
-import Favourites from "../Favourites"
+import Favourites from "../Favourites/index"
+import Tasks from "../Tasks/index"
 import "./index.css"
 
 function Main(){
@@ -16,6 +17,7 @@ function Main(){
             <Goals/>
             <Ideas/>
             <Favourites/>
+            <Tasks/>
         </div>
       </main>
       );

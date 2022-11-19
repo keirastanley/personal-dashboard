@@ -4,11 +4,14 @@ nav {
 }
 
 nav > ul {
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     list-style-type:none;
     margin-left: 10px;
     padding: 0;
+    justify-content: space-around;
+    height: 500px; 
 }
 
 nav > ul > li > a {
