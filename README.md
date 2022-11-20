@@ -2,12 +2,16 @@
 
 A personal homepage to store useful info links and resources such as a customisable to-do list, my goals, weather for my location, date and time, poetry, my favourite websites, art and a something to do generator. 
 
-## Current view (Nov 17)
+## Current view (Nov 20)
 A screen recording of the website's current functionality:
 
 
 
-https://user-images.githubusercontent.com/93473519/202558273-f7ed0751-b260-47c8-b3f1-c72e2cac8467.mov
+
+https://user-images.githubusercontent.com/93473519/202905771-3ba65f40-2294-49f3-897c-4cbd3e67a476.mp4
+
+
+<!--https://user-images.githubusercontent.com/93473519/202558273-f7ed0751-b260-47c8-b3f1-c72e2cac8467.mov-->
 
 
 
