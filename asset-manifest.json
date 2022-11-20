@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.css": "/personal-dashboard/static/css/main.f1f3bcb7.css",
+    "main.js": "/personal-dashboard/static/js/main.3c8e13fb.js",
+    "static/js/27.07ddfad5.chunk.js": "/personal-dashboard/static/js/27.07ddfad5.chunk.js",
+    "index.html": "/personal-dashboard/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.f1f3bcb7.css",
+    "static/js/main.3c8e13fb.js"
+  ]
+}
