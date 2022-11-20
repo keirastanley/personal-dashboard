@@ -26,6 +26,7 @@ These prototypes were designed on Figma.
 ## Component tree
 <img src="https://github.com/keirastanley/personal-dashboard/blob/main/Plan/Component%20tree.png?raw=true"/>
 
+<!--
 ## To do:
 #### Header
 - [X] current date and time saved to variable ``time`` which is updated every 60 seconds
@@ -52,4 +53,4 @@ These prototypes were designed on Figma.
  - [X] on click, the stars change colour and flag the list item as "starred" so that the user can put them to the top of the list if desired using one of the select options mentioned above
  - [X] see all button (currently leads nowhere)
 #### Things to do
-- [ ] things to do
+- [ ] things to do-->
