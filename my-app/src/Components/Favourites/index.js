@@ -2,31 +2,8 @@ import { useState, useReducer } from "react";
 import FavouritesList from "./Favourites List";
 import FavouritesInput from "./Favourites Input";
 import FavouritesOrder from "./Favourites Order Select";
+import { initialFavourites } from "./favourites";
 import "./index.css"
-
-const initialFavourites = [
-    {
-        id: 1,
-        href: "https://www.cabinetmagazine.org",
-        display: "Cabinet Magazine",
-        starred: false,
-        className: "star-icon",
-    },
-    {
-        id: 2,
-        href: "https://lichess.org",
-        display: "LiChess",
-        starred: false,
-        className: "star-icon",
-    },
-    {
-        id: 3,
-        href: "https://www.codewars.com",
-        display: "Codewars",
-        starred: false,
-        className: "star-icon",
-    },
-]
 
 function Favourites(){
     const [favourites, dispatch] = useReducer(setFavourites, initialFavourites);
@@ -113,6 +90,7 @@ function Favourites(){
                     });
                 }
             }
+            return favourites;
         }) 
         }
 

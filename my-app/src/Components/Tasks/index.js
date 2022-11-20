@@ -64,9 +64,6 @@ function Tasks() {
       default:
         break;
     }
-    /*if (event.target.value) {
-            
-        }*/
   }
 
   function handleSubmit() {
@@ -82,11 +79,28 @@ function Tasks() {
     setTasks(newArr);
   }
 
+  function handleDelete(event){
+    let compare = 0;
+    if (event.target.id.length < 1){
+      compare = Number(event.target.ownerSVGElement.id);
+    }
+    else {
+      compare = Number(event.target.id);
+    }
+    tasks.map(task => {
+      if (task.id === compare){
+        if (window.confirm(`Are you sure you want to delete '${task.task}'?`)){
+          const newTasks = tasks.filter(task => task.id !== compare);
+          setTasks(newTasks);
+        }
+      }
+      return tasks;
+    })
+  }
+
   function handleStatus(event) {
-    console.log("fn called");
     tasks.map(function (task, ind, arr) {
       if (task.id === Number(event.target.id)) {
-        console.log(task.id);
         const newObj = {
           id: task.id,
           task: task.task,
@@ -119,7 +133,6 @@ function Tasks() {
       setTasks(newArr)
     }
     if (event.target.value === "status") {
-      console.log("true")
         const newArr = [
           ...tasks.filter(task => task.status === "not-started"),
           ...tasks.filter(task => task.status === "in-progress"),
@@ -145,7 +158,7 @@ function Tasks() {
           <a href="www.temp.com">See all</a>
         </div>
         <div className="tasks">
-          <TaskList tasks={tasks} handleStatus={handleStatus} />
+          <TaskList tasks={tasks} handleStatus={handleStatus} handleDelete={handleDelete}/>
         </div>
       </div>
     </div>

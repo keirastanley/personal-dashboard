@@ -70,7 +70,7 @@
 .tasks > ul > li {
     display: flex;
     justify-content: space-between;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 .tasks-top-level > a{
@@ -84,11 +84,17 @@
     gap: 10px;
 }
 
-.priority-deadline {
+.priority-deadline-delete {
     display: flex;
-    width: 200px;
+    width: 220px;
     gap: 10px;
     align-items: center;
+    justify-content: space-between;
+}
+
+.task-delete{
+    font-size: 18px;
+    align-self: center;
 }
 
 .low-priority{

@@ -1,27 +1,43 @@
 import { useState } from "react";
 import { TbRefresh } from "react-icons/tb";
 import { RiDeleteBinLine } from "react-icons/ri";
+import IdeasInput from "./Ideas Input";
 import "./index.css"
 
-const ideas = [
-    "Play a game of chess",
-    "Practise on Codewars",
-    "Play a game of chess",
-    "Read a book",
-    "Clean the kitchen",
-    "Make a dessert",
-    "Paint nails",
-    "Play the piano",
-    "Tidy your room",
-    "Do laundry",
-    "Yoga or stretching"
+const initialIdeas = [
+    {idea: "Play a game of chess", href: "www.lichess.com"},
+    {idea: "Practise on Codewars", href: "www.codewars.com"},
+    {idea: "Read a book", href: null},
+    {idea: "Clean the kitchen", href: null},
+    {idea: "Make a dessert", href: null},
+    {idea: "Paint nails", href: null},
+    {idea: "Play the piano", href: null},
+    {idea: "Tidy your room", href: null},
+    {idea: "Do laundry", href: null},
+    {idea: "Yoga or stretching", href: "https://www.youtube.com/c/yogawithadriene"}
 ]
 
 function Ideas(){
-
+    const [ideas, setIdeas] = useState(initialIdeas)
     const [idea, setIdea] = useState(ideas[0])
+    const [text, setText] = useState("")
+    const [link, setLink] = useState("")
+
+    function handleChange(event){
+        if (event.target.name === "idea-text-input"){
+            setText(event.target.value)
+        }
+        if (event.target.name === "idea-link-input"){
+            setLink(event.target.value)
+        }
+    }
 
     function handleClick(){
+        const newIdeas = [...ideas, {idea: text, href: link}]
+        setIdeas(newIdeas)
+    }
+
+    function handleRefresh(){
         const randomNumber = Math.floor(Math.random() * (ideas.length))
         setIdea(ideas[randomNumber])
     }
@@ -29,18 +45,13 @@ function Ideas(){
     return <div className="ideas-container">
         <div className="ideas-top">
             <h3>Something to do...</h3>
-            <button onClick={handleClick}><TbRefresh className="ideas-refresh" onClick={handleClick}/></button>
+            <button onClick={handleRefresh}><TbRefresh className="ideas-refresh" onClick={handleRefresh}/></button>
         </div>
         <div className="idea">
-            <p>{idea}</p>
+            <a href={idea.link}>{idea.idea}</a>
             <RiDeleteBinLine/>
         </div>
-        <a href="www.temporarylink.com">See all</a>
-        <div className="ideas-input">
-            <input placeholder="Enter an idea..." className="idea-input"></input>
-            <input placeholder="(Optional) Enter a link" className="idea-link-input"></input>
-            <button>Add new</button>
-        </div>
+            <IdeasInput handleChange={handleChange} handleClick={handleClick}/>
     </div>
 }
 
