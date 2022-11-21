@@ -2,7 +2,7 @@
 
 A personal homepage to store useful info links and resources such as a customisable to-do list, my goals, weather for my location, date and time, poetry, my favourite websites, art and a something to do generator. 
 
-### <a href="https://keirastanley.github.io/personal-dashboard/">✨ Try it out ✨</a>
+### <a href="https://keirastanley.github.io/personal-dashboard/">✨ Try it out ✨ (not currently suitable for iPad or mobile)</a>
 
 ## Current view (Nov 20)
 A screen recording of the website's current functionality:
