@@ -33,7 +33,7 @@ function Gallery() {
       <div className="gallery-info-container">
         <div className="gallery-info">
           <p>
-            {images[id].title}<br></br>{images[id].artist}, {images[id].medium}, {images[id].year}
+            {images[id].title}, {images[id].artist}, {images[id].medium}, {images[id].year}
           </p>
         </div>
         <div className="icons-container">

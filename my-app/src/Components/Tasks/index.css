@@ -1,11 +1,11 @@
 .tasks-container {
     grid-area: tasks;
-    width: 811px;
-    height: 321px;
+    width: 53.5vw;
+    height: 26.5vh;
     background-color: #C7C7C7;
     display: grid;
-    grid-template-columns: 811px;
-    grid-template-rows: 51px 270px;
+    grid-template-columns: 100%;
+    grid-template-rows: 15% 85%;
     grid-template-areas: 
     "tasks-input"
     "tasks-content";
@@ -18,7 +18,7 @@
 
 .tasks-input-section {
     display: flex;
-    gap: 10px;
+    gap: 1vw;
     align-items: center;
 }
 
@@ -37,16 +37,17 @@
 }
 
 .tasks-text-input {
-    width: 300px;
+    width: 17vw;
     height: 17px;
 }
 
 .tasks-section{
     grid-area: tasks-content;
     background: white;
-    width: 771px;
-    height: 250px;
+    width: 52vw;
+    height: 21.5vh;
     justify-self: center;
+    overflow-y: scroll;
 }
 
 .tasks-section > .tasks-top-level{
@@ -55,21 +56,27 @@
     gap: 10px;
 }
 
-.tasks{
+/*.tasks{
     overflow-y: scroll;
-    height: 226px;
-}
+    height: 19vh;
+}*/
 
 .tasks > ul {
+    list-style-type: none;
+    padding: 0;
     margin-top: 0px;
-    margin-left: 10px;
-    padding: 0px;
-    line-height: 0px;
+    margin-left: 0.5vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-between;
+    justify-content: space-between;
 }
 
 .tasks > ul > li {
     display: flex;
     justify-content: space-between;
+    width: 52vw;
     margin-right: 10px;
 }
 
@@ -82,12 +89,16 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 32vw;
+    min-width: 150px;
+    height: 25px;
+    align-self: center; 
 }
 
 .priority-deadline-delete {
     display: flex;
-    width: 220px;
-    gap: 10px;
+    width: 210px;
+    height: 30px;
     align-items: center;
     justify-content: space-between;
 }

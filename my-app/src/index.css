@@ -29,3 +29,26 @@ code {
   height: 100vh;
   width: 100vw;
 }
+
+@media only screen and (max-width: 1050px) {
+  .app-container {
+    height: 110vh;
+    width: 100vw;
+  }
+}
+
+@media only screen and (max-width: 950px){
+  .app-container {
+    justify-content: flex-start;
+    align-items: center;
+    height: 120vh;
+    width: 100vw;
+  }
+}
+
+@media only screen and (max-width: 870px){
+  .app-container {
+    height: 130vh;
+    width: 100vw;
+  }
+}

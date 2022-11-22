@@ -18,6 +18,5 @@
 
 .weather-container{
     grid-area: weather;
-    width: 320px;
+    width: 24vw;
 }
-  

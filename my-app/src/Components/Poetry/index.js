@@ -27,14 +27,14 @@ function Poetry() {
 
   function Lines(){
     const lines = poems[id].lines.filter((line, ind, arr) => ind < 4);
-    return lines.map(line => <p key={uuidv4()} className="lines">{line}</p>)
+    return lines.map(line => <li key={uuidv4()}>{line}</li>)
   }
 
   return (
     <div className="poetry-container">
         <div className="poetry-info">
           <div className="poetry-text">
-            <Lines/>
+            <ul className="lines"><Lines/></ul>
             <p>From <i>{poems[id].title}</i> by <i>{poems[id].author}</i></p>
         </div>
       <div className="poetry-icons">

@@ -1,15 +1,25 @@
 .goals-input-section{
     display: flex;
     align-items: center;
-    gap: 5px;
-    width: 483px;
-    height: 48px;
+    justify-content: space-between;
+    width: 28.8vw;
+    min-width: 385px;
+    height: 4vh;
+    gap: 0.2vw;
   }
+
+.goals-input-section > input {
+  width: 8.4vw;
+  white-space: nowrap;
+}
   
   .goals-input-section > h3 {
-    padding: 5px;
+    padding: 0.1vw;
+    word-wrap: normal;
   }
   
   .goals-input-section > button {
-    background-color: #F9DFDF;
+    background-color: hsl(0, 68%, 93%);
+    width: 4.2vw;
+    min-width: 62px;
   }

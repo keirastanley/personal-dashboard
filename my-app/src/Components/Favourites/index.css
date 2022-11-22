@@ -1,11 +1,12 @@
 .favourites-container{
     grid-area: favourites;
-    width: 279px; 
-    height: 480px;
+    width: 17.5vw; 
+    min-width: 200px;
+    height: 45.3vh;
     background-color: #DAB9BF;
     display: grid;
-    grid-template-columns: 280px;
-    grid-template-rows: 40px 50px 330px 60px;
+    grid-template-columns: 17.5vw;
+    grid-template-rows: 10% 10% 65% 15%;
     grid-template-areas: 
     "title"
     "select"
@@ -22,8 +23,8 @@
     display: flex;
     flex-direction: column;
     justify-items: center;
-    padding: 10px;
-    gap: 5px;
+    padding: 1vw;
+    gap: 0.3vw;
     align-self: center;
 }
 
@@ -45,19 +46,22 @@
     align-self: start;
     list-style-type: none;
     padding: 0;
-    margin: 10px;
+    margin: 0.8vw;
 }
 
 .favourites ul > li {
     display: flex;
     justify-content:space-between;
     line-height: 25px;
+    min-width: 182px;
 }
 
 .fave-star {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 0.5vw;
+    width: 14.5vw;
+    min-width: 150px;
 }
 
 .fave-star > a {
@@ -74,13 +78,15 @@
 }
 
 .favourites-link-input{
-    width: 245px;
+    width: 15vw;
 }
 
 .favourites-display-input{
-    width: 180px;
+    width: 10.6vw;
+    margin-right: 0.3vw;
 }
 
 .favourites-input-section > button{
     background-color: #F9DFDF;
+    width: 4vw;
 }

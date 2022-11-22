@@ -1,13 +1,13 @@
 .gallery-section {
   grid-area: gallery;
   background-color: var(--header);
-  width: 278px;
-  height: 240px;
+  width: 17.5vw;
+  height: 18vh;
 }
   
 .gallery-section > img {
-  max-width: 267px;
-  height: 190px;
+  max-width: 16.5vw;
+  height: 13.5vh;
   display: block;
   margin: auto;
   border-top: 5px solid var(--header)
@@ -16,24 +16,23 @@
 .gallery-info-container{
   display: flex;
   align-items: center;
-  width: 278px;
-  height: 40px;
+  width: 17.5vw;
+  height: 3.6vh;
 }
 
 .gallery-info{
   display: flex;
   align-items: center;
-  width: 200px;
-  height: 40px;
+  width: 11.6vw;
+  height: 3.5vh;
   font-size: 11px;
-  padding: 3px;
+  padding: 0.2vw;
 }
 
 .icons-container {
   display: flex;
   justify-content: center;
-  gap: 0px;
-  width: 80px;
+  width: 5vw;
 }
 
 .icons-container > button {
@@ -42,8 +41,9 @@
   justify-content: center;
   border: none;
   background-color: transparent;
-  width: 25px;
-  padding: 1px;
+  width: 1.8vw;
+  height: 3vh;
+  padding: 0.2vw;
 }
 
 .icons-container > button:hover {

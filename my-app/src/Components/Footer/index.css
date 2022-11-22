@@ -1,8 +1,11 @@
 footer {
+    grid-area: footer;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--header);
-    padding: 20px;
-    grid-area: footer;
   }
+
+.footer {
+  margin-left: 10px;
+}
