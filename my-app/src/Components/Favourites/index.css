@@ -1,8 +1,8 @@
 .favourites-container{
     grid-area: favourites;
-    width: 17.5vw; 
-    min-width: 200px;
-    height: 45.3vh;
+    width: 17.3vw;
+    max-width: 250px; 
+    height: 52.5vh;
     background-color: #DAB9BF;
     display: grid;
     grid-template-columns: 17.5vw;
@@ -26,6 +26,8 @@
     padding: 1vw;
     gap: 0.3vw;
     align-self: center;
+    width: 15.2vw;
+    max-width: 220px;
 }
 
 .favourites-top-level > a{
@@ -36,7 +38,7 @@
 .favourites-top-level > select {
     background:#F1E2E5;
     border: 1px solid #969696;
-  }
+}
 
 .favourites{
     overflow-y: scroll;
@@ -47,21 +49,22 @@
     list-style-type: none;
     padding: 0;
     margin: 0.8vw;
+    width: 15.5vw;
+    max-width: 220px;
 }
 
 .favourites ul > li {
     display: flex;
     justify-content:space-between;
     line-height: 25px;
-    min-width: 182px;
 }
 
 .fave-star {
     display: flex;
     align-items: center;
     gap: 0.5vw;
-    width: 14.5vw;
-    min-width: 150px;
+    width: 14vw;
+    max-width: 195px;
 }
 
 .fave-star > a {
@@ -75,18 +78,22 @@
     align-items: center;
     flex-wrap: wrap;
     grid-area: input;
+    width: 17vw;
+    max-width: 250px;
 }
 
 .favourites-link-input{
     width: 15vw;
+    max-width: 220px;
 }
 
 .favourites-display-input{
-    width: 10.6vw;
+    width: 10.5vw;
+    max-width: 150px;
     margin-right: 0.3vw;
 }
 
 .favourites-input-section > button{
     background-color: #F9DFDF;
-    width: 4vw;
-}
+    width: 62px;
+} 

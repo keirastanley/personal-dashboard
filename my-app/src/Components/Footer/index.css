@@ -1,11 +1,28 @@
 footer {
     grid-area: footer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--header);
   }
 
-.footer {
-  margin-left: 10px;
+.footer-bar {
+  display: flex;
+  align-items: center;
+  width: 75vw;
+  height: 4vh;
+  background-color: var(--header);
+}
+
+.footer-bar > p {
+  padding: 20px;
+}
+
+@media only screen and (max-width: 1240px) {
+  .footer-bar {
+    width: 85vw;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .footer-bar{
+      width: 80vw;
+      height: 5vh;
+  }
 }

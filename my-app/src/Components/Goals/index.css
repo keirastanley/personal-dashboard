@@ -1,18 +1,29 @@
 .goals-section {
   grid-area: goals;
-  width: 29vw;
-  min-width: 390px;
-  height: 24vh;
+  width: 31.5vw;
+  max-width: 450px;
+  /* min-width: 390px; */
+  height: 25vh;
   background-color: #D9C9C9;
 }
 
 .goals-background {
-  width: 28.4vw;
-  min-width: 380px;
-  height: 19vh;
+  width: 31vw;
+  max-width: 436px;
+  /* min-width: 380px; */
+  height: 20.5vh;
   background-color: #E7D2D7;
   border: 4px solid  #D9C9C9;
   overflow-y: scroll;
+}
+
+.goals-top {
+  background-color: #E7D2D7;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 39.7vw;
+  max-width: 436px;
 }
 
 .goals-top > select {

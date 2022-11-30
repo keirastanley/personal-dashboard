@@ -7,14 +7,26 @@ import Footer from "../Footer/index"
 
 function App() {
 
-  return (
-    <div className="page-container">
-      <Header />
-      <Nav/>
-      <Main />
-      <Footer/>
-    </div>
-  )
+  if (window.matchMedia("(min-width: 800px)").matches) {
+    return (
+      <div className="page-container">
+        <Header />
+        <Nav/>
+        <Main />
+        <Footer/>
+      </div>
+    )
+    }
+  else {
+    return (
+      <div className="page-container">
+        <Header />
+        <Main />
+        <Footer/>
+      </div>
+    )
+  }
+      
 }
 
 export default App;

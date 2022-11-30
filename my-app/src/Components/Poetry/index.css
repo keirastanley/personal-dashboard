@@ -7,7 +7,8 @@
 .poetry-container {
     grid-area: poetry;
     background-color: #CFD4DB;
-    width: 29vw;
+    width: 31.5vw;
+    max-width: 450px;
     min-width: 340px;
     height: 12vh;
   }
@@ -15,11 +16,12 @@
   .poetry-text {
     background: var(--background);
     border: 3px solid #CFD4DB;
-    width: 28vw;
-    min-width: 310px;
+    width: 29vw;
+    /* min-width: 310px; */
     height: 11.4vh;
     font-size: 14px;
     text-indent: 4px;
+    overflow-y: scroll;
   }
 
   .poetry-icons {

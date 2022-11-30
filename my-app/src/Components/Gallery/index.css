@@ -2,12 +2,14 @@
   grid-area: gallery;
   background-color: var(--header);
   width: 17.5vw;
+  max-width: 250px;
   height: 18vh;
 }
   
 .gallery-section > img {
-  max-width: 16.5vw;
+  width: 16.5vw;
   height: 13.5vh;
+  max-width: 235px;
   display: block;
   margin: auto;
   border-top: 5px solid var(--header)
@@ -17,6 +19,7 @@
   display: flex;
   align-items: center;
   width: 17.5vw;
+  max-width: 250px;
   height: 3.6vh;
 }
 
@@ -24,6 +27,7 @@
   display: flex;
   align-items: center;
   width: 11.6vw;
+  max-width: 170px;
   height: 3.5vh;
   font-size: 11px;
   padding: 0.2vw;
@@ -33,6 +37,7 @@
   display: flex;
   justify-content: center;
   width: 5vw;
+  max-width: 75px;
 }
 
 .icons-container > button {
@@ -42,6 +47,7 @@
   border: none;
   background-color: transparent;
   width: 1.8vw;
+  max-width: 26px;
   height: 3vh;
   padding: 0.2vw;
 }

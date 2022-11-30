@@ -19,4 +19,12 @@
 .weather-container{
     grid-area: weather;
     width: 24vw;
+    min-width: 316px;
+    height: 210px;
+}
+
+@media only screen and (min-width: 1250px) {
+    .weather-container{
+        max-width: 360px;
+    }
 }

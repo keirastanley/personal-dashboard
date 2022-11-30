@@ -1,7 +1,8 @@
 .tasks-container {
     grid-area: tasks;
-    width: 53.5vw;
-    height: 26.5vh;
+    width: 56vw;
+    max-width: 800px;
+    height: 32.5vh;
     background-color: #C7C7C7;
     display: grid;
     grid-template-columns: 100%;
@@ -31,21 +32,38 @@
     border: 1px solid #969696;
   }
 
-.tasks-top-level > select {
+.tasks-order-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    width: 55vw;
+}
+  
+.tasks-order-link > select {
     background:white;
     border: 1px solid #969696;
 }
 
+.tasks-order-link > a{
+    color: black;
+    font-size: 12px;
+}
+
 .tasks-text-input {
-    width: 17vw;
+    width: 21vw;
+    max-width: 300px;
     height: 17px;
 }
 
-.tasks-section{
+.tasks-section {
     grid-area: tasks-content;
     background: white;
-    width: 52vw;
-    height: 21.5vh;
+    display: flex;
+    flex-direction: column;
+    width: 54.5vw;
+    max-width: 780px;
+    height: 26.5vh;
     justify-self: center;
     overflow-y: scroll;
 }
@@ -76,20 +94,17 @@
 .tasks > ul > li {
     display: flex;
     justify-content: space-between;
-    width: 52vw;
+    width: 54vw;
+    max-width: 760px;
     margin-right: 10px;
-}
-
-.tasks-top-level > a{
-    color: black;
-    font-size: 12px;
 }
 
 .priority-task {
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 32vw;
+    width: 38vw;
+    max-width: 540px;
     min-width: 150px;
     height: 25px;
     align-self: center; 

@@ -1,6 +1,7 @@
 .ideas-container{
     grid-area: ideas;
     width: 24vw;
+    max-width: 340px;
     height: 18.5vh;
     background-color: #DAD1D4;
     display: flex;
@@ -50,9 +51,11 @@
 
 .idea-input{
     width: 23vw;
+    max-width: 318px;
 }
 
 .idea-link-input{
-    width: 17vw;
+    width: 17.7vw;
+    max-width: 250px;
 }
 

@@ -24,8 +24,10 @@ function Header() {
 
   return (
    <header>
-      <h1>Home</h1>
-      <p>{time}</p>
+      <div className="header-bar">
+        <h1>Home</h1>
+        <p>{time}</p>
+      </div>
    </header>
   );
 }

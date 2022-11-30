@@ -30,7 +30,7 @@ code {
   width: 100vw;
 }
 
-@media only screen and (max-width: 1050px) {
+/* @media only screen and (max-width: 1050px) {
   .app-container {
     height: 110vh;
     width: 100vw;
@@ -40,7 +40,7 @@ code {
 @media only screen and (max-width: 950px){
   .app-container {
     justify-content: flex-start;
-    align-items: center;
+    align-items: center; 
     height: 120vh;
     width: 100vw;
   }
@@ -52,3 +52,10 @@ code {
     width: 100vw;
   }
 }
+
+@media only screen and (max-width: 768px){
+  .app-container {
+    height: 150vh;
+    width: 100vw;
+  }
+} */

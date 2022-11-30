@@ -1,14 +1,11 @@
-main {
-    grid-area: main;
-    display: flex;
-}
-
 .content-container{
-    width: 72vw;
-    height: 65vh;
+    grid-area: main;
+    width: 75vw;
+    max-width: 1080px;
+    height: 74vh;
     display: grid;
-    grid-template-columns: 34% 41% 25%;
-    grid-template-rows: 20% 9% 29% 42%;
+    grid-template-columns: 33% 43% 24%;
+    grid-template-rows: 17% 8% 27% 45%;
     grid-template-areas: 
     "weather poetry gallery"
     "weather goals gallery"
@@ -21,7 +18,382 @@ main {
     justify-content: center;
 }
 
-@media only screen and (max-width: 1340px) {
+@media only screen and (max-width: 1240px) {
+  .content-container{
+    width: 80vw;
+    height: 76vh;
+    grid-template-columns: 22% 26% 26% 26%;
+    grid-template-rows: 13% 20% 5% 26% 36%;
+    grid-template-areas:
+    "weather weather weather weather" 
+    "poetry poetry poetry gallery"
+    "ideas goals goals gallery"
+    "ideas goals goals favourites"
+    "tasks tasks tasks favourites"
+    ;
+  }
+
+  .weather-container{
+    width: 80vw;
+    background: white;
+    height: 110px;
+  }
+
+  .poetry-container {
+    width: 59vw;
+    max-width: 700px;
+    height: 14vh;
+  }
+    
+  .poetry-text {
+    width: 54vw;
+    height: 13.5vh;
+    font-size: 15px;
+  }
+
+  .poetry-icons {
+    justify-content: space-evenly;
+    gap: 12px;
+    width: 4.5vw;
+    height: 10vh;
+  }
+  
+  .poetry-icons > button {
+    width: 2.2vw;
+    height: 3vh;
+    padding: 1px;
+  }
+
+  .gallery-section {
+    width: 20vw;
+    height: 18vh;
+  }
+    
+  .gallery-section > img {
+    max-width: 20vw;
+    height: 13.5vh;
+  }
+
+.goals-section {
+  width: 41vw;
+  max-width: 490px;
+  height: 23vh;
+}
+
+.goals-background {
+  width: 40.2vw;
+  max-width: 480px;
+  height: 18.2vh;
+}
+
+.list-item-container {
+  width: 39vw;
+  max-width: 470px;
+}
+
+.favourites-container{
+  height: 46.5vh;
+  width: 20vw;
+  grid-template-columns: 20vw;
+  grid-template-rows: 8% 12% 65% 15%;
+}
+
+.favourites-top-level {
+  width: 18vw;
+}
+
+.favourites-input-section{
+  width: 20vw;
+}
+
+.favourites {
+  width: 20vw;
+}
+
+.favourites > ul {
+  width: 18.5vw;
+}
+
+.fave-star {
+  width: 17.5vw;
+}
+
+.ideas-container{
+  width: 17vw;
+  height: 22.5vh;
+  justify-content: space-around;
+}
+
+.ideas-top{
+gap: 0px;
+flex-wrap: wrap;
+}
+
+.idea-input{
+  width: 16vw;
+}
+
+.idea-link-input{
+  width: 9.8vw;
+}
+
+.tasks-container {
+  width: 59vw;
+  height: 26.5vh;
+}
+
+.tasks-section{
+  width: 58vw;
+  height: 21.8vh;
+}
+
+.tasks > ul > li {
+  width: 81vw;
+}
+}
+
+@media only screen and (max-width: 1070px){
+  .content-container{
+    width: 80vw;
+    height: 76vh;
+    grid-template-columns: 22% 26% 26% 26%;
+    grid-template-rows: 13% 20% 5% 26% 36%;
+    grid-template-areas:
+    "weather weather weather weather" 
+    "poetry poetry poetry gallery"
+    "ideas goals goals favourites"
+    "ideas goals goals favourites"
+    "tasks tasks tasks favourites"
+    ;
+  }
+
+  .gallery-section {
+    width: 20vw;
+    height: 14vh;
+  }
+    
+  .gallery-section > img {
+    max-width: 20vw;
+    height: 10vh;
+  }
+
+  .favourites-container{
+    height: 50vh;
+  }
+
+  .tasks > ul > li {
+    width: 70vw;
+    border: 1 px solid blue;
+  }
+  .priority-task {
+    width: 30vw;
+    border: 1 px solid blue;
+  }
+}
+
+@media only screen and (max-width: 800px){
+  .content-container {
+    width: 80vw;
+    height: 80vh;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: 35% 35% 30%;
+    grid-template-areas: 
+    "links links links"
+    "gallery gallery help-about"
+    "poetry poetry poetry"
+    ;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .header-bar > h1 {
+    font-size: min(3vw, 17px);
+  }
+
+  .header-bar > p {
+    padding: 0px;
+    font-size: min(3vw, 16px);
+  }
+
+  .footer-bar > p {
+    padding: 0px;
+    font-size: min(3vw, 16px);
+  }
+
+  .mobile-links-container {
+    grid-area: links;
+    width: 80vw;
+    height: 27.5vh;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    text-align: center;
+    font-size: min(3.5vw, 18px);
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-tasks-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ECF5F4;
+    width: 25vw;
+    height: 13vh;
+    border: 1px solid #C4C4C4;
+  }
+
+  .mobile-goals-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EEECF5;
+    width: 25vw;
+    height: 13vh;
+    border: 1px solid #C4C4C4;
+  }
+
+  .mobile-favourites-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5ECF0;
+    width: 25vw;
+    height: 13vh;
+    border: 1px solid #C4C4C4;
+  }
+
+  .mobile-ideas-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5EEEC;
+    width: 25vw;
+    height: 13vh;
+    border: 1px solid #C4C4C4;
+  }
+
+  .mobile-poetry-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5F4EC;
+    width: 25vw;
+    height: 13vh;
+    border: 1px solid #C4C4C4;
+  }
+
+  .mobile-gallery-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EDF5EC;
+    width: 25vw;
+    height: 13vh;
+    border: 1px solid #C4C4C4;
+  }
+
+  .help-about-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-area: help-about;
+    gap: 5px;
+    font-size: min(3.5vw, 18px);
+    height: 27vh;
+  }
+
+  .mobile-help-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D9D9D9;
+    width: 25vw;
+    height: 13vh;
+  }
+
+  .mobile-about-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D9D9D9;
+    width: 25vw;
+    height: 13vh;
+  }
+
+  .gallery-section {
+    width: 52vw;
+    max-width: 200px;
+    height: 27vh;
+  }
+
+  .gallery-section > img {
+    width: 49.5vw;
+    max-width: 160px;
+    height: 19vh;
+  }
+
+  .gallery-info-container{
+    width: 51vw;
+    max-width: 200px;
+    height: 7.5vh;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: center;
+  }
+
+  .gallery-info{
+    width: 51vw;
+    max-width: 500px;
+    height: 3.5vh;
+    font-size: min(3vw, 16px);
+    padding: 0vw;
+  }
+
+  .icons-container {
+    justify-content: space-evenly;
+    width: 47vw;
+    max-width: 250px;
+  }
+
+  .icons-container > button{
+    width: 5vw;
+    height: 2.5vh;
+  }
+
+  .poetry-container {
+    width: 78.5vw;
+    min-width: 100px;
+    height: 23.5vh;
+  }
+
+  .poetry-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 71vw;
+    height: 22.5vh;
+    font-size: min(3.5vw, 21px);
+    padding: 1px;
+  }
+
+  .poetry-icons {
+    justify-content: space-around;
+    width: 8vw;
+    height: 22.5vh;
+    align-items: center;
+  }
+  
+  .poetry-icons > button {
+    width: 7vw;
+    height: 5vh;
+    padding: 0px;
+  }
+
+}
+
+/* @media only screen and (max-width: 1340px) {
     .content-container{
         width: 72vw;
         height: 80vh;
@@ -252,106 +624,7 @@ main {
   }
 }
 
-@media only screen and (max-width: 1020px) {
-  .content-container{
-    width: 84vw;
-    height: 79vh;
-    grid-template-columns: 25% 19% 31% 25%;
-    grid-template-rows: 16% 10% 26% 24% 33%;
-    grid-template-areas: 
-    "poetry poetry poetry gallery"
-    "weather goals goals gallery"
-    "weather goals goals favourites"
-    "weather ideas ideas favourites"
-    "tasks tasks tasks tasks";
-  }
 
-  .poetry-container {
-    width: 60vw;
-    height: 12vh;
-  }
-    
-  .poetry-text {
-    width: 57vw;
-    height: 11.3vh;
-  }
-
-  .gallery-section {
-    width: 20vw;
-    height: 20vh;
-  }
-    
-  .gallery-section > img {
-    max-width: 18.5vw;
-    height: 14vh;
-  }
-
-  .weather-container{
-    display:block;
-    width: 21vw;
-    align-self: center;
-    background: white;
-    height: 460px;
-}
-
-.goals-section {
-  width: 41vw;
-  height: 23vh;
-}
-
-.goals-background {
-  width: 40.3vw;
-  height: 23vh;
-}
-
-.list-item-container {
-  width: 39vw;
-}
-
-.favourites {
-  width: 20vw;
-}
-
-.favourites-container{
-  height: 39vh;
-  width: 19vw;
-}
-
-.favourites-input-section{
-  width: 20vw;
-}
-
-.ideas-container{
-  width: 41vw;
-  height: 18.5vh;
-}
-
-
-.ideas-top{
-gap: 0px;
-}
-
-.idea-input{
-  width: 40vw;
-}
-.idea-link-input{
-  width: 32vw;
-}
-
-.tasks-container {
-  width: 83.5vw;
-  height: 24.5vh;
-}
-
-.tasks-section{
-  width: 82vw;
-  height: 20vh;
-}
-
-.tasks > ul > li {
-  width: 81vw;
-}
-}
 
 @media only screen and (max-width: 940px){
 
@@ -359,7 +632,7 @@ gap: 0px;
     width: 84vw;
     height: 79vh;
     grid-template-columns: 31% 19% 24% 26%;
-    grid-template-rows:  30% 15% 13% 16% 30%;
+    grid-template-rows:  22% 15% 16% 13% 30%;
     grid-template-areas: 
     "weather weather  ideas gallery"
     "poetry poetry   poetry     favourites"
@@ -381,12 +654,12 @@ gap: 0px;
 
   .gallery-section {
     width: 21.5vw;
-    height: 23vh;
+    height: 17vh;
   }
     
   .gallery-section > img {
     max-width: 18.5vw;
-    height: 16.5vh;
+    height: 11.2vh;
   }
 
   .weather-container{
@@ -413,8 +686,8 @@ gap: 0px;
 }
 
 .favourites-container{
-  height: 35vh;
-  width: 17.5vw;
+  height: 34.4vh;
+  width: 17vw;
 }
 
 .favourites-input-section{
@@ -423,7 +696,7 @@ gap: 0px;
 
 .ideas-container{
   width: 20vw;
-  height: 23vh;
+  height: 17vh;
 }
 
 .idea-link-input{
@@ -452,7 +725,7 @@ gap: 0px;
     width: 84vw;
     height: 79vh;
     grid-template-columns: 31% 19% 24% 26%;
-    grid-template-rows:  30% 15% 13% 16% 30%;
+    grid-template-rows:  22% 15% 16% 13% 30%;
     grid-template-areas: 
     "weather weather  ideas gallery"
     "poetry poetry   poetry     favourites"
@@ -474,12 +747,12 @@ gap: 0px;
 
   .gallery-section {
     width: 21.5vw;
-    height: 23vh;
+    height: 17vh;
   }
     
   .gallery-section > img {
     max-width: 18.5vw;
-    height: 16.5vh;
+    height: 11vh;
   }
 
   .weather-container{
@@ -506,7 +779,7 @@ gap: 0px;
 }
 
 .favourites-container{
-  height: 35vh;
+  height: 34.5vh;
   width: 17.5vw;
 }
 
@@ -516,7 +789,7 @@ gap: 0px;
 
 .ideas-container{
   width: 20vw;
-  height: 23vh;
+  height: 17vh;
 }
 
 .idea-link-input{
@@ -538,3 +811,95 @@ gap: 0px;
 }
 
 }
+
+@media only screen and (max-width: 768px) {
+  .content-container{
+    width: 84vw;
+    height: 90vh;
+    grid-template-columns: 60% 40%;
+    grid-template-rows:  24% 14% 15% 13% 30%;
+    grid-template-areas: 
+    "weather gallery"
+    "poetry poetry"
+    "goals goals"
+    "favourites ideas"
+    "tasks tasks";
+    justify-items: flex-start;
+  }
+
+  .weather-container{
+    width: 50vw;
+    height: 210px;
+}
+
+  .poetry-container {
+    width: 61vw;
+    height: 11.5vh;
+  }
+    
+  .poetry-text {
+    width: 57vw;
+    height: 10.8vh;
+  }
+
+  .gallery-section {
+    width: 21.5vw;
+    height: 17vh;
+  }
+    
+  .gallery-section > img {
+    max-width: 18.5vw;
+    height: 11vh;
+  }
+
+.goals-section {
+  width: 61vw;
+  height: 22.5vh;
+}
+
+.goals-background {
+  width: 60vw;
+  height: 17.5vh;
+}
+
+.list-item-container {
+  width: 58.5vw;
+}
+
+.favourites {
+  width: 21vw;
+}
+
+.favourites-container{
+  height: 34.5vh;
+  width: 17.5vw;
+}
+
+.favourites-input-section{
+  width: 20vw;
+}
+
+.ideas-container{
+  width: 20vw;
+  height: 17vh;
+}
+
+.idea-link-input{
+  width: 11.5vw;
+}
+
+.tasks-container {
+  width: 83.5vw;
+  height: 24.5vh;
+}
+
+.tasks-section{
+  width: 82vw;
+  height: 20vh;
+}
+
+.tasks > ul > li {
+  width: 81vw;
+}
+
+} */

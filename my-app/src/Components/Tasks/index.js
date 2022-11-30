@@ -153,7 +153,7 @@ function Tasks() {
         <TaskInput handleChange={handleChange} handleSubmit={handleSubmit} />
       </div>
       <div className="tasks-section">
-        <div className="tasks-top-level">
+        <div className="tasks-order-link">
           <TaskOrderSelect orderArray={orderArray}/>
           <a href="www.temp.com">See all</a>
         </div>
