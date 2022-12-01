@@ -97,3 +97,63 @@
     background-color: #F9DFDF;
     width: 62px;
 } 
+
+@media only screen and (max-width: 800px) {
+    .favouritesPage-container{
+        grid-template-columns: 35% 65%;
+        grid-template-rows: 10% 10% 10% 70%;
+        grid-template-areas: 
+        "title title"
+        "input input"
+        "select select"
+        "links links";
+    }
+    
+    .favouritesPage-container > h3{
+        text-align: center;
+        width: 300px;
+    }
+    
+    .favouritesPage{
+        grid-area: links;
+    }
+    
+    .favouritesPage > ul {
+        width: 70vw;
+    }
+
+    .favouritesPage-fave-star {
+        display: flex;
+        align-items: center;
+        gap: 0.5vw;
+        width: 65vw;
+        max-width: 350px;
+    }
+
+    .favouritesPage-fave-star > a {
+        color: black;
+    }
+    
+    .favouritesPage-input-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        width: 75vw;
+    }
+    
+    .favouritesPage-link-input{
+        width: 30vw;
+        max-width: 260px;
+    }
+    
+    .favouritesPage-display-input{
+        width: 20vw;
+        max-width: 190px;
+    }
+    
+    .favouritesPage-input-section > button{
+        background-color: #F9DFDF;
+        width: 62px;
+    } 
+    
+}

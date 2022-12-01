@@ -14,13 +14,13 @@
 }
 
 .galleryPage-card {
-    width: 325px;
+    width: 300px;
     height: 250px;
     background-color: var(--header);
 }
 
 .galleryPage-card > img {
-    width: 290px;
+    width: 280px;
     height: 190px;
     display: block;
     margin: auto;
@@ -30,7 +30,7 @@
 .galleryPage-info-container{
     display: flex;
     align-items: center;
-    width: 325px;
+    width: 300px;
     height: 48px;
     justify-content: space-around;
 }

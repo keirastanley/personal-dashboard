@@ -7,7 +7,7 @@ function FavouritesList({favourites, setStars, handleDelete, className}){
     <ul>
         {favourites.map(favourite => 
         <li key={uuidv4()}>
-            <div className="fave-star">
+            <div className={className + "-fave-star"}>
                 <IoStarSharp 
                     className={favourite.className}                 
                     id={favourite.id}

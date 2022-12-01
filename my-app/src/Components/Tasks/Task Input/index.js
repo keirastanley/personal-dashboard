@@ -1,8 +1,8 @@
-export default function TaskInput({handleChange, handleSubmit}) {
+export default function TaskInput({handleChange, handleSubmit, className}) {
   return (
-    <div className="tasks-input-section">
+    <div className={className + "-input-section"}>
       <input onChange={handleChange}
-        className="tasks-text-input"
+        className={className + "-text-input"}
         type="text"
         name="task"
         placeholder="Enter a task..."

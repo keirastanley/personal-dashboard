@@ -124,3 +124,59 @@
     font-size: 18px;
     align-self: center;
 }
+
+@media only screen and (max-width: 800px) {
+    .tasksPage-container {
+        grid-template-rows: 25% 75%;
+        grid-template-areas: 
+        "tasks-input"
+        "tasks-content";
+    }
+
+    .tasksPage-input-section {
+        flex-wrap: wrap;
+        padding: 10px;
+        justify-content: center;
+    }
+    
+    .tasksPage-order-link {
+        width: 69.5vw;
+    }
+    
+    .tasksPage-text-input {
+        width: 40vw;
+    }
+    
+    .tasksPage-section {
+        flex-direction: column;
+        width: 70vw;
+        height: 54vh;
+      }
+
+      .tasksPage-priority-task {
+        width: 67vw;
+    }
+    
+    .tasksPage-priority-deadline-delete {
+        width: 67vw;
+        height: 28px;
+        justify-content: space-between;
+        border-bottom: 1px solid #d4d4d4;
+    }
+    
+    .tasksPage-task-delete{
+        font-size: 18px;
+        align-self: center;
+    }
+    
+    .tasksPage > ul > li {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 72vw;
+        height: 80px;
+        /* max-width: 760px; */
+        margin-right: 10px;
+    }
+
+}

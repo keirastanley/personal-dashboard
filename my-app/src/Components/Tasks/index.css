@@ -105,7 +105,7 @@
     margin-right: 10px;
 }
 
-.priority-task {
+.tasks-priority-task {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -116,7 +116,7 @@
     align-self: center; 
 }
 
-.priority-deadline-delete {
+.tasks-priority-deadline-delete {
     display: flex;
     width: 210px;
     height: 30px;
@@ -124,7 +124,7 @@
     justify-content: space-between;
 }
 
-.task-delete{
+.tasks-task-delete{
     font-size: 18px;
     align-self: center;
 }
