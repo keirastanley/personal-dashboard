@@ -16,6 +16,7 @@
 
 .favourites-container > h3{
     text-align: center;
+    width: 248px;
 }
 
 .favourites-top-level {
@@ -41,7 +42,13 @@
 }
 
 .favourites{
-    overflow-y: scroll;
+    width: 17vw;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.favourites:hover {
+    overflow-y: auto;
 }
 
 .favourites > ul {

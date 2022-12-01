@@ -10,6 +10,7 @@ function Poetry() {
   const [toggle, setToggle] = useState(false);
   const [heart, setHeart] = useState(<AiOutlineHeart id="heart-icon" />);
   const [id, setId] = useState(0)
+  const [isHovering, setIsHovering] = useState(false);
 
   function handleHeart() {
     setToggle(!toggle);
@@ -25,17 +26,30 @@ function Poetry() {
     setId(randomNumber)
   }
 
-  function Lines(){
-    const lines = poems[id].lines.filter((line, ind, arr) => ind < 4);
-    return lines.map(line => <li key={uuidv4()}>{line}</li>)
+  function Lines({isHovering}){
+    if (isHovering) {
+      return poems[id].lines.map(line => <li key={uuidv4()}>{line}</li>)
+    }
+    else {
+      const lines = poems[id].lines.filter((line, ind) => ind < 4);
+      return lines.map(line => <li key={uuidv4()}>{line}</li>)
+    }
+  }
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  }
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
   }
 
   return (
     <div className="poetry-container">
         <div className="poetry-info">
-          <div className="poetry-text">
-            <ul className="lines"><Lines/></ul>
-            <p>From <i>{poems[id].title}</i> by <i>{poems[id].author}</i></p>
+          <div className="poetry-text" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+            <p><i>{poems[id].title}</i> by <i>{poems[id].author}</i></p>
+              <ul className="lines"><Lines isHovering={isHovering}/></ul>
         </div>
       <div className="poetry-icons">
         <button onClick={handleHeart}>{heart}</button>

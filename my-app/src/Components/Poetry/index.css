@@ -21,7 +21,12 @@
     height: 11.4vh;
     font-size: 14px;
     text-indent: 4px;
-    overflow-y: scroll;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+  
+  .poetry-text:hover {
+    overflow-y: auto;
   }
 
   .poetry-icons {

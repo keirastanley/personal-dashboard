@@ -17,8 +17,8 @@ function Main() {
         <Gallery />
         <Goals />
         <Ideas />
-        <Favourites />
-        <Tasks />
+        <Favourites className="favourites"/>
+        <Tasks className="tasks"/>
       </main>
       // </main>
     );

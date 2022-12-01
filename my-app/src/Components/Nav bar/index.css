@@ -1,17 +1,18 @@
 nav {
     grid-area: nav;
-    font-size: 20px;
+    font-size: 15px; 
+    width: 10.5vw;
 }
 
 nav > ul {
-    margin-top: 50px;
+    margin-top: 15px;
     display: flex;
     flex-direction: column;
     list-style-type:none;
     margin-left: 10px;
     padding: 0;
     justify-content: space-around;
-    height: 500px; 
+    height: 400px;
 }
 
 nav > ul > li > a {

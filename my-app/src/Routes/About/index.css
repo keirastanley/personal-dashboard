@@ -1,0 +1,6 @@
+.aboutPage-container {
+    width: 75vw;
+    max-width: 1080px;
+    height: 74vh;
+    grid-area: main;
+}

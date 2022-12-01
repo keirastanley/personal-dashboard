@@ -11,7 +11,7 @@ function Weather() {
         data-days="5"
         data-theme="pure"
       >
-        London WEATHER
+        If weather widget does not appear after a while, try refreshing the page.
         <iframe
           id="weatherwidget-io-0"
           className="weatherwidget-io-frame"

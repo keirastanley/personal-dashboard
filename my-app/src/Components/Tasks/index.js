@@ -42,7 +42,7 @@ const initialTasks = [
   },
 ];
 
-function Tasks() {
+function Tasks({className}) {
   const [tasks, setTasks] = useState(initialTasks);
   const [count, setCount] = useState(tasks.length + 1);
   const [text, setText] = useState("");
@@ -147,18 +147,18 @@ function Tasks() {
   }
 
   return (
-    <div className="tasks-container">
-      <div className="tasks-top-level">
+    <div className={className + "-container"}>
+      <div className={className + "-top-level"}>
         <h3>Things to do</h3>
-        <TaskInput handleChange={handleChange} handleSubmit={handleSubmit} />
+        <TaskInput handleChange={handleChange} handleSubmit={handleSubmit} className={className}/>
       </div>
-      <div className="tasks-section">
-        <div className="tasks-order-link">
-          <TaskOrderSelect orderArray={orderArray}/>
+      <div className={className + "-section"}>
+        <div className={className + "-order-link"}>
+          <TaskOrderSelect orderArray={orderArray} className={className}/>
           <a href="www.temp.com">See all</a>
         </div>
-        <div className="tasks">
-          <TaskList tasks={tasks} handleStatus={handleStatus} handleDelete={handleDelete}/>
+        <div className={className}>
+          <TaskList tasks={tasks} handleStatus={handleStatus} handleDelete={handleDelete} className={className}/>
         </div>
       </div>
     </div>

@@ -2,8 +2,8 @@ import { IoStarSharp } from "react-icons/io5";
 import { RiDeleteBinLine } from "react-icons/ri";
 import {v4 as uuidv4} from "uuid"
 
-function FavouritesList({favourites, setStars, handleDelete}){
-    return <div className="favourites">
+function FavouritesList({favourites, setStars, handleDelete, className}){
+    return <div className={className}>
     <ul>
         {favourites.map(favourite => 
         <li key={uuidv4()}>

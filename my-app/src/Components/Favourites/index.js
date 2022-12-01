@@ -5,7 +5,7 @@ import FavouritesOrder from "./Favourites Order Select";
 import { initialFavourites } from "./favourites";
 import "./index.css"
 
-function Favourites(){
+function Favourites({className}){
     const [favourites, dispatch] = useReducer(setFavourites, initialFavourites);
     const [display, setDisplay] = useState("");
     const [link, setLink] = useState("");
@@ -118,14 +118,20 @@ function Favourites(){
               }
         }
 
-    return <div className="favourites-container">
+        function SeeAll({className}){
+            if (className === "favourites"){
+                return <a href="www.temporarylink.com">See all</a>
+            }
+        }
+
+    return <div className={className + "-container"}>
                 <h3>Favourites</h3>
-                <div className="favourites-top-level">
-                    <a href="www.temporarylink.com">See all</a>
+                <div className={className + "-top-level"}>
+                    <SeeAll className={className}/>
                     <FavouritesOrder orderArray={orderArray}/>
                 </div>
-                <FavouritesList favourites={favourites} setStars={setStars} handleDelete={handleDelete}/>
-                <FavouritesInput handleChange={handleChange} handleClick={handleClick}/>
+                <FavouritesList favourites={favourites} setStars={setStars} handleDelete={handleDelete} className={className}/>
+                <FavouritesInput handleChange={handleChange} handleClick={handleClick} className={className}/>
             </div>
 }
 

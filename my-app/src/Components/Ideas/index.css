@@ -1,8 +1,8 @@
 .ideas-container{
     grid-area: ideas;
-    width: 24vw;
-    max-width: 340px;
-    height: 18.5vh;
+    width: 24.4vw;
+    max-width: 345px;
+    height: 19vh;
     background-color: #DAD1D4;
     display: flex;
     flex-direction: column;

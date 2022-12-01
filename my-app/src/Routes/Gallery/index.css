@@ -1,0 +1,60 @@
+.galleryPage-container {
+    width: 75vw;
+    max-width: 1080px;
+    height: 74vh;
+    grid-area: main;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    overflow-y: hidden;
+}
+
+.galleryPage-container:hover {
+    overflow-y: scroll;
+}
+
+.galleryPage-card {
+    width: 325px;
+    height: 250px;
+    background-color: var(--header);
+}
+
+.galleryPage-card > img {
+    width: 290px;
+    height: 190px;
+    display: block;
+    margin: auto;
+    border: 5px solid var(--header)
+}
+    
+.galleryPage-info-container{
+    display: flex;
+    align-items: center;
+    width: 325px;
+    height: 48px;
+    justify-content: space-around;
+}
+  
+.galleryPage-info{
+    display: flex;
+    align-items: center;
+    width: 270px;
+    height: 48px;
+    font-size: 13px;
+    padding: 0.2vw;
+}
+  
+.galleryPage-info-container > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+}
+  
+.galleryPage-info-container > button:hover {
+    color: white;
+}
