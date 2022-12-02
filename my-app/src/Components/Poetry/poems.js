@@ -1,5 +1,6 @@
 const poems = [
   {
+    id: 1,
     title: "Sonnet. Inscribed to Her Grace the Duchess of Devonshire",
     author: "Robinson",
     lines: [
@@ -22,6 +23,7 @@ const poems = [
     ],
   },
   {
+    id: 2,
     title: "In Memoriam A. H. H. Obiit MDCCCXXXIII: 3. O Sorrow, cruel",
     author: "Lord Alfred Tennyson",
     lines: [
@@ -45,6 +47,7 @@ const poems = [
     ],
   },
   {
+    id: 3,
     title: "Estranged from Beauty -- none can be --",
     author: "Emily Dickinson",
     lines: [
@@ -55,6 +58,7 @@ const poems = [
     ],
   },
   {
+    id: 4,
     title: "Paradise Regained: The Third Book",
     author: "John Milton",
     lines: [

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { GrGallery } from "react-icons/gr";
 import { TbRefresh } from "react-icons/tb";
+import { Link } from "react-router-dom";
 import images from "./gallery-images";
 import "./index.css";
 
@@ -41,7 +42,9 @@ function Gallery() {
             {heart}
           </button>
           <button>
-            <GrGallery id="gallery-icon"/>
+            <Link to={`gallery`}>
+              <GrGallery id="gallery-icon"/>
+            </Link>
           </button>
           <button onClick={handleRefresh}>
             <TbRefresh id="refresh-icon"/>

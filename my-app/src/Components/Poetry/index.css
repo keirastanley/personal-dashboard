@@ -66,13 +66,18 @@
   
   #poetry-book-icon{
     font-size: 25px;
+    color: black;
+  }
+
+  #poetry-book-icon:hover{
+    color: white;
   }
   
   #poetry-refresh-icon{
     font-size: 25px;
   }
 
-  .lines {
+  .poetry-lines {
     list-style-type: none;
     margin: 0;
     padding: 0;

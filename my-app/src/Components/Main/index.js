@@ -13,7 +13,9 @@ function Main() {
     return (
       <main className="content-container">
         <Weather />
-        <Poetry />
+        <div className="poetry-container">
+          <Poetry className="poetry"/>
+        </div>
         <Gallery />
         <Goals />
         <Ideas />

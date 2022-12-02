@@ -1,0 +1,92 @@
+.poetryPage {
+    width: 75vw;
+    max-width: 1080px;
+    height: max-content;
+    max-height: 950px;
+    grid-area: main;
+    background-color: #CFD4DB;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+  }
+
+  .poetryPage-title{
+    font-weight: bold;
+  }
+
+  .poetryCard {
+    width: 50%;
+    min-width: 400px;
+    overflow: hidden;
+  }
+
+  @media only screen and (max-width: 1060px){
+    .poetryCard {
+      width: 98%;
+    }
+  }
+
+  .poetryPage-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .poetryPage-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+    
+  .poetryPage-text {
+    background: var(--background);
+    border: 3px solid #CFD4DB;
+    width: 95%;
+    height: 210px;
+    font-size: 14px;
+    line-height: 22px;
+    text-indent: 4px;
+    overflow: hidden;
+  }
+
+  .poetryPage-button {
+    background-color: hsl(0, 68%, 93%);
+    width: 106px;
+  }
+
+  .poetryPage-lines {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .poetryPage-search{
+    display: flex;
+    align-items: center;
+    height: 80px;
+    width: 75vw;
+    max-width: 1080px;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .poetryPage-search-bar{
+    display: flex;
+    background-color: white;
+    align-items: center;
+    height: 30px;
+    width: 280px;
+    padding: 5px;
+  }
+
+  .poetryPage-search-bar > input{ 
+    border: none;
+    height: 28px;
+    width: 280px;
+  }
+
+  .poetryPage-search > button{
+    height: 30px;
+    width: 80px;
+  }

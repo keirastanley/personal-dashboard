@@ -68,6 +68,10 @@
   font-size: 20px;
 }
 
+#gallery-icon:hover path{
+  stroke: white;
+}
+
 #refresh-icon{
   font-size: 25px;
 }
