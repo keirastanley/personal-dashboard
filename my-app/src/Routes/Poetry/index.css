@@ -70,12 +70,13 @@
 
   .poetryPage-search{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    height: 80px;
+    height: max-content;
     width: 75vw;
     max-width: 1080px;
-    justify-content: center;
-    gap: 40px;
+    justify-content: space-around;
+    padding: 5px;
   }
 
   .poetryPage-search-bar{
@@ -83,17 +84,17 @@
     background-color: white;
     align-items: center;
     height: 30px;
-    width: 280px;
+    width: 40vw;
     padding: 5px;
   }
 
   .poetryPage-search-bar > input{ 
     border: none;
-    height: 28px;
-    width: 280px;
+    height: 27px;
+    width: 38vw;
   }
 
-  .poetryPage-search > button{
+  .poetryPage-search-buttons > button{
     height: 30px;
-    width: 80px;
+    width: 60px;
   }
