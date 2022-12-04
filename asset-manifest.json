@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/personal-dashboard/static/css/main.dc764a74.css",
-    "main.js": "/personal-dashboard/static/js/main.a2d86438.js",
+    "main.css": "/personal-dashboard/static/css/main.d3472206.css",
+    "main.js": "/personal-dashboard/static/js/main.52f1bf19.js",
     "static/js/27.07ddfad5.chunk.js": "/personal-dashboard/static/js/27.07ddfad5.chunk.js",
     "index.html": "/personal-dashboard/index.html"
   },
   "entrypoints": [
-    "static/css/main.dc764a74.css",
-    "static/js/main.a2d86438.js"
+    "static/css/main.d3472206.css",
+    "static/js/main.52f1bf19.js"
   ]
 }
