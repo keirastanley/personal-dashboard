@@ -51,23 +51,23 @@ function Poetry({className}) {
   }
 
   return (
-    <div className={className + "-container"}>
-        <div className={className + "-info"}>
-          <div className={className + "-text"} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-            <p className={className + "-title"}><i>{poems[ind].title}</i> by <i>{poems[ind].author}</i></p>
-              <ul className={className + "-lines"}><Lines/></ul>
+    <div className="poetry-container">
+        <div className="poetry-info">
+          <div className="poetry-text" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+            <p className="poetry-title"><i>{poems[ind].title}</i> by <i>{poems[ind].author}</i></p>
+              <ul className="poetry-lines"><Lines/></ul>
         </div>
-      {className === "poetry" ? <div className="poetry-icons">
+      <div className="poetry-icons">
         <button onClick={handleHeart}>{heart}</button>
         <button>
         <Link to={`poetry`}>
-          <GoBook id={className + "-book-icon"}/>
+          <GoBook id="poetry-book-icon"/>
         </Link>        
         </button>
         <button>
-          <TbRefresh id={className + "-refresh-icon"} onClick={handleRefresh} />
+          <TbRefresh id="poetry-refresh-icon" onClick={handleRefresh} />
         </button>
-      </div> : <button className="poetryPage-button">Continue reading</button>} 
+      </div>
       </div>
     </div>
   );
