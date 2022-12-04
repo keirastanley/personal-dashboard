@@ -7,15 +7,12 @@ import { v4 as uuidv4 } from 'uuid';
 import "./index.css";
 import poems from "./poems";
 
-function Poetry({className, index, searchTerm, results}) {
-  let initialIndex;
-  className === "poetry" ? initialIndex = 0 : initialIndex = index;
+function Poetry({className}) {
 
   const [toggle, setToggle] = useState(false);
   const [heart, setHeart] = useState(<AiOutlineHeart id="heart-icon" />);
-  const [ind, setInd] = useState(initialIndex)
+  const [ind, setInd] = useState(0)
   const [isHovering, setIsHovering] = useState(false);
-  const [newPoems, setNewPoems] = useState(results);
 
   function handleHeart() {
     setToggle(!toggle);
@@ -32,7 +29,6 @@ function Poetry({className, index, searchTerm, results}) {
   }
 
   function Lines(){
-    if (className === "poetry"){
       if (isHovering) {
         return poems[ind].lines.map(line => <li key={uuidv4()}>{line}</li>)
       }
@@ -40,30 +36,6 @@ function Poetry({className, index, searchTerm, results}) {
         const lines = poems[ind].lines.filter((line, ind) => ind < 4);
         return lines.map(line => <li key={uuidv4()}>{line}</li>)
       }
-    }
-    else {
-        return poems[ind].lines.map(line => <li key={uuidv4()}>{line}</li>)
-    }
-  }
-
-  function PoemTitle(){
-    let newResults;
-    if (searchTerm) {
-      results.map(poem => {
-        if (toLower(poem.title).includes(searchTerm)){
-          console.log(poem.title.indexOf(searchTerm))
-      }
-      if (toLower(poem.author).includes(searchTerm)){
-        console.log(poem.title.indexOf(searchTerm))
-      }
-      poem.lines.map(line => {
-          if (toLower(line).includes(searchTerm)){
-            console.log(poem.title.indexOf(searchTerm))
-          }
-      })
-      })
-    }
-    return <p className={className + "-title"}><i>{poems[ind].title}</i> by <i>{poems[ind].author}</i></p>
   }
 
   function toLower(text){

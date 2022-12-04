@@ -2,7 +2,9 @@
     width: 75vw;
     max-width: 1080px;
     height: max-content;
-    max-height: 950px;
+    /*For testing on laptop*/
+    max-height: 500px;
+    /*max-height: 950px;*/
     grid-area: main;
     background-color: #CFD4DB;
     display: flex;
@@ -12,6 +14,11 @@
 
   .poetryPage-title{
     font-weight: bold;
+  }
+
+  .highlighted {
+    background-color: #ffffc9;
+    border: 1px solid #ffff8a;
   }
 
   .poetryCard {
@@ -47,7 +54,7 @@
     font-size: 14px;
     line-height: 22px;
     text-indent: 4px;
-    overflow: hidden;
+    overflow: auto;
   }
 
   .poetryPage-button {

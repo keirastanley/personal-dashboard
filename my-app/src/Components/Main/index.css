@@ -903,3 +903,25 @@ flex-wrap: wrap;
 }
 
 } */
+
+@media only screen and (max-height: 769px) {
+  .content-container{
+    grid-area: main;
+    width: 75vw;
+    max-width: 1080px;
+    height: 74vh;
+    display: grid;
+    grid-template-columns: 33% 43% 24%;
+    grid-template-rows: 20% 18% 23% 39%;
+    grid-template-areas: 
+    "weather poetry gallery"
+    "weather goals gallery"
+    "ideas goals favourites"
+    "tasks tasks favourites"
+    ;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+}
+}
