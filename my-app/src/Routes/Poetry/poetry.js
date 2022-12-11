@@ -5,13 +5,18 @@ import {default as initialPoems} from "../../Components/Poetry/poems";
 import { useState, useEffect } from "react";
 
 export default function PoetryPage(){
-    const [searchTerm, setSearchTerm] = useState("");
-    const [results, setResults] = useState([])
+    const [searchTerm, setSearchTerm] = useState([]);
+    // const [results, setResults] = useState([])
     const [poems, setPoems] = useState(initialPoems)
     const [matches, setMatches] = useState(0)
 
     function handleChange(event){
-        setSearchTerm(toLower(event.target.value).replace(/\s/g, ''));
+        let search = toLower(event.target.value).split(" ");
+        setSearchTerm(search.filter(el => /^[A-Za-z]+$/.test(el)))
+    }
+
+    function resetPoems(){
+        setPoems(initialPoems);
     }
 
     // useEffect(() => {
@@ -23,59 +28,122 @@ export default function PoetryPage(){
         console.log("matches", matches)
     }, [matches])
 
+
     function handleClick(){
-        setMatches(0)
-        let counter = 0;
-        if (searchTerm.length > 0) {
-            let newPoems = [...initialPoems];
-            newPoems.map((poem, index) => {
-                let newPoem = {...poem}
-                let newTitle = poem.title
-                let newAuthor = poem.author
-                let newLines = [...poem.lines]
-                if (toLower(newTitle).includes(searchTerm)){
-                    let resultIndex = toLower(newTitle).replace(/[^\w\s\']|_/g, "").replace(/\s+/g, " ").split(" ").indexOf(searchTerm);
-                    let word = newTitle.split(" ")[resultIndex]
-                    let untilHighlight = newTitle.split(" ").slice(0, resultIndex).join(" ")
-                    let afterHighlight = newTitle.split(" ").slice(resultIndex + 1).join(" ")
-                    newTitle = <span>{untilHighlight} <span className="highlighted">{word}</span> {afterHighlight}</span>
-                    counter++;
+        let poemIndex;
+        let matchPoem;
+        let titleCompare;
+        let authorCompare;
+        let linesCompare;
+        let titleResults = [];
+        let titleIndexes = [];
+        let authorResults = [];
+        let authorIndexes = [];
+        let lineResults = [];
+        let lineIndex;
+        let lineIndexes = [];
+        for (let i = 0; i < initialPoems.length; i++){
+            if (titleResults.length < searchTerm.length){
+                titleCompare = initialPoems[i].title.split(" ")
+                titleResults = [];
+                titleIndexes = [];
+            }
+            else {
+                titleCompare = []
+            }
+            if (authorResults.length < searchTerm.length){
+                authorCompare = initialPoems[i].author.split(" ")
+                authorResults = [];
+                authorIndexes = [];
+            }
+            else {
+                authorCompare = [];
+            }
+            if (findInArray(titleCompare, searchTerm).match){
+                poemIndex = i;
+                matchPoem = {...initialPoems[i]}
+                titleResults = findInArray(titleCompare, searchTerm).results;
+                titleIndexes = findInArray(titleCompare, searchTerm).indexes;
+                break;
+            }
+            if (findInArray(authorCompare, searchTerm).match) {
+                poemIndex = i;
+                matchPoem = {...initialPoems[i]}
+                authorResults = findInArray(authorCompare, searchTerm).results;
+                authorIndexes = findInArray(authorCompare, searchTerm).indexes;
+                break;
+            }
+            for (let k = 0; k < initialPoems[i].lines.length; k++){
+                if (lineResults.length < searchTerm.length){
+                    linesCompare = initialPoems[i].lines[k].split(" ")
+                    lineResults = [];
+                    lineIndexes = [];
                 }
-                if (toLower(newAuthor).includes(searchTerm)){
-                    let resultIndex = toLower(newAuthor).replace(/[^\w\s\']|_/g, "").replace(/\s+/g, " ").split(" ").indexOf(searchTerm);
-                    let word = newAuthor.split(" ")[resultIndex]
-                    let untilHighlight = newAuthor.split(" ").slice(0, resultIndex).join(" ")
-                    let afterHighlight = newAuthor.split(" ").slice(resultIndex + 1).join(" ")
-                    newAuthor = <span>{untilHighlight} <span className="highlighted">{word}</span> {afterHighlight}</span>
-                    counter++;
+                else {
+                    linesCompare = []
                 }
-                newLines.map((line, ind) => {
-                    if (toLower(line).includes(searchTerm)){
-                        let resultIndex = toLower(line).replace(/[^\w\s\']|_/g, "").replace(/\s+/g, " ").split(" ").indexOf(searchTerm);
-                        let word = line.split(" ")[resultIndex]
-                        if (word !== undefined) {
-                            let untilHighlight = line.split(" ").slice(0, resultIndex).join(" ")
-                            let afterHighlight = line.split(" ").slice(resultIndex + 1).join(" ")
-                            line = <span>{untilHighlight} <span className="highlighted">{word}</span> {afterHighlight}</span>
-                            newLines = [...newLines.slice(0, ind), line, ...newLines.slice(ind + 1)]
-                            counter++;
+                if (findInArray(linesCompare, searchTerm).match) {
+                    poemIndex = i;
+                    matchPoem = {...initialPoems[i]}
+                    lineIndex = k;
+                    lineResults = findInArray(linesCompare, searchTerm).results;
+                    lineIndexes = findInArray(linesCompare, searchTerm).indexes;
+                    break;
+                }
+            }
+        }
+        console.log(matchPoem)
+        if (titleResults.length === searchTerm.length){
+            let newTitle = <span> {matchPoem.title.split(" ").slice(0, titleIndexes[0]).join(" ")} <span className="highlighted">{titleResults.join(" ")} </span> {matchPoem.title.split(" ").slice(titleIndexes[titleIndexes.length - 1] + 1).join(" ")} </span>
+            matchPoem = {...matchPoem, title: newTitle}
+            let newPoems = [...initialPoems.slice(0, poemIndex), matchPoem, ...initialPoems.slice(poemIndex + 1)]
+            setPoems(newPoems)
+        }
+        if (authorResults.length === searchTerm.length){
+            let newAuthor = <span> {matchPoem.author.split(" ").slice(0, authorIndexes[0]).join(" ")} <span className="highlighted">{authorResults.join(" ")} </span> {matchPoem.author.split(" ").slice(authorIndexes[authorIndexes.length - 1] + 1).join(" ")} </span>
+            matchPoem = {...matchPoem, author: newAuthor}
+            let newPoems = [...initialPoems.slice(0, poemIndex), matchPoem, ...initialPoems.slice(poemIndex + 1)]
+            setPoems(newPoems)
+        }
+        if (lineResults.length === searchTerm.length){
+            console.log("lineResults", lineResults)
+            console.log("lineIndexes", lineIndexes)
+            let newLine = <span> {matchPoem.lines[lineIndex].split(" ").slice(0, lineIndexes[0]).join(" ")} <span className="highlighted">{lineResults.join(" ")} </span> {matchPoem.lines[lineIndex].split(" ").slice(lineIndexes[lineIndexes.length - 1] + 1).join(" ")} </span>
+            let newLines = [...initialPoems[poemIndex].lines.slice(0, lineIndex), newLine, ...initialPoems[poemIndex].lines.slice(lineIndex + 1)]
+            matchPoem = {...matchPoem, lines: newLines}
+            let newPoems = [...initialPoems.slice(0, poemIndex), matchPoem, ...initialPoems.slice(poemIndex + 1)]
+            setPoems(newPoems)
+        }
+    }    
+
+    function findInArray(array, toMatch){
+        let results = [];
+        let resultIndexes = [];
+        for (let i = 0; i < toMatch.length; i++){
+            for (let j = 0; j < array.length; j++){
+                if (toLower(array[j]).replace(/[^\w\s\']|_/g, "").replace(/[.,#!$%^&*;:{}=\-_'`~()]/g, "").replace(/\s+/g, " ") === toMatch[i].replace(/[^\w\s\']|_/g, "").replace(/\s+/g, " ")){
+                    let testArr = array.slice(j, toMatch.length + j)
+                    let testIndexes = [];
+                    for (let w = 0; w < toMatch.length; w++){
+                        testIndexes = [...testIndexes, w + j];
+                    }
+                    for (let x = 0; x < testArr.length; x++){
+                        if (toLower(testArr[x]).replace(/[^\w\s\']|_/g, "").replace(/[.,#!$%^&*;:{}=\-_'`~()]/g, "").replace(/\s+/g, " ") !== toMatch[x].replace(/[^\w\s\']|_/g, "").replace(/\s+/g, " ")) {
+                            results = [];
+                            resultIndexes = [];
+                        }
+                        else {
+                            results = [...results, testArr[x]];
+                            resultIndexes = [...resultIndexes, testIndexes[x]]
+                            if (results.length === toMatch.length){
+                                return {match: true, results: results, indexes: resultIndexes}
+                            }
                         }
                     }
-                })
-                setMatches(counter)
-                newPoem = {...newPoem, title: newTitle, author: newAuthor, lines: newLines}
-                if ((typeof(newPoem.title) === "object") || (typeof(newPoem.author) === "object")) {
-                    newPoems = [newPoem, ...newPoems.slice(0, index), ...newPoems.slice(index + 1)]
-                    setPoems(newPoems)
-                    return;
                 }
-                if (newPoem.lines.some(el => typeof(el) === "object")) {
-                    newPoems = [newPoem, ...newPoems.slice(0, index), ...newPoems.slice(index + 1)]
-                    setPoems(newPoems)
-                    return;
-                }
-            })
+            }
         }
+        return {match: false, results: results, indexes: resultIndexes}
     }
 
     function toLower(text){
@@ -83,7 +151,7 @@ export default function PoetryPage(){
     }
 
     return <div className="poetryPage">
-        <PoetrySearch handleChange={handleChange} handleClick={handleClick} searchTerm={searchTerm} matches={matches}/>
+        <PoetrySearch handleChange={handleChange} handleClick={handleClick} searchTerm={searchTerm} matches={matches} resetPoems={resetPoems}/>
         <PoetryCard poems={poems}/>
     </div>
 }
