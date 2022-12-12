@@ -3,7 +3,7 @@
     max-width: 1080px;
     height: max-content;
     /*For testing on laptop*/
-    max-height: 500px;
+    max-height: 73vh;
     /*max-height: 950px;*/
     grid-area: main;
     background-color: #CFD4DB;

@@ -5,7 +5,7 @@ import GoalsInput from "./Goals Input";
 import GoalsOrderSelect from "./Goals Order Select";
 import { useState, useReducer } from "react";
 
-function Goals() {
+function Goals({className}) {
   const [goals, dispatch] = useReducer(setGoals, initialGoals);
   const [goal, setGoal] = useState("");
   const [link, setLink] = useState("");
@@ -208,18 +208,19 @@ function Goals() {
   }
 
   return (
-    <div className="goals-section">
-      <GoalsInput handleInput={handleInput} handleClick={handleClick} />
-      <div className="goals-background">
-        <div className="goals-top">
+    <div className={className + "-section"}>
+      <GoalsInput handleInput={handleInput} handleClick={handleClick} className={className} />
+      <div className={className + "-background"}>
+        <div className={className + "-top"}>
           <GoalsOrderSelect orderArray={orderArray} />
           <a href="www.temporarygoallink.com">See all</a>
         </div>
-        <div className="goals-content">
+        <div className={className + "-content"}>
           <GoalsList
             goals={goals}
             handleProgress={handleProgress}
             setStars={setStars}
+            className={className}
           />
         </div>
       </div>

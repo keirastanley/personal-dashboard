@@ -9,7 +9,10 @@ import AboutPage from './Routes/About/about-page';
 import TasksPage from './Routes/Tasks/tasks';
 import FavouritesPage from './Routes/Favourites/favourites'
 import GalleryPage from './Routes/Gallery/gallery';
+import GoalsPage from './Routes/Goals/goals';
 import PoetryPage from './Routes/Poetry/poetry';
+import IdeasPage from './Routes/Ideas/ideas';
+import HelpPage from './Routes/Help/help';
 import ErrorPage from './Routes/Error/error-page';
 import PageNotFound from './Routes/Error/page-not-found';
 
@@ -38,8 +41,20 @@ const router = createBrowserRouter([
         element: <GalleryPage/>,
       },
       {
+        path: "ideas",
+        element: <IdeasPage/>,
+      },
+      {
+        path: "help",
+        element: <HelpPage/>,
+      },
+      {
         path: "poetry",
         element: <PoetryPage/>,
+      },
+      {
+        path: "goals",
+        element: <GoalsPage/>,
       },
       {
         path: "about",

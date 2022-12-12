@@ -17,7 +17,7 @@ const initialIdeas = [
     {idea: "Yoga or stretching", href: "https://www.youtube.com/c/yogawithadriene"}
 ]
 
-function Ideas(){
+function Ideas({className}){
     const [ideas, setIdeas] = useState(initialIdeas)
     const [idea, setIdea] = useState(ideas[0])
     const [text, setText] = useState("")
@@ -42,16 +42,17 @@ function Ideas(){
         setIdea(ideas[randomNumber])
     }
 
-    return <div className="ideas-container">
-        <div className="ideas-top">
+    return <div className={className + "-container"}>
+        <div className={className + "-top"}>
             <h3>Something to do...</h3>
-            <button onClick={handleRefresh}><TbRefresh className="ideas-refresh" onClick={handleRefresh}/></button>
+            <button onClick={handleRefresh}><TbRefresh className={className + "-refresh"} onClick={handleRefresh}/></button>
         </div>
-        <div className="idea">
+        <div className={className + "-idea"}>
             <a href={idea.link}>{idea.idea}</a>
             <RiDeleteBinLine/>
         </div>
-            <IdeasInput handleChange={handleChange} handleClick={handleClick}/>
+            <IdeasInput handleChange={handleChange} handleClick={handleClick} className={className}/>
+            {className === "ideasPage" ? <ul>{ideas.map(el => <li>{el.idea} <RiDeleteBinLine/></li>)}</ul> : null}
     </div>
 }
 

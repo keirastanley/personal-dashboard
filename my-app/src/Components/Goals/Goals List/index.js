@@ -4,12 +4,12 @@ import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
 import { v4 as uuidv4 } from 'uuid';
 import "./index.css";
 
-function GoalsList({ goals, handleProgress, setStars }) {
+function GoalsList({ goals, handleProgress, setStars, className }) {
   return (
     <ul>
       {goals.map((goal) => (
         <li key={uuidv4()}>
-          <div className="list-item-container">
+          <div className={className + "-list-item-container"}>
             <div className="goal-star">
               <IoStarSharp
                 className={goal.className}

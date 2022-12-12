@@ -19,32 +19,24 @@ export default function PoetryPage(){
         setPoems(initialPoems);
     }
 
-    // useEffect(() => {
-    //     console.log("searchTerm", searchTerm)
-    //     console.log("length", searchTerm.length)
-    // }, [searchTerm])
-
     useEffect(() => {
         console.log("matches", matches)
     }, [matches])
 
 
     function handleClick(){
-        let poemIndex;
-        let matchPoem;
-        let titleCompare;
-        let authorCompare;
-        let linesCompare;
+        let matchCounter = 0;
+        let poemIndex, matchPoem, titleCompare, authorCompare, linesCompare, lineIndex;
         let titleResults = [];
         let titleIndexes = [];
         let authorResults = [];
         let authorIndexes = [];
         let lineResults = [];
-        let lineIndex;
         let lineIndexes = [];
+        let newPoems = [...initialPoems];
         for (let i = 0; i < initialPoems.length; i++){
             if (titleResults.length < searchTerm.length){
-                titleCompare = initialPoems[i].title.split(" ")
+                titleCompare = initialPoems[i].title.split(" ");
                 titleResults = [];
                 titleIndexes = [];
             }
@@ -64,14 +56,30 @@ export default function PoetryPage(){
                 matchPoem = {...initialPoems[i]}
                 titleResults = findInArray(titleCompare, searchTerm).results;
                 titleIndexes = findInArray(titleCompare, searchTerm).indexes;
-                break;
+                matchCounter++;
+                if (titleResults.length === searchTerm.length){
+                    let newTitle = highlightMatch(matchPoem, titleIndexes, titleResults)
+                    matchPoem = {...matchPoem, title: newTitle}
+                    newPoems = [...newPoems.slice(0, poemIndex), matchPoem, ...newPoems.slice(poemIndex + 1)]
+                    setPoems(reorderMatches(newPoems))
+                    titleResults = []
+                    titleIndexes = []
+                }
             }
             if (findInArray(authorCompare, searchTerm).match) {
                 poemIndex = i;
                 matchPoem = {...initialPoems[i]}
                 authorResults = findInArray(authorCompare, searchTerm).results;
                 authorIndexes = findInArray(authorCompare, searchTerm).indexes;
-                break;
+                matchCounter++;
+                if (authorResults.length === searchTerm.length){
+                    let newAuthor = highlightMatch(matchPoem, authorIndexes, authorResults)
+                    matchPoem = {...matchPoem, author: newAuthor}
+                    newPoems = [...newPoems.slice(0, poemIndex), matchPoem, ...newPoems.slice(poemIndex + 1)]
+                    setPoems(reorderMatches(newPoems))
+                    authorResults = []
+                    authorIndexes = []
+                }
             }
             for (let k = 0; k < initialPoems[i].lines.length; k++){
                 if (lineResults.length < searchTerm.length){
@@ -88,32 +96,25 @@ export default function PoetryPage(){
                     lineIndex = k;
                     lineResults = findInArray(linesCompare, searchTerm).results;
                     lineIndexes = findInArray(linesCompare, searchTerm).indexes;
-                    break;
+                    matchCounter++;
+                    if (lineResults.length === searchTerm.length){
+                        let newLine = <span> {matchPoem.lines[lineIndex].split(" ").slice(0, lineIndexes[0]).join(" ")} <span className="highlighted">{lineResults.join(" ")} </span> {matchPoem.lines[lineIndex].split(" ").slice(lineIndexes[lineIndexes.length - 1] + 1).join(" ")} </span>
+                        let newLines = [...newPoems[poemIndex].lines.slice(0, lineIndex), newLine, ...newPoems[poemIndex].lines.slice(lineIndex + 1)]
+                        matchPoem = {...matchPoem, lines: newLines}
+                        newPoems = [...newPoems.slice(0, poemIndex), matchPoem, ...newPoems.slice(poemIndex + 1)]
+                        setPoems(reorderMatches(newPoems))
+                        lineResults = []
+                        lineIndexes = []
+                        lineIndex = null
+                    }
                 }
             }
         }
+        if (matchCounter < 1){
+            setPoems(initialPoems);
+        }
         console.log(matchPoem)
-        if (titleResults.length === searchTerm.length){
-            let newTitle = <span> {matchPoem.title.split(" ").slice(0, titleIndexes[0]).join(" ")} <span className="highlighted">{titleResults.join(" ")} </span> {matchPoem.title.split(" ").slice(titleIndexes[titleIndexes.length - 1] + 1).join(" ")} </span>
-            matchPoem = {...matchPoem, title: newTitle}
-            let newPoems = [...initialPoems.slice(0, poemIndex), matchPoem, ...initialPoems.slice(poemIndex + 1)]
-            setPoems(newPoems)
-        }
-        if (authorResults.length === searchTerm.length){
-            let newAuthor = <span> {matchPoem.author.split(" ").slice(0, authorIndexes[0]).join(" ")} <span className="highlighted">{authorResults.join(" ")} </span> {matchPoem.author.split(" ").slice(authorIndexes[authorIndexes.length - 1] + 1).join(" ")} </span>
-            matchPoem = {...matchPoem, author: newAuthor}
-            let newPoems = [...initialPoems.slice(0, poemIndex), matchPoem, ...initialPoems.slice(poemIndex + 1)]
-            setPoems(newPoems)
-        }
-        if (lineResults.length === searchTerm.length){
-            console.log("lineResults", lineResults)
-            console.log("lineIndexes", lineIndexes)
-            let newLine = <span> {matchPoem.lines[lineIndex].split(" ").slice(0, lineIndexes[0]).join(" ")} <span className="highlighted">{lineResults.join(" ")} </span> {matchPoem.lines[lineIndex].split(" ").slice(lineIndexes[lineIndexes.length - 1] + 1).join(" ")} </span>
-            let newLines = [...initialPoems[poemIndex].lines.slice(0, lineIndex), newLine, ...initialPoems[poemIndex].lines.slice(lineIndex + 1)]
-            matchPoem = {...matchPoem, lines: newLines}
-            let newPoems = [...initialPoems.slice(0, poemIndex), matchPoem, ...initialPoems.slice(poemIndex + 1)]
-            setPoems(newPoems)
-        }
+        setMatches(matchCounter);
     }    
 
     function findInArray(array, toMatch){
@@ -121,14 +122,14 @@ export default function PoetryPage(){
         let resultIndexes = [];
         for (let i = 0; i < toMatch.length; i++){
             for (let j = 0; j < array.length; j++){
-                if (toLower(array[j]).replace(/[^\w\s\']|_/g, "").replace(/[.,#!$%^&*;:{}=\-_'`~()]/g, "").replace(/\s+/g, " ") === toMatch[i].replace(/[^\w\s\']|_/g, "").replace(/\s+/g, " ")){
+                if (toLower(array[j]).replace(/[^\w\s']|_/g, "").replace(/[.,#!$%^&*;:{}=\-_'`~()]/g, "").replace(/\s+/g, " ") === toMatch[i].replace(/[^\w\s']|_/g, "").replace(/\s+/g, " ")){
                     let testArr = array.slice(j, toMatch.length + j)
                     let testIndexes = [];
                     for (let w = 0; w < toMatch.length; w++){
                         testIndexes = [...testIndexes, w + j];
                     }
                     for (let x = 0; x < testArr.length; x++){
-                        if (toLower(testArr[x]).replace(/[^\w\s\']|_/g, "").replace(/[.,#!$%^&*;:{}=\-_'`~()]/g, "").replace(/\s+/g, " ") !== toMatch[x].replace(/[^\w\s\']|_/g, "").replace(/\s+/g, " ")) {
+                        if (toLower(testArr[x]).replace(/[^\w\s']|_/g, "").replace(/[.,#!$%^&*;:{}=\-_'`~()]/g, "").replace(/\s+/g, " ") !== toMatch[x].replace(/[^\w\s']|_/g, "").replace(/\s+/g, " ")) {
                             results = [];
                             resultIndexes = [];
                         }
@@ -144,6 +145,16 @@ export default function PoetryPage(){
             }
         }
         return {match: false, results: results, indexes: resultIndexes}
+    }
+
+    function highlightMatch(poem, indexes, results){
+        return <span> {poem.title.split(" ").slice(0, indexes[0]).join(" ")} <span className="highlighted">{results.join(" ")} </span> {poem.title.split(" ").slice(indexes[indexes.length - 1] + 1).join(" ")} </span>
+    }
+
+    function reorderMatches(poems){
+        let matchPoems = poems.filter(el => typeof(el.title) === "object" || typeof(el.author) === "object" || el.lines.some(el2 => typeof(el2) === "object"))
+        let nonMatchPoems = poems.filter(el => typeof(el.title) === "string" && typeof(el.author) === "string" && el.lines.every(el2 => typeof(el2) === "string"))
+        return [...matchPoems, ...nonMatchPoems]
     }
 
     function toLower(text){

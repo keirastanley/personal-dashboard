@@ -17,8 +17,8 @@ function Main() {
           <Poetry className="poetry"/>
         </div>
         <Gallery />
-        <Goals />
-        <Ideas />
+        <Goals className="goals"/>
+        <Ideas className="ideas"/>
         <Favourites className="favourites"/>
         <Tasks className="tasks"/>
       </main>
