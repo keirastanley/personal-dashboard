@@ -5,6 +5,23 @@ import {default as initialPoems} from "../../Components/Poetry/poems";
 import { useState, useEffect } from "react";
 
 export default function PoetryPage(){
+
+    console.log("test")
+    
+    useEffect(() => {
+        async function getPoems(){
+            const data = await fetch('http://localhost:3000/api/poems',
+            {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+            })
+            const response = await data.json();
+            console.log(response)
+        }; getPoems()
+    }, [])
+
     const [searchTerm, setSearchTerm] = useState([]);
     // const [results, setResults] = useState([])
     const [poems, setPoems] = useState(initialPoems)

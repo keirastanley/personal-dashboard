@@ -3,71 +3,105 @@ import { Link } from "react-router-dom";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { GoBook } from "react-icons/go";
 import { TbRefresh } from "react-icons/tb";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import "./index.css";
-import poems from "./poems";
 
-function Poetry({className}) {
-
+function Poetry({ className }) {
   const [toggle, setToggle] = useState(false);
-  const [heart, setHeart] = useState(<AiOutlineHeart id="heart-icon" />);
-  const [ind, setInd] = useState(0)
+  const [added, setAdded] = useState(false);
+  const [poem, setPoem] = useState(null);
   const [isHovering, setIsHovering] = useState(false);
 
+  async function getPoem() {
+    const response = await fetch("https://poetrydb.org/random");
+    const data = await response.json();
+    setPoem(data[0]);
+  }
+
+  useEffect(() => {
+    getPoem();
+  }, []);
+
+  async function addNewPoem(poem){
+      const data = await fetch('http://localhost:3000/api/poems',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          title: poem.title,
+          author: poem.author,
+          lines: poem.lines
+        })
+      })
+      const response = await data.json();
+      console.log(response)
+    }
+
   function handleHeart() {
-    setToggle(!toggle);
-    if (toggle) {
-      setHeart(<AiFillHeart id="poetry-heart-icon-filled" />);
-    } else {
-      setHeart(<AiOutlineHeart id="poetry-heart-icon" />);
+    if (window.confirm(`Add ${poem.title} by ${poem.author} to your reading list?`)){
+      setToggle(true);
+      addNewPoem(poem);
+      setAdded(true)
+    }
+    if (added){
+      alert(`${poem.title} by ${poem.author} is already in your reading list.`)
     }
   }
 
-  function handleRefresh(){
-    const randomNumber = Math.floor(Math.random() * poems.length);
-    setInd(randomNumber)
+  function handleRefresh() {
+    setToggle(false);
+    getPoem();
   }
 
-  function Lines(){
-      if (isHovering) {
-        return poems[ind].lines.map(line => <li key={uuidv4()}>{line}</li>)
-      }
-      else {
-        const lines = poems[ind].lines.filter((line, ind) => ind < 4);
-        return lines.map(line => <li key={uuidv4()}>{line}</li>)
-      }
+  function Lines() {
+    if (isHovering) {
+      return poem.lines.map((line) => <li key={uuidv4()}>{line}</li>);
+    } else {
+      const lines = poem.lines.filter((line, ind) => ind < 4);
+      return lines.map((line) => <li key={uuidv4()}>{line}</li>);
+    }
   }
-
-  function toLower(text){
-    return text.toLowerCase()
-}
 
   const handleMouseOver = () => {
     setIsHovering(true);
-  }
+  };
 
   const handleMouseOut = () => {
     setIsHovering(false);
-  }
+  };
 
   return (
     <div className="poetry-container">
-        <div className="poetry-info">
-          <div className="poetry-text" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-            <p className="poetry-title"><i>{poems[ind].title}</i> by <i>{poems[ind].author}</i></p>
-              <ul className="poetry-lines"><Lines/></ul>
+      <div className="poetry-info">
+        <div
+          className="poetry-text"
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+        >
+          {poem ? (
+            <>
+              <p className="poetry-title">
+                <i>{poem.title}</i> by <i>{poem.author}</i>
+              </p>
+              <ul className="poetry-lines">
+                <Lines />
+              </ul>
+            </>
+          ) : null}
         </div>
-      <div className="poetry-icons">
-        <button onClick={handleHeart}>{heart}</button>
-        <button>
-        <Link to={`poetry`}>
-          <GoBook id="poetry-book-icon"/>
-        </Link>        
-        </button>
-        <button>
-          <TbRefresh id="poetry-refresh-icon" onClick={handleRefresh} />
-        </button>
-      </div>
+        <div className="poetry-icons">
+          <button onClick={handleHeart}>{toggle ? <AiFillHeart id="poetry-heart-icon-filled" /> : <AiOutlineHeart id="poetry-heart-icon" />}</button>
+          <button>
+            <Link to={`poetry`}>
+              <GoBook id="poetry-book-icon" />
+            </Link>
+          </button>
+          <button>
+            <TbRefresh id="poetry-refresh-icon" onClick={handleRefresh} />
+          </button>
+        </div>
       </div>
     </div>
   );

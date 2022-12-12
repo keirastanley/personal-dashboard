@@ -1,4 +1,5 @@
 import "./index.css";
+import { Link } from "react-router-dom";
 import initialGoals from "./goals";
 import GoalsList from "./Goals List";
 import GoalsInput from "./Goals Input";
@@ -213,7 +214,7 @@ function Goals({className}) {
       <div className={className + "-background"}>
         <div className={className + "-top"}>
           <GoalsOrderSelect orderArray={orderArray} />
-          <a href="www.temporarygoallink.com">See all</a>
+          {className === "goals" ? <Link to={`goals`}>See all</Link> : null}
         </div>
         <div className={className + "-content"}>
           <GoalsList

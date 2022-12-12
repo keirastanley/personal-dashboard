@@ -1,6 +1,23 @@
+import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-export default function PoetryCard({ poems }) {
+export default function PoetryCard() {
+
+    const [poems, setPoems] = useState([])
+
+    useEffect(() => {
+        async function getPoems(){
+            const data = await fetch('http://localhost:3000/api/poems',
+            {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            })
+            const response = await data.json();
+            setPoems(response.payload)
+        }; getPoems()
+    }, [])
 
     function Poem({poem}) {
         return <>

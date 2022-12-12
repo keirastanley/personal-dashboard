@@ -35,7 +35,6 @@ function Nav() {
   }
 
   function handleClick() {
-    console.log(toggle)
     setToggle(!toggle);
   }
 
