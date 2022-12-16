@@ -42,7 +42,7 @@
   .poetryPage-info{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: space-evenly;
     width: 100%;
 }
     
@@ -54,7 +54,12 @@
     font-size: 14px;
     line-height: 22px;
     text-indent: 4px;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .poetryPage-text:hover {
+    overflow-y: auto;
   }
 
   .poetryPage-button {
@@ -97,4 +102,11 @@
   .poetryPage-search-buttons > button{
     height: 30px;
     width: 60px;
+  }
+
+  .poetryPage-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 40vw;
   }

@@ -1,39 +1,46 @@
-import { useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 
-export default function PoetryCard() {
+export default function PoetryCard({ poems, handleDelete }) {
 
-    const [poems, setPoems] = useState([])
+    console.log("Poems", poems)
 
-    useEffect(() => {
-        async function getPoems(){
-            const data = await fetch('http://localhost:3000/api/poems',
-            {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            })
-            const response = await data.json();
-            setPoems(response.payload)
-        }; getPoems()
-    }, [])
+function Poem({ poem }) {
+return (
+    <>
+    <p className="poetryPage-title">
+        {poem.title} by {poem.author}
+    </p>
+    <ul className="poetryPage-lines">
+        {poem.lines.map((line) => (
+        <li key={uuidv4()}>{line}</li>
+        ))}
+    </ul>
+    </>
+);
+}
 
-    function Poem({poem}) {
-        return <>
-            <p className="poetryPage-title">{poem.title} by {poem.author}</p>
-            <ul className="poetryPage-lines">{poem.lines.map(line => <li key={uuidv4()}>{line}</li>)}</ul>
-        </>
-    }
-
-    return (
-        poems.map(poem => <div className="poetryPage-container" key={uuidv4()}>
-            <div className="poetryPage-info">
-                <div className="poetryPage-text">
-                    <Poem poem={poem}/>
-                </div>
-                <button className="poetryPage-button">Continue reading</button>
-            </div>
+return poems.length > 0 ? (
+poems.map((poem) => (
+    <div className="poetryPage-container" key={uuidv4()}>
+    <div className="poetryPage-info">
+        <div className="poetryPage-text">
+        <Poem poem={poem} />
         </div>
-        ));
+        <div className="poetryPage-buttons">
+        <button className="poetryPage-button">Continue reading</button>
+        <button className="poetryPage-button" name={poem.title} id={poem.id} onClick={handleDelete}>Remove</button>
+        </div>
+    </div>
+    </div>
+))
+) : (
+<div className="poetryPage-container">
+    <div className="poetryPage-info">
+    <div className="poetryPage-text">
+        <p>Loading...</p>
+    </div>
+    </div>
+</div>
+);
 }

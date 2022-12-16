@@ -1,26 +1,13 @@
-/*.weatherwidget-io > a{
-    display: block; 
-    position: relative; 
-    height: 211px; 
-    padding: 0px; 
-    overflow: hidden; 
-    text-align: left; 
-    text-indent: -299rem;
-}
-
-.weatherwidget-io-frame > iframe{
-    display: block; 
-    position: absolute; 
-    top: 0px; 
-    height: 211px;
-    width: 500px;
-}*/
-
 .weather-container{
+    display: block;
     grid-area: weather;
     width: 24vw;
     min-width: 316px;
     height: 210px;
+}
+
+#weatherwidget-io-0 {
+    height: 80px;
 }
 
 @media only screen and (min-width: 1250px) {

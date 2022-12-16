@@ -23,7 +23,7 @@ function Poetry({ className }) {
   }, []);
 
   async function addNewPoem(poem){
-      const data = await fetch('http://localhost:3000/api/poems',
+      const data = await fetch('https://personal-dashboard.onrender.com/api/poems',
       {
         method: 'POST',
         headers: {
