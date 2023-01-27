@@ -25,8 +25,8 @@ function Main() {
           <Goals className="goals"/>
         </div>
         <div className="favourites-tasks-container">
-        <Favourites className="favourites"/>
         <Tasks className="tasks"/>
+        <Favourites className="favourites"/>
         </div>
 
       </main>

@@ -1,9 +1,8 @@
 .galleryPage-container {
-    width: 75vw;
-    max-width: 1080px;
-    height: 74vh;
+    width: 950px;
     grid-area: main;
     overflow-y: auto;
+    display: flex;
 }
 
 .galleryPage-results {
@@ -11,11 +10,19 @@
     flex-direction: column;
 }
 
+.galleryPage-cards { 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 520px;
+}
+
 .galleryPage-arrows {
     display: flex;
     justify-content: space-between;
     width: 75%;
-    height: 100%;
+    height: 80%;
     align-items: center;
     z-index: 10;
     position: absolute;
@@ -74,4 +81,30 @@
   
 .galleryPage-info-container > button:hover {
     color: white;
+}
+
+.galleryPage-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.galleryPage-search-bar {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.galleryPage-search-bar input {
+    border: none;
+}
+
+.galleryPage-search-buttons {
+
+}
+
+.galleryPage-search-buttons button {
+    background-color: #F9DFDF;
 }

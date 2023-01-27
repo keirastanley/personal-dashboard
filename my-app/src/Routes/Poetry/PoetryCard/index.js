@@ -20,22 +20,19 @@ return (
 );
 }
 
-return poems.length > 0 ? (
-poems.map((poem) => (
-    <div className="poetryPage-container" key={uuidv4()}>
-    <div className="poetryPage-info">
+return poems.length > 0 ?
+<div className="poetryPage-card-container">{poems.map(poem => (
+    <div className="poetryPage-card" key={uuidv4()}>
         <div className="poetryPage-text">
         <Poem poem={poem} />
         </div>
         <div className="poetryPage-buttons">
-        <button className="poetryPage-button">Continue reading</button>
-        <button className="poetryPage-button" name={poem.title} id={poem.id} onClick={handleDelete}>Remove</button>
+            {/* <button className="poetryPage-button">Continue reading</button> */}
+            <button className="poetryPage-button" name={poem.title} id={poem.id} onClick={handleDelete}>Remove</button>
         </div>
     </div>
-    </div>
-))
-) : (
-<div className="poetryPage-container">
+))}</div> : (
+<div className="poetryPage-card">
     <div className="poetryPage-info">
     <div className="poetryPage-text">
         <p>Loading...</p>

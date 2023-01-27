@@ -1,20 +1,24 @@
 .poetry-container {
   background-color: #CFD4DB;
-  width: 60%;
-  height: 100%;
+  width: 740px;
+  height: 240px;
   display: flex;
   align-items: center;
 }
     
   .poetry-text {
     background: var(--background);
-    width: 85%;
+    width: 95%;
     height: 85%;
     padding: 10px;
     margin-left: 10px;
     font-size: 14px;
     overflow-y: hidden;
     overflow-x: hidden;
+  }
+
+  .poetry-text:hover {
+    overflow-y: auto;
   }
 
   .poetry-icons {
@@ -30,7 +34,7 @@
   .poetry-lines {
     list-style: none;
     margin: 0;
-    margin-top: 10px;
+    margin-top: 30px;
     padding: 0;
   }
   

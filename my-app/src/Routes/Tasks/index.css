@@ -83,7 +83,7 @@
 .tasksPage > ul {
     list-style-type: none;
     padding: 0;
-    margin-top: 0px;
+    margin-top: 10px;
     margin-left: 0.5vw;
     display: flex;
     flex-wrap: wrap;
@@ -96,7 +96,7 @@
     display: flex;
     justify-content: space-between;
     width: 70vw;
-    height: 3vh;
+    height: 25px;
     /* max-width: 760px; */
     margin-right: 10px;
 }

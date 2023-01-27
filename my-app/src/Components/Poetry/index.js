@@ -57,10 +57,10 @@ function Poetry({ className }) {
 
   function Lines() {
     if (isHovering) {
-      return poem.lines.map((line) => <li key={uuidv4()}>{line}</li>);
+      return poem.lines.map(line => <li key={uuidv4()}>{line}</li>);
     } else {
-      const lines = poem.lines.filter((line, ind) => ind < 4);
-      return lines.map((line) => <li key={uuidv4()}>{line}</li>);
+      const lines = [...poem.lines.slice(0, 10), "[...]"];
+      return lines.map(line => <li key={uuidv4()}>{line}</li>);
     }
   }
 
@@ -81,7 +81,7 @@ function Poetry({ className }) {
         >
           {poem ? (
             <>
-                <i>{poem.title}</i> by <i>{poem.author}</i>
+                <h3><i>{poem.title}</i> by <i>{poem.author}</i></h3>
               <ul className="poetry-lines">
                 <Lines />
               </ul>

@@ -38,8 +38,10 @@ export default function GalleryImages({ handleExpand }) {
   }
 
   function loadMoreImagesLeft() {
-    getImages(number - 6)
-    setNumber(number - 6)
+    if (number - 6 <= 0 === false) {
+      getImages(number - 6)
+      setNumber(number - 6)
+    }
   }
 
   useEffect(() => {
@@ -132,25 +134,28 @@ export default function GalleryImages({ handleExpand }) {
   }
 
   return <div className="galleryPage-results">
-    <GallerySearch handleClick={handleClick} handleChange={handleChange} />
+    {/* <GallerySearch handleClick={handleClick} handleChange={handleChange} /> */}
     <div className="galleryPage-arrows">
       <BiLeftArrow className="galleryPage-next" onClick={loadMoreImagesLeft} />
       <BiRightArrow className="galleryPage-next" onClick={loadMoreImagesRight} />
     </div>
-    {images.length > 0 ? images.map(image =>
-      <div className="galleryPage-card">
-        <img src={image.src} alt={image.alt}></img>
-        <div className="galleryPage-info-container">
-          <div className="galleryPage-info">
-            <p>
-              {image.title}, {image.artist}, {image.medium}, {" "}
-              {image.year}
-            </p>
+    <div className="galleryPage-cards">
+      {images.length > 0 ? images.map(image =>
+        <div className="galleryPage-card">
+          <img src={image.src} alt={image.alt}></img>
+          <div className="galleryPage-info-container">
+            <div className="galleryPage-info">
+              <p>
+                {image.title}, {image.artist}, {image.medium}, {" "}
+                {image.year}
+              </p>
+            </div>
+            <button onClick={handleExpand}>
+              <HiOutlineArrowsExpand id="expand-icon" />
+            </button>
           </div>
-          <button onClick={handleExpand}>
-            <HiOutlineArrowsExpand id="expand-icon" />
-          </button>
         </div>
-      </div>
-    ) : null}</div>
+      ) : null}
+    </div>
+</div>
 }

@@ -1,0 +1,150 @@
+.tasks-container {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    background-color: #C7C7C7;
+    align-items: center;
+    height: 400px;
+}
+
+.tasks-top-level {
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+}
+
+.tasks-input-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.tasks-input-section > button {
+    background-color: #F9DFDF;
+  }
+  
+.tasks-input-section > select {
+    background:white;
+    border: 1px solid #969696;
+  }
+
+.tasks-order-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    width: 200px;
+}
+  
+.tasks-order-link > select {
+    background:white;
+    border: 1px solid #969696;
+}
+
+.tasks-order-link > a{
+    color: black;
+    font-size: 12px;
+}
+
+.tasks-text-input {
+    width: 250px;
+    max-width: 300px;
+    height: 17px;
+}
+
+.tasks-section {
+    background: white;
+    display: flex;
+    width: 96%;
+    flex-direction: column;
+    justify-self: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 320px;
+  }
+  
+  .tasks-section:hover {
+    overflow-y: auto;
+  }
+
+.tasks-section > .tasks-top-level{
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.tasks > ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.tasks > ul > li {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.tasks-priority-task {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 70%;
+    height: 25px;
+    align-self: center; 
+}
+
+
+.tasks-priority-deadline-delete {
+    display: flex;
+    width: 210px;
+    height: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tasks-task-delete{
+    font-size: 18px;
+    align-self: center;
+}
+
+.low-priority{
+    font-size: 10px;
+    color: white;
+    stroke: #818181;
+    stroke-width: 30px;
+}
+.med-priority{
+    font-size: 10px;
+    color: #FFB265;
+}
+.high-priority{
+    font-size: 20px;
+    color: red;
+    justify-self:flex-start;
+    width: 10px;
+}
+
+.priority-deadline {
+    display: flex;
+}
+
+.not-started {
+    background-color: #FCC7C4;
+    border: none;
+}
+
+.in-progress {
+    background-color: #F7EECF;
+    border: none;
+}
+
+.completed {
+    background-color: #D0E6C0;
+    border: none;
+} 

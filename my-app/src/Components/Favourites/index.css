@@ -1,18 +1,23 @@
 .favourites-container{
-    height: 100%;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
+    height: 400px;
+    width: 300px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 10% 60% 20%;
+    grid-template-areas: "heading"
+    "top"
+    "content"
+    "input";
     background-color: #DAB9BF;
-    padding: 10px;
   }
   
   .favourites-container > h3{
     text-align: center;
+    grid-area: heading;
   }
   
   .favourites-top-level {
-    grid-area: select;
+    grid-area: top;
     display: flex;
     flex-direction: column;
     justify-items: center;
@@ -35,6 +40,7 @@
     width: 95%;
     overflow-y: hidden;
     overflow-x: hidden;
+    grid-area: content;
   }
   
   .favourites:hover {

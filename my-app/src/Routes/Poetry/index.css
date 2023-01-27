@@ -1,15 +1,20 @@
 .poetryPage {
     width: 75vw;
     max-width: 1080px;
-    height: max-content;
+    height: 1000px;
     /*For testing on laptop*/
-    max-height: 73vh;
     /*max-height: 950px;*/
     grid-area: main;
     background-color: #CFD4DB;
     display: flex;
     flex-wrap: wrap;
     overflow-y: auto;
+  }
+
+  .poetryPage-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 
   .poetryPage-title{
@@ -21,7 +26,7 @@
     border: 1px solid #ffff8a;
   }
 
-  .poetryCard {
+  /* .poetryCard {
     width: 50%;
     min-width: 400px;
     overflow: hidden;
@@ -31,26 +36,19 @@
     .poetryCard {
       width: 98%;
     }
-  }
+  } */
 
-  .poetryPage-container{
+  .poetryPage-card{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 400px;
   }
 
-  .poetryPage-info{
-    display: flex;
-    flex-direction: column;
-    align-items: space-evenly;
-    width: 100%;
-}
-    
   .poetryPage-text {
     background: var(--background);
     border: 3px solid #CFD4DB;
-    width: 95%;
-    height: 210px;
+    width: 400px;
+    height: 300px;
     font-size: 14px;
     line-height: 22px;
     text-indent: 4px;
@@ -96,7 +94,7 @@
   .poetryPage-search-bar > input{ 
     border: none;
     height: 27px;
-    width: 38vw;
+    width: 480px;
   }
 
   .poetryPage-search-buttons > button{
@@ -108,5 +106,5 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 40vw;
+    width: 400px;
   }

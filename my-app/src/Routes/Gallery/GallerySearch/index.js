@@ -6,7 +6,7 @@ export default function GallerySearch({ handleChange, handleClick, matches, rese
     const ref = useRef(null)
 
     const handleRef = () => {
-        ref.current.value = '';
+        // ref.current.value = '';
     }
 
     return <>
