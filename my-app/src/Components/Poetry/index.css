@@ -1,84 +1,60 @@
-.poetry-info{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .poetry-container {
-    grid-area: poetry;
-    background-color: #CFD4DB;
-    width: 31.5vw;
-    max-width: 450px;
-    min-width: 340px;
-    height: 12vh;
-  }
+  background-color: #CFD4DB;
+  width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
     
   .poetry-text {
     background: var(--background);
-    border: 3px solid #CFD4DB;
-    width: 29vw;
-    /* min-width: 310px; */
-    height: 11.4vh;
+    width: 85%;
+    height: 85%;
+    padding: 10px;
+    margin-left: 10px;
     font-size: 14px;
-    text-indent: 4px;
     overflow-y: hidden;
     overflow-x: hidden;
-  }
-  
-  .poetry-text:hover {
-    overflow-y: auto;
   }
 
   .poetry-icons {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    align-content: center;
-    gap: 5px;
-    width: 3vw;
-    min-width: 20px;
-    height: 8vh;
+    gap: 10px;
+    height: 100%;
+    width: 55px;
+  }
+
+  .poetry-lines {
+    list-style: none;
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
   }
   
   .poetry-icons > button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: none;
     background-color: transparent;
-    width: 2vw;
-    height: 3vh;
-    padding: 1px;
+    font-size: 25px;
+    color: black;
   }
   
   .poetry-icons > button:hover {
     color: white;
   }
-    
-  #poetry-heart-icon{
-    font-size: 25px;
-  }
+  
   #poetry-heart-icon-filled{
     font-size: 25px;
     color: var(--filled-heart)
   }
   
   #poetry-book-icon{
-    font-size: 25px;
+    font-size: 30px;
     color: black;
   }
 
   #poetry-book-icon:hover{
     color: white;
-  }
-  
-  #poetry-refresh-icon{
-    font-size: 25px;
-  }
-
-  .poetry-lines {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
   }

@@ -1,8 +1,8 @@
-.content-container{
+/* .content-container{
     grid-area: main;
     width: 75vw;
     max-width: 1080px;
-    height: 74vh;
+    height: 80vh;
     display: grid;
     grid-template-columns: 33% 43% 24%;
     grid-template-rows: 17% 8% 27% 45%;
@@ -16,6 +16,12 @@
     align-content: center;
     justify-items: center;
     justify-content: center;
+}
+
+@media only screen and (max-height: 840px){
+  .content-container{
+    height: 80vh;
+  }
 }
 
 @media only screen and (max-width: 1240px) {
@@ -902,4 +908,4 @@ flex-wrap: wrap;
   width: 81vw;
 }
 
-} */
+} */ 

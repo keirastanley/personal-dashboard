@@ -9,18 +9,26 @@ import {Link} from "react-router-dom";
 import "./index.css";
 
 function Main() {
+
+  console.log(window.matchMedia("(max-width: 700px)"))
+
   if (window.matchMedia("(min-width: 800px)").matches) {
     return (
       <main className="content-container">
         <Weather />
-        <div className="poetry-container">
+        <div className="poetry-gallery-container">
           <Poetry className="poetry"/>
+          <Gallery />
         </div>
-        <Gallery />
-        <Goals className="goals"/>
-        <Ideas className="ideas"/>
+        <div className="ideas-goals-container">
+          <Ideas className="ideas"/>
+          <Goals className="goals"/>
+        </div>
+        <div className="favourites-tasks-container">
         <Favourites className="favourites"/>
         <Tasks className="tasks"/>
+        </div>
+
       </main>
     );
   } else {

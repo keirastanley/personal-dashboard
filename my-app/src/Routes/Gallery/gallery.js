@@ -10,7 +10,9 @@ export default function GalleryPage(){
 
   return (
     <div className="galleryPage-container">
-        <GalleryImages handleExpand={handleExpand}/>
+        <div className="galleryPage-images">
+          <GalleryImages handleExpand={handleExpand}/>
+        </div>
     </div>
   );
 }

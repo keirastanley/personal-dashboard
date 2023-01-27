@@ -3,15 +3,31 @@
     max-width: 1080px;
     height: 74vh;
     grid-area: main;
+    overflow-y: auto;
+}
+
+.galleryPage-results {
+    display: flex;
+    flex-direction: column;
+}
+
+.galleryPage-arrows {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    height: 100%;
+    align-items: center;
+    z-index: 10;
+    position: absolute;
+}
+
+.galleryPage-images {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
     overflow-y: hidden;
     justify-content: center;
-}
-
-.galleryPage-container:hover {
-    overflow-y: scroll;
+    align-items: center;
 }
 
 .galleryPage-card {
@@ -21,8 +37,8 @@
 }
 
 .galleryPage-card > img {
-    width: 280px;
-    height: 190px;
+    max-height: 23vh;
+    max-width: 30vh;
     display: block;
     margin: auto;
     border: 5px solid var(--header)

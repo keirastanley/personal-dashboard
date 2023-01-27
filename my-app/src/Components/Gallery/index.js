@@ -32,11 +32,9 @@ function Gallery() {
         alt={images[id].alt}>
         </img>
       <div className="gallery-info-container">
-        <div className="gallery-info">
           <p>
             {images[id].title}, {images[id].artist}, {images[id].medium}, {images[id].year}
           </p>
-        </div>
         <div className="icons-container">
           <button onClick={handleHeart}>
             {heart}

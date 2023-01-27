@@ -1,7 +1,7 @@
 nav {
     grid-area: nav;
     font-size: 15px; 
-    width: 10.5vw;
+    width: 100%;
 }
 
 nav > ul {
@@ -10,7 +10,6 @@ nav > ul {
     flex-direction: column;
     list-style-type:none;
     margin-left: 10px;
-    padding: 0;
     justify-content: space-around;
     height: 400px;
 }

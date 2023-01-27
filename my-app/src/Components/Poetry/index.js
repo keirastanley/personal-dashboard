@@ -74,7 +74,6 @@ function Poetry({ className }) {
 
   return (
     <div className="poetry-container">
-      <div className="poetry-info">
         <div
           className="poetry-text"
           onMouseOver={handleMouseOver}
@@ -82,9 +81,7 @@ function Poetry({ className }) {
         >
           {poem ? (
             <>
-              <p className="poetry-title">
                 <i>{poem.title}</i> by <i>{poem.author}</i>
-              </p>
               <ul className="poetry-lines">
                 <Lines />
               </ul>
@@ -102,7 +99,6 @@ function Poetry({ className }) {
             <TbRefresh id="poetry-refresh-icon" onClick={handleRefresh} />
           </button>
         </div>
-      </div>
     </div>
   );
 }

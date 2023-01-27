@@ -24,7 +24,6 @@ export default function PoetryPage(){
     };
 
     async function deletePoem(id){
-        console.log("something happening?")
         await fetch(`https://personal-dashboard.onrender.com/api/poems/${id}`,
         {
         method: 'DELETE',
