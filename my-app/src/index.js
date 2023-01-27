@@ -20,7 +20,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter([
   {
-    path: "/personal-dashboard",
+    path: "/",
     element: <Root/>,
     errorElement: <ErrorPage />,
     children: [
