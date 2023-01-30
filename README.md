@@ -4,6 +4,7 @@ A personal homepage to store useful info links and resources such as a customisa
 
 ### <a href="https://personal-dashboard-keirastanley.vercel.app/">✨ Try it out ✨</a>
 
+<!--
 ## Current view (Nov 20)
 A screen recording of the website's current functionality:
 
@@ -11,9 +12,6 @@ A screen recording of the website's current functionality:
 
 
 https://user-images.githubusercontent.com/93473519/202905771-3ba65f40-2294-49f3-897c-4cbd3e67a476.mp4
-
-
-<!--https://user-images.githubusercontent.com/93473519/202558273-f7ed0751-b260-47c8-b3f1-c72e2cac8467.mov-->
 
 
 
@@ -28,7 +26,6 @@ These prototypes were designed on Figma.
 ## Component tree
 <img src="https://github.com/keirastanley/personal-dashboard/blob/main/Plan/Component%20tree.png?raw=true"/>
 
-<!--
 ## To do:
 #### Header
 - [X] current date and time saved to variable ``time`` which is updated every 60 seconds
