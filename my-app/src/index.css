@@ -74,145 +74,233 @@ nav {
   justify-content: space-between;
 }
 
-/*
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.page-container {
-  display: grid;
-  width: 100vw;
-  height: 100vh;
-  grid-template-columns: 15% 70% 15%;
-  grid-template-rows: 
-    4% 
-    4% 
-    5% 
-    74%
-    5%
-    4%
-    4%;
-  grid-template-areas:
-  "v v      y"
-  "nav header y"
-  "nav x      y"
-  "nav main   y"
-  "w   z      y"
-  "w   footer y"
-  "w   a      y"
-  ;
-  justify-items: center;
-}
-
-@media only screen and (max-width: 1240px) {
-  .page-container {
-    width: 100vw;
-    height: 100vh;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    grid-template-columns: 15% 85%;
-    grid-template-rows: 
-    4% 
-    4% 
-    4% 
-    76%
-    4%
-    4%
-    4%;
-    grid-template-areas:
-    "v v     "
-    "nav header"
-    "nav x     "
-    "nav main  "
-    "w   z     "
-    "w   footer"
-    "w   a     "
-    ; 
-  }
-}
-
 @media only screen and (max-width: 800px){
   .page-container {
-    grid-template-columns: 10% 80% 10%;
-    grid-template-rows: 
-      2% 
-      5% 
-      3% 
-      80%
-      3%
-      5%
-      2%;
+    grid-template-columns: 70px 70% 20px;
+    grid-template-rows: 92px 90% 90px;
     grid-template-areas:
-    "nav    space  space"
-    "nav    header space1"
-    "nav    space2 space1"
-    "nav    main   space1"
-    "space3 space3 space3"
-    "space4 footer space5"
-    "space6 space6 space6"
+    "nav    header space"
+    "nav    main space"
+    "nav    footer space";
+  }
+
+  nav > ul {
+    position: absolute;
+    background-color: var(--background);
+  }
+
+  .content-container {
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    gap: 0px;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 26% 40% 34%;
+    grid-template-areas: 
+    "links links"
+    "gallery help-about"
+    "poetry poetry"
     ;
+    align-items: center;
+    justify-items: center;
   }
+
+  .header-bar > h1 {
+    font-size: 14px;
+  }
+
+  .header-bar > p {
+    padding: 0px;
+    font-size: 12px;
+  }
+
+  .footer-bar > p {
+    padding: 0px;
+    font-size: 12px;
+  }
+
+  .mobile-links-container {
+    grid-area: links;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    gap: 5px;
+    text-align: center;
+    font-size: 16px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-tasks-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ECF5F4;
+    border: 1px solid #C4C4C4;
+    width: 90px;
+    height: 90px;
+  }
+
+  .mobile-goals-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EEECF5;
+    border: 1px solid #C4C4C4;
+    width: 90px;
+    height: 90px;
+  }
+
+  .mobile-favourites-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5ECF0;
+    border: 1px solid #C4C4C4;
+    width: 90px;
+    height: 90px;
+  }
+
+  .mobile-ideas-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5EEEC;
+    border: 1px solid #C4C4C4;
+    width: 90px;
+    height: 90px;
+  }
+
+  .mobile-poetry-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5F4EC;
+    border: 1px solid #C4C4C4;
+    width: 90px;
+    height: 90px;
+  }
+
+  .mobile-gallery-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EDF5EC;
+    border: 1px solid #C4C4C4;
+    width: 90px;
+    height: 90px;
+  }
+
+  .help-about-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-area: help-about;
+    gap: 5px;
+    font-size: 18px;
+  }
+
+  .mobile-help-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D9D9D9;
+  }
+
+  .mobile-about-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D9D9D9;
+  }
+
+  .gallery-section {
+    grid-area: gallery;
+    width: 50px;
+  }
+
+  .gallery-info-container{
+    max-width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: center;
+  }
+
+  .gallery-info-container > p{
+  }
+
+  .icons-container {
+    justify-content: space-evenly;
+  }
+
+  .icons-container > button{
+
+  }
+
+  .poetry-container {
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+  }
+      
+    .poetry-text {
+      background: var(--background);
+      width: 50px;
+      height: 50px;
+      padding: 0px;
+      margin-left: 0px;
+      font-size: 14px;
+      overflow-y: hidden;
+      overflow-x: hidden;
+    }
+  
+    .poetry-text:hover {
+      overflow-y: auto;
+    }
+  
+    .poetry-icons {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0px;
+      height: 50px;
+      width: 55px;
+    }
+  
+    .poetry-lines {
+      list-style: none;
+      margin: 0;
+      margin-top: 30px;
+      padding: 0;
+    }
+    
+    .poetry-icons > button {
+      border: none;
+      background-color: transparent;
+      font-size: 25px;
+      color: black;
+    }
+    
+    .poetry-icons > button:hover {
+      color: white;
+    }
+    
+    #poetry-heart-icon-filled{
+      font-size: 25px;
+      color: var(--filled-heart)
+    }
+    
+    #poetry-book-icon{
+      font-size: 30px;
+      color: black;
+    }
+  
+    #poetry-book-icon:hover{
+      color: white;
+    }
+
 }
-
-@media only screen and (max-height: 840px){
-  .page-container {
-    grid-template-rows: 
-      2% 
-      5% 
-      1% 
-      84%
-      1%
-      5%
-      2%;
-  }
-}
-
-/* .app-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-} */
-
-/* @media only screen and (max-width: 1050px) {
-  .app-container {
-    height: 110vh;
-    width: 100vw;
-  }
-}
-
-@media only screen and (max-width: 950px){
-  .app-container {
-    justify-content: flex-start;
-    align-items: center; 
-    height: 120vh;
-    width: 100vw;
-  }
-}
-
-@media only screen and (max-width: 870px){
-  .app-container {
-    height: 130vh;
-    width: 100vw;
-  }
-}
-
-@media only screen and (max-width: 768px){
-  .app-container {
-    height: 150vh;
-    width: 100vw;
-  }
-} */

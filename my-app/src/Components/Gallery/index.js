@@ -46,7 +46,6 @@ function Gallery() {
           <p>
             {image.title}, {image.artist}, {image.medium}, {image.year}
           </p> </div></>: null}
-      <div className="gallery-info-container">
         <div className="icons-container">
           <button onClick={handleHeart}>
             {heart}
@@ -59,7 +58,6 @@ function Gallery() {
           <button onClick={handleRefresh}>
             <TbRefresh id="refresh-icon"/>
           </button>
-        </div>
       </div>
     </div>
   );

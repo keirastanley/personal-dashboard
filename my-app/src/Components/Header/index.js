@@ -24,7 +24,7 @@ function Header() {
   return (
     <header>
         <div className="header-bar">
-          <h1><Link to={`/personal-dashboard`}>Home</Link></h1>
+          <h1><Link to={`/`}>Home</Link></h1>
           <p>{time}</p>
         </div>
     </header>
