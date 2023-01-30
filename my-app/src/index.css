@@ -34,12 +34,12 @@ code {
   display: grid;
   width: 100vw;
   height: 100%;
-  grid-template-columns: 200px 1000px;
+  grid-template-columns: 20% 1000px 20%;
   grid-template-rows: 80px 90% 80px;
   grid-template-areas:
-  "nav header"
-  "nav main"
-  "nav  footer"
+  "nav header space"
+  "nav main space"
+  "nav  footer space"
   ;
   justify-items: center;
 }
