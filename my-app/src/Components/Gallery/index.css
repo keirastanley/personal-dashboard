@@ -21,23 +21,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-} 
+}
 
 .icons-container button {
   background-color: transparent;
   border: none;
   font-size: 20px;
-} 
+}
 
 .icons-container button:hover {
   cursor: pointer;
   color: white;
-} 
-
-#heart-icon-filled{
-  color: var(--filled-heart)
 }
 
-#gallery-icon:hover path{
+#gallery-icon:hover path {
   stroke: white;
 }

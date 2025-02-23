@@ -6,7 +6,7 @@ const images = [
     artist: "Claude Monet",
     medium: "Oil on canvas",
     year: "1904",
-    src: "https://d1j88w5k23s1nr.cloudfront.net/eyJidWNrZXQiOiJhcnRzeS1tZWRpYS1hc3NldHMiLCJrZXkiOiJxUUwtdHN6RXVWa2RDdGtnUV91cWhRL25vcm1hbGl6ZWQuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo4MDAsImhlaWdodCI6NTEzLCJmaXQiOiJpbnNpZGUifX19",
+    src: "https://media.nga.gov/iiif/a7858589-5528-4273-bb1a-638c6a3caca7/full/full/0/default.jpg?attachment_filename=waterloo_bridge%2C_london%2C_at_dusk_1983.1.27.jpg9",
     alt: "Waterloo Bridge, London, At Dusk, Claude Monet",
     tags: [
       "impressionism",
@@ -256,4 +256,4 @@ const images = [
     },
     */
 
-    export default images;
+export default images;

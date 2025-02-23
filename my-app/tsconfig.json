@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react", // Ensure this is set if using Emotion css prop
+    "esModuleInterop": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "noEmit": true,
+    "incremental": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "typeRoots": ["./node_modules/@types", "./node_modules/@testing-library"],
+    "types": ["node", "jest", "@testing-library/jest-dom", "@types/jest"]
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "ESNext",
+      "moduleResolution": "Node"
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "jest.setup.ts",
+    "jest.config.ts",
+    "jest/types",
+    "src/Components/Goals/Goals List/index.js"
+  ],
+  "exclude": ["node_modules"]
+}
