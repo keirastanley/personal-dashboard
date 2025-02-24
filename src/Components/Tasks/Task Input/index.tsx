@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useState } from "react";
-import { Priority, Status, Task } from "../../../interfaces";
+import { Priority, Status, Task } from "../../../../schemas/data";
 import { Button, InputSectionRow } from "../../shared";
 
 export default function TaskInput({

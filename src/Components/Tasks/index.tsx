@@ -11,7 +11,7 @@ import {
   MainContainer,
   IconButton,
 } from "../shared";
-import { Priority, Status, Task } from "../../interfaces";
+import { Priority, Status, Task } from "../../../schemas/data";
 import { useOrderBy } from "../../hooks/useOrderBy";
 import { TbArrowDown, TbArrowUp } from "react-icons/tb";
 

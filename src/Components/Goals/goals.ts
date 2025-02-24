@@ -1,4 +1,4 @@
-import { Goal } from "../../interfaces";
+import { Goal } from "../../../schemas/data";
 
 export const initialGoals: Goal[] = [
   {

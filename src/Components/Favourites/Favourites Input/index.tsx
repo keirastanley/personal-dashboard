@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 import { Button, InputColumn, InputSectionColumn } from "../../shared";
-import { Favourite } from "../../../interfaces";
+import { Favourite } from "../../../../schemas/data";
 
 function FavouritesInput({
   favourites,

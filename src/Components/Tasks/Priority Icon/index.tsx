@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { FaCircle, FaExclamation } from "react-icons/fa";
-import { Task } from "../../../interfaces";
+import { Priority, Task } from "../../../../schemas/data";
 
 function PriorityIcon({ priority }: { priority?: Task["priority"] }) {
   switch (priority) {
-    case "Low":
+    case Priority.low:
       return (
         <FaCircle
           css={css`
@@ -16,7 +16,7 @@ function PriorityIcon({ priority }: { priority?: Task["priority"] }) {
           `}
         />
       );
-    case "Medium":
+    case Priority.medium:
       return (
         <FaCircle
           css={css`
@@ -25,7 +25,7 @@ function PriorityIcon({ priority }: { priority?: Task["priority"] }) {
           `}
         />
       );
-    case "High":
+    case Priority.high:
       return (
         <FaExclamation
           css={css`

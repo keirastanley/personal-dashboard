@@ -12,7 +12,7 @@ import {
   ListItemsContainer,
   StarIcon,
 } from "../../shared";
-import { Favourite } from "../../../interfaces";
+import { Favourite } from "../../../../schemas/data";
 
 function FavouritesList({
   favourites,

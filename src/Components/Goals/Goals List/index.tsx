@@ -2,7 +2,7 @@
 import { IoStarSharp } from "react-icons/io5";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
-import { Goal } from "../../../interfaces";
+import { Goal } from "../../../../schemas/data";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ComponentProps, HTMLAttributes } from "react";

@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
-import { Idea } from "../../../interfaces";
+import { Idea } from "../../../../schemas/data";
 import { Button, InputColumn, InputSectionColumn } from "../../shared";
 
 export default function IdeasInput({

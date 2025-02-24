@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 import { Button, InputSectionRow } from "../../shared";
-import { Goal } from "../../../interfaces";
+import { Goal } from "../../../../schemas/data";
 
 function GoalsInput({
   goals,

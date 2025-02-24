@@ -1,12 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { Goal, Item, Priority, Starred, Status, Task } from "../interfaces";
+import { Goal, Item, Priority, Status, Task } from "../../schemas/data";
 
-export type OrderBy =
-  | Priority
-  | Status
-  | Starred
-  | Item["name"]
-  | Task["deadline"];
+export type OrderBy = string;
 
 export function useOrderBy<ArrType extends Item>(
   items: ArrType[],

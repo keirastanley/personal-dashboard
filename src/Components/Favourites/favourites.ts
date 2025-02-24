@@ -1,4 +1,4 @@
-import { Favourite } from "../../interfaces";
+import { Favourite } from "../../../schemas/data";
 
 export const initialFavourites: Favourite[] = [
   {

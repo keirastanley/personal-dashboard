@@ -4,7 +4,7 @@ import { useState, useReducer } from "react";
 import { Link } from "react-router-dom";
 import FavouritesList from "./Favourites List";
 import FavouritesInput from "./Favourites Input";
-import { Favourite } from "../../interfaces";
+import { Favourite } from "../../../schemas/data";
 import { initialFavourites } from "./favourites";
 import "./index.css";
 import {

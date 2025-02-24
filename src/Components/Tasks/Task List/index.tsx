@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import PriorityIcon from "../Priority Icon/index";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { Priority, Status, Task } from "../../../interfaces";
+import { Priority, Status, Task } from "../../../../schemas/data";
 import {
   IconButton,
   ListItem,
@@ -20,11 +20,11 @@ export default function TaskList({
 }) {
   const changePriority = (priority: Task["priority"]) => {
     switch (priority) {
-      case "High":
+      case Priority.high:
         return Priority.low;
-      case "Medium":
+      case Priority.medium:
         return Priority.high;
-      case "Low":
+      case Priority.low:
       default:
         return Priority.medium;
     }

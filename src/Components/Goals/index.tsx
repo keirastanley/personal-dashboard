@@ -14,7 +14,7 @@ import {
   MainContainer,
   LinkStyled,
 } from "../shared";
-import { Goal } from "../../interfaces";
+import { Goal } from "../../../schemas/data";
 import { useOrderBy } from "../../hooks/useOrderBy";
 
 function Goals() {

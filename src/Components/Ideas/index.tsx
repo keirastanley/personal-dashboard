@@ -12,7 +12,7 @@ import {
   MainContainer,
   TopSection,
 } from "../shared";
-import { Idea } from "../../interfaces";
+import { Idea } from "../../../schemas/data";
 
 const initialIdeas: Idea[] = [
   { name: "Play a game of chess", href: "www.lichess.com" },
