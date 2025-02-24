@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { ComponentProps } from "react";
-import Gallery from "../Gallery/index";
-import Poetry from "../Poetry/index";
+import Gallery from "../Gallery/GalleryWidget";
+import Poetry from "../Poetry/PoetryWidget";
 import { Link } from "react-router-dom";
 import "./index.css";
 import { css } from "@emotion/react";

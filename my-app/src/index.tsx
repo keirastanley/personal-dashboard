@@ -6,7 +6,7 @@ import { Root } from "./Routes/root";
 import AboutPage from "./Routes/About/about-page";
 import TasksPage from "./Routes/Tasks/tasks";
 import FavouritesPage from "./Routes/Favourites/favourites";
-import GalleryPage from "./Routes/Gallery/gallery";
+import GalleryPage from "./Components/Gallery/GalleryPage";
 import GoalsPage from "./Routes/Goals/goals";
 import PoetryPage from "./Routes/Poetry/poetry";
 import IdeasPage from "./Routes/Ideas/ideas";
@@ -14,6 +14,8 @@ import HelpPage from "./Routes/Help/help";
 import ErrorPage from "./Routes/Error/error-page";
 import PageNotFound from "./Routes/Error/page-not-found";
 import { Main } from "./Components/Main";
+import { element } from "prop-types";
+import { ImagePage } from "./Components/Gallery/ImagePage";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,7 @@ const router = createBrowserRouter([
         path: "gallery",
         element: <GalleryPage />,
       },
+      { path: "gallery/:id", element: <ImagePage /> },
       {
         path: "ideas",
         element: <IdeasPage />,

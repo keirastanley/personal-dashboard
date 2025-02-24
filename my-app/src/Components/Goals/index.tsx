@@ -1,17 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import "./index.css";
-import { Link } from "react-router-dom";
-// import initialGoals from "./goals";
 import GoalsList from "./Goals List";
 import GoalsInput from "./Goals Input";
-import { useState, useReducer, useEffect } from "react";
-import { addItem, deleteItem, editItem, getItems } from "../../Functions";
+import { useState } from "react";
 import { initialGoals } from "./goals";
-
-import { FaArrowUp, FaArrowDown } from "react-icons/fa6";
-import { TbRefresh, TbArrowUp, TbArrowDown } from "react-icons/tb";
-import styled from "@emotion/styled";
+import { TbArrowUp, TbArrowDown } from "react-icons/tb";
 import {
   ControlsContainer,
   Heading3,
@@ -26,50 +19,6 @@ import { useOrderBy } from "../../hooks/useOrderBy";
 
 function Goals() {
   const [goals, setGoals] = useState<Goal[]>(initialGoals);
-  // const [orderBy, setOrderBy] = useState<string>();
-  // const [ascending, setAscending] = useState<boolean>(true);
-
-  // function orderArray(orderBy: string, isAscending = true) {
-  //   const getNewGoals = (): Goal[] => {
-  //     switch (orderBy) {
-  //       case "progress":
-  //         return [
-  //           ...goals.sort((a, b) =>
-  //             isAscending ? b.progress - a.progress : a.progress - b.progress
-  //           ),
-  //         ];
-  //       case "starred":
-  //         return isAscending
-  //           ? [
-  //               ...goals.filter((goal) => goal.starred === true),
-  //               ...goals.filter((goal) => goal.starred === false),
-  //             ]
-  //           : [
-  //               ...goals.filter((goal) => goal.starred === false),
-  //               ...goals.filter((goal) => goal.starred === true),
-  //             ];
-  //       case "name":
-  //       default:
-  //         return [
-  //           ...goals.sort((a, b) =>
-  //             isAscending
-  //               ? a.name > b.name
-  //                 ? 1
-  //                 : b.name > a.name
-  //                 ? -1
-  //                 : 0
-  //               : b.name > a.name
-  //               ? 1
-  //               : a.name > b.name
-  //               ? -1
-  //               : 0
-  //           ),
-  //         ];
-  //     }
-  //   };
-  //   const newGoals = getNewGoals();
-  //   setGoals(newGoals);
-  // }
 
   const {
     orderBy,
@@ -122,25 +71,10 @@ function Goals() {
                 />
               </IconButton>
             )}
-            {/* <IconButton
-              onClick={() => {
-                if (orderBy) {
-                  orderArray(orderBy);
-                }
-              }}
-            >
-              <TbRefresh />
-            </IconButton> */}
           </div>
           <LinkStyled href="goals">See all</LinkStyled>
         </ControlsContainer>
-        <GoalsList
-          goals={goals}
-          setGoals={setGoals}
-          // handleProgress={handleProgress}
-          // setStars={setStars}
-          // className={className}
-        />
+        <GoalsList goals={goals} setGoals={setGoals} />
       </InnerBox>
     </MainContainer>
   );

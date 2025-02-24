@@ -1,21 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { GoBook } from "react-icons/go";
 import { TbRefresh } from "react-icons/tb";
-import { v4 as uuidv4 } from "uuid";
-import { addItem } from "../../Functions";
-import "./index.css";
 import { css } from "@emotion/react";
 import {
   ControlsContainerColumn,
   Heading3,
   IconButton,
-  InnerBox,
   LinkStyled,
   MainContainer,
-  TopSection,
 } from "../shared";
 
 interface Poem {
@@ -39,9 +33,9 @@ function Poetry() {
     getPoem();
   }, []);
 
-  async function addNewPoem(poem: Poem) {
-    const data = await addItem("poems", poem);
-  }
+  // async function addNewPoem(poem: Poem) {
+  //   const data = await addItem("poems", poem);
+  // }
 
   function handleHeart() {
     if (
@@ -51,7 +45,7 @@ function Poetry() {
       )
     ) {
       setToggle(true);
-      addNewPoem(poem);
+      // addNewPoem(poem);
       setAdded(true);
     }
     if (added) {

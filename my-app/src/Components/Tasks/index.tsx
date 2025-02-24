@@ -1,10 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import "./index.css";
 import TaskInput from "./Task Input/index";
 import TaskList from "./Task List";
 import { useState } from "react";
-import styled from "@emotion/styled";
 import {
   ControlsContainer,
   Heading3,
@@ -95,13 +93,7 @@ function Tasks() {
     <MainContainer color="#c7c7c7;">
       <TopSection>
         <Heading3>Things to do</Heading3>
-        <TaskInput
-          tasks={tasks}
-          setTasks={setTasks}
-          // handleChange={handleChange}
-          // handleSubmit={handleSubmit}
-          // className={className}
-        />
+        <TaskInput tasks={tasks} setTasks={setTasks} />
       </TopSection>
       <InnerBox color="white">
         <ControlsContainer>
@@ -142,13 +134,7 @@ function Tasks() {
             See all
           </a>
         </ControlsContainer>
-        <TaskList
-          tasks={tasks}
-          setTasks={setTasks}
-          // handleStatus={handleStatus}
-          // handleDelete={handleDelete}
-          // className={className}
-        />
+        <TaskList tasks={tasks} setTasks={setTasks} />
       </InnerBox>
     </MainContainer>
   );

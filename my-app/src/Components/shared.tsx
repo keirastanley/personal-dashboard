@@ -67,6 +67,16 @@ export const IconButton = styled.button`
   font-size: ${({ fontSize }: IconButtonProps) => fontSize ?? "18px"};
 `;
 
+export const Heading1 = styled.h1`
+  padding: 0px;
+  margin: 0px;
+`;
+
+export const Heading2 = styled.h2`
+  padding: 0px;
+  margin: 0px;
+`;
+
 export const Heading3 = styled.h3`
   padding: 0px;
   margin: 0px;

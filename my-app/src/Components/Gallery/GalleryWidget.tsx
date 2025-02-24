@@ -5,14 +5,25 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { GrGallery } from "react-icons/gr";
 import { TbRefresh } from "react-icons/tb";
 import { Link } from "react-router-dom";
-import {
-  ControlsContainer,
-  IconButton,
-  InnerBox,
-  MainContainer,
-} from "../shared";
+import { ControlsContainer, IconButton, MainContainer } from "../shared";
+import { Image } from "./gallery-images";
 import images from "./gallery-images";
-import "./index.css";
+
+export const GalleryCaption = ({ image }: { image: Image }) => (
+  <div
+    css={css`
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      font-size: 14px;
+    `}
+  >
+    <i>
+      {image.title}, {image.artist}, {image.medium}, {image.year}
+    </i>
+  </div>
+);
 
 function Gallery({ imageHeight }: { imageHeight?: string }) {
   const [heartIsFilled, setHeartIsFilled] = useState<boolean>(false);
@@ -29,22 +40,6 @@ function Gallery({ imageHeight }: { imageHeight?: string }) {
     const randomNumber = getRandomNumber();
     setImage(images[randomNumber]);
   }, []);
-
-  const GalleryCaption = () => (
-    <div
-      css={css`
-        display: flex;
-        align-items: center;
-        height: 100%;
-        width: 100%;
-        font-size: 14px;
-      `}
-    >
-      <i>
-        {image.title}, {image.artist}, {image.medium}, {image.year}
-      </i>
-    </div>
-  );
 
   return (
     <MainContainer color="var(--header)">
@@ -75,7 +70,7 @@ function Gallery({ imageHeight }: { imageHeight?: string }) {
             margin: 0px 10px 0px 10px;
           `}
         >
-          <GalleryCaption />
+          <GalleryCaption image={image} />
           <ControlsContainer>
             <IconButton onClick={() => setHeartIsFilled(!heartIsFilled)}>
               {heartIsFilled ? (

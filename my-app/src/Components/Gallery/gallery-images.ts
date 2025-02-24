@@ -1,0 +1,267 @@
+export interface Image {
+  id: string;
+  title: string;
+  titleOrgLang?: {
+    lang: string;
+    title: string;
+  };
+  artist: string;
+  medium: string;
+  year: string;
+  src: string;
+  alt: string;
+  tags: string[];
+  info?: {
+    text: string;
+    infoFrom?: string;
+    src?: string;
+    onView?: string;
+  };
+}
+
+const images: Image[] = [
+  {
+    title: "Waterloo Bridge, London, at Dusk",
+    artist: "Claude Monet",
+    medium: "Oil on canvas",
+    year: "1904",
+    src: "https://media.nga.gov/iiif/a7858589-5528-4273-bb1a-638c6a3caca7/full/full/0/default.jpg?attachment_filename=waterloo_bridge%2C_london%2C_at_dusk_1983.1.27.jpg9",
+    alt: "Waterloo Bridge, London, At Dusk, Claude Monet",
+    tags: [
+      "impressionism",
+      "blue",
+      "green",
+      "landscape",
+      "turqouise",
+      "water",
+      "sky",
+    ],
+    info: {
+      text: "An arched bridge faintly materializes in a haze of soft turquoise blue and mint green in this horizontal landscape painting. The bridge has four arches under a flat deck, and it extends off each side of the canvas. Running across the middle of the composition, it angles slightly away from us to our right. The bridge is painted in strokes of slate blue and muted lavender purple, with darker shades on the shadowed undersides of the arches. Touches of rose pink and white along the deck suggest lights moving across the bridge. The water below is sky blue and seafoam green. A few vertical swipes of teal blue in the background suggest towers or tall buildings in the distance on the opposite shore. The sky above is painted with long strokes of lime green and robin's egg blue. The artist signed the painting with cobalt blue in the lower right corner, “Claude Monet.”",
+      infoFrom: "National Gallery of Art",
+      src: "https://www.nga.gov/collection/art-object-page.61377.html",
+      onView: "National Gallery of Art, Washington, D.C.",
+    },
+  },
+  {
+    title: "Country Garden with Sunflowers",
+    titleOrgLang: {
+      lang: "German",
+      title:
+        "Garten mit Sonnenblumen auf dem Lande (Brewery garden in Litzlberg am Attersee)",
+    },
+    artist: "Gustav Klimt",
+    medium: "Oil on canvas",
+    year: "1907",
+    src: "https://i0.wp.com/www.rathergoodart.co.uk/wp-content/uploads/2021/08/gustave-klimt-garden-with-sunflowers-1.jpg?fit=1000%2C1005&ssl=1",
+    alt: "Country Garden with Sunflowers, Gustav Klimt",
+    tags: ["vienna secession", "art noveau", "landscape", "flowers", "garden"],
+    info: {
+      text: "“Farm Garden with Sunflowers” by Gustav Klimt depicts a garden scene with a variety of flowers and sunflowers in a garden on a farm. Gustav Klimt was a Symbolist painter and one of the most prominent members of the Vienna Art Nouveau movement. Beginning in the late 1890s, Klimt took annual summer holidays on the shores of Attersee and painted many of his landscapes there. These landscapes constitute the only genre aside from portrait painting that seriously interested Klimt. In recognition of his interest in natural scenes, the locals called him Waldschrat (“forest demon”). Klimt's Landscapes paintings are of significant quality to merit appreciation. Formally, the landscapes are characterized by the same refinement of design and unique patterning as the figural pieces. Space in his landscape works is flattened so efficiently that it is believed that Klimt used a telescope to paint to a single plane. In “Farm Garden With Sunflowers,” Klimt presents an arrangement of brightly colored flowers in a bush background. Bushes of yellow sunflowers dominate the top of the painting. White hydrangeas with soft red-toned centers feature at the center of the composition. Colorful carnations in shades of red, blue, and purple add to the color composition.",
+      infoFrom: "Joy of Museums",
+      src: "https://joyofmuseums.com/artists-index/gustav-klimt/gustav-klimt-landscapes/",
+      onView: "Österreichische Galerie Belvedere",
+    },
+  },
+  {
+    title: "The Joy of Life",
+    titleOrgLang: { lang: "French", title: "Le bonheur de vivre" },
+    artist: "Henri Matisse",
+    medium: "Oil on canvas",
+    year: "1905 - 1906",
+    src: "https://www.henrimatisse.org/assets/img/paintings/joy-of-life.jpg",
+    alt: "The Joy of Life, Henri Matisse",
+    tags: ["modernism"],
+    info: {
+      text: "When Le Bonheur de vivre was shown publicly, from March 20 to April 20, 1906, at the Salon des Independants, it dazzled and became legendary. As Gertrude Stein, who had witnessed this moment, would write later, \"Matisse had painted Le Bonheur de vivre, and had created a new formula for color that would leave its mark on every painter of the period.\" Purchased by Leo and Gertrude Stein, Le Bonheur de vivre was installed by Matisse himself in their apartment on the rue de Fleurus at the close of the Salon. Between 1906 and 1914, when the Steins separated, the painting could be seen by any and all visitors to their home—among them the young Picasso. It is generally acknowledged that the impact of Le Bonheur de vivre on Picasso marks the point when the rivalry between the two artists began. <br /> <br /> The painting represents many figures (16), who are depicted in various poses and draw on various styles, suggesting a range of cultural cues. To these stylistic disparities were added more in the pictorial structure: inconsistencies of perspective, in the size of the figures, and of viewpoint. In the end, this assemblage produced a painting that was perceived as monstrous because it was hybrid. Matisse was deliberately provocative in presenting this monster at the 1906 Salon des Independants: this amalgam of references, these stylistic incongruities, these disparities in scale and technique, all contested the academic dogma of classical unity taught at the Ecole des Beaux-Arts. <br /> <br /> The work's suggestive force derives to a large extent from its rhythmic power, which stems from the use of an arabesque line, enveloping the figures and crossing almost the entire composition, propelling the eye through the picture. Often used in ornament, the arabesque has a power, like that of music, to evoke, through its progression, a temporal development, and thus to come close to the immediacy of sensation. One could imagine the undulating line of Le Bonheur de vivre as a visual equivalent of the sound of the central figure's flute. <br /> <br />  The quasi-subliminal effect of the painting rests in great part on the centrifugal quality of its construction, the most hypnotic motif certainly being the central ring of dancers, whose spinning movement contributes to dispersing the viewer's gaze and initiating its movement. To this is added the pulsation of the intertwined color planes of the foliage, as well as the halos that emphasize the luminous presence of the two central figures, and the sinuous line that soars toward the sky from the hand of the standing figure on the left, a sort of corporal emanation of energy. <br /> <br /> Although Le Bonheur de vivre is executed on canvas, it has many of the characteristics of a mural. The work's surface is smooth, rarely thick; it is luminous and draws on the transparency of the paint layer. In certain areas, particularly the upper-left quarter, the paint is diluted and applied as a thin wash; in several places the white priming is visible. Elsewhere--notably around the hair of the central figures, and around the single head of the interlaced characters--the colors are much more opaque and thick. The figures are painted without modeling, in flat tones of pink, green, or yellow. The colors are pure, with a general matte effect, even though the medium is oil.",
+      infoFrom:
+        "Claudine Grammont, Matisse in the Barnes Foundation, vol. 2 (New York: Thames & Hudson, 2015), 46-60",
+      src: "https://collection.barnesfoundation.org/objects/7199/Le-Bonheur-de-vivre-also-called-The-Joy-of-Life/",
+      onView: "Barnes Foundation, Philadelphia",
+    },
+  },
+  {
+    title: "Woman Bather",
+    titleOrgLang: { lang: "French", title: "Baigneuse" },
+    artist: "Henri Manguin",
+    medium: "Oil on canvas",
+    year: "1906",
+    src: "https://upload.wikimedia.org/wikipedia/commons/1/19/Henri_Manguin%2C_1906%2C_Baigneuse_%28Woman_Bather%29%2C_oil_on_canvas%2C_Pushkin_Museum%2C_Moscow.jpg",
+    alt: "Woman Bather, Henri Manguin",
+    tags: ["fauvism", "nude", "portrait"],
+    info: {
+      text: "The Fauves (“wild beasts”) represented an audacious departure from the lyrically evocative Impressionists who had dominated the Parisian art world toward the end of the nineteenth century. With their intensely vibrant pigments and feverishly gestural brushwork, they ushered in the era of Expressionism that would come to define avant-garde art in the century to come. Alongside the Fauves' leaders André Derain and Henri Matisse, Henri Charles Manguin was a central figure in this movement. Particularly noted for capturing the vivid colors of the French riviera and the joie de vivre of its nude bathers, Manguin was dubbed “the voluptuous painter” by Apollinaire. <br /> <br /> Henri Charles Manguin was born on March 23, 1874 in Paris and pursued the study of painting under the eminent instructor Gustave Moreau at the École des Beaux-Arts, where his cohorts included fellow future Fauves Matisse, Marquet, and Camoin. In 1904, Manguin was invited by Pointillist pioneer Paul Signac to visit Saint Tropez; Manguin did not follow Signac's technical example but was spellbound by the Mediterranean light and water. The following year, Manguin exhibited in the legendary Salon d'Automne which marked the birth of Fauvism. In 1906, the peerless impresario of the avant-garde, Ambrose Vollard, purchased over a hundred of Manguin's canvases. Manguin remained faithful to the Fauvist vision for the remainder of his career, and from the 1920s he divided his time between Paris and the Riviera, finally settling in Saint Tropez shortly before his death on September 25, 1949. <br /> <br /> Manguin is represented in the permanent collections of the Pushkin Museum in Moscow, the Museum of Modern Art in New York, and the Musée d'Orsay in Paris, among numerous other major world institutions.",
+      infoFrom: "Sothebys",
+      src: "https://www.sothebys.com/en/artists/henri-charles-manguin",
+      onView:
+        "State Museum of Fine Arts (Pushkin Museum of Fine Arts). A.S. Pushkin, Moscow, Moscow",
+    },
+  },
+  {
+    title: "Murnau - Landscape with Green House",
+    artist: "Wassily Kandinsky",
+    medium: "Oil on canvas",
+    year: "1909",
+    src: "https://www.wassilykandinsky.net/images/works/729.jpg",
+    alt: "Murnau - Landscape with Green House, Wassily Kandinsky",
+    tags: ["landscape", "modernism"],
+    info: {
+      text: "In 1937, while in exile in Paris, Wassily Kandinsky (1866-1944) wrote with pride about the impact of his Murnau landscapes that were still in his collection, 'the colours have to this day remained completely fresh… as though they are still wet. It was not without good reason that I concerned myself so very much with technical matters.'[1] We can agree with both Kandinsky and the eminent conservator Rudolf H. Wackernagel that the colour effects of these works are truly astonishing to this day, the consequence of the artist's versatile talents and knowledge of his techniques.[2] Kandinsky's gestural exploration of the oil medium was accompanied by his selection of short-haired brushes and a change of support, from canvas or cardboard, to unprimed strawboard. The present painting Murnau - Landscape with Green House (1909) is testimony not only to his adoption of these avant-garde painterly strategies, but also to his collaboration with like-minded colleagues and involvement in the pre-war German art world.[3] Prior to considering the Murnau phenomenon, it is helpful to position Kandinsky's practices in relation to his experiences in Munich and Paris. <br /> <br /> One can ascertain from Kandinsky's biography that his professional path was by no means straightforward. In 1896, at the age of thirty, he decided to pursue an artistic rather than an academic career; yet his specialist study of Russian peasant law and ethnography was to prove a vital influence on his development. [...] A rival to Berlin as an artistic centre, Munich boasted the highly rated teaching institution of the Academy of Fine Arts and a greater availability of exhibiting space. In 1901, however, Kandinsky struck out independently by co-founding the artists' association known as Phalanx, which was devoted to the reforming principles of Jugendstil or Youth Style, the German term for the Applied Arts movement. <br /> <br /> It was in his capacity as a teacher in the Phalanx school that Kandinsky first made contact with Gabriele Münter (1887-1962), who attended evening life-classes under his guidance and was encouraged to pursue plein air painting in excursions to Kochel and Kallmünz in Bavaria. Although Kandinsky was married at the time, he and Münter became lovers and they led a peripatetic lifestyle over the next four years. This concluded with a year spent in Sèvres on the outskirts of Paris where Kandinsky produced small oil studies of the environs. The paint was applied with the palette knife, directly from the tube or occasionally with the brush. The freedom of painting landscape in situ offered Kandinsky the opportunity for modernist experimentation. In contrast, his developed studio work, painted on large stretched canvases in mixed media, drew on medieval imagery and themes of Old Russia. /A major work of this period Das bunte Leben (1907, fig. 2) was exhibited at the Salon d'Automne in 1907, Kandinsky being well aware of Matisse's unusual pastoral The Joy of Life (1905-06, fig. 3), which was shown in the Salon des Indépendants the previous year. Whereas Matisse located his lyrical fantasy in Collioure in the south of France, Kandinsky's travels in rural Russia led him to anchor this mythical narrative in the market town of Ust Sysolsk, apparently the centre of Kandinsky's earlier ethnographic activities.[4] An amphitheatre is created to contain the varied populace, who are portrayed wearing the patterned costume of the local Zyrian peasants. Pagan and Christian images, such as the Madonna and Child, are subordinated to a quasi-pointillist technique, applied over a black tempera ground, and sealed with varnish. Because of their unscientific and rhythmic application, the dots, patches and shapes of colour take on their own independent existence and elude a systematic reading of form and space. <br /> <br /> It is difficult to determine whether Kandinsky considered this enigmatic account of things Russian to be marketable; there was a forceful community of Russian expatriates in Paris who exhibited at the Salon d'Automne in 1905, which saw the controversial launching of the French group of Fauvists. For this occasion, the impresario Sergei Diaghilev organised a Russian pavilion; however, Kandinsky didn't affiliate with this group. It was only after the couple's return to Munich that, along with Jawlensky and Werefkin, they became actively engaged in transforming painting into the more non-naturalistic art associated with Expressionism. <br /> <br /> The radical changes that occurred in Kandinsky's œuvre in the summer of 1908 are best considered in light of the foursome's excursions to the town of Murnau. This initiated a period of interaction that involved their testing of the limits of painting within the landscape genre, while intensifying an engagement with notions of primitivism. Located in the south Bavarian Alps, Murnau was a market town with a predominantly agrarian and Catholic population. It was also sought after as a tourist destination and contemporary photographs of the artists give credence to the disjunction of their urbane attire in the country setting. That the architectural cohesion of the town was the result of recent modernisation was of little consequence since it matched their search for rustic simplicity, authenticity and piety. Indeed, so taken were they with the area that Münter purchased a property there in 1909, which became a retreat for members of the Neue Künstlervereinigung München, an exhibiting association of artists that they co-founded in January of that year. <br /> <br /> It was Jawlensky who first drew their attention to Bavarian and Bohemian glass painting and to the technique known as Hinterglasmalerei (reverse glass painting). A substantial collection was owned by a local brewer in Murnau, Johann Krötz. Münter started her own collection recreating the votive corners of Bavarian interiors. She copied traditional examples of this genre (images of patron saints), both she and Kandinsky learning the technique from Heinrich Rambold, a glass painter still active in Murnau. Notwithstanding the fact that the production of folk art had long been part of a thriving industry - stimulated by the expanding tourist economy of the region - the group cherished the neo-romantic belief in the innocent religiosity and naïve originality of folk artists. No doubt, as ethnographer cum artist, Kandinsky delighted in the transnational and cultural parallels between Russia and Germany. <br /> <br /> Jawlensky was the most conversant with avant-garde developments in Paris. He had exhibited with the Russian group of artists at the Salon d'Automne of 1905 and his acquaintance with Synthetist aesthetic theory was updated by a period spent in Matisse's studio during 1907. Hence, in the painting Summer Evening in Murnau, of 1908-09 (Städtische Galerie im Lenbachhaus Munich), he negotiated paths between a Matisse-inspired modernism and the lessons offered by the linear-bound planes of folk art. Based on the near complementary colours of purple and orange, the paint application varies from thin washes, through to the textured impasto of the blazing sunset. Encouraged by Jawlensky's example, in the present painting Murnau - Landscape with Green House (1909), Kandinsky gave up the palette knife in favour of short-haired brushes and larger, unprimed boards. <br /> <br /> In view of its scale, the work indicates that Kandinsky had come to regard the landscape genre as worthy of a fully worked-up 'painting' rather than a mere 'oil study', albeit that the exposed ground and hautes pâtes brushstrokes give the appearance of in situ painting. To retain the freshness and nuances of direct colour application, Kandinsky refrained from varnishing his works from 1909 onwards. Interestingly, this richly orchestrated painting rather than the preparatory oil study (1908, fig. 7) was exhibited and purchased in Kandinsky's lifetime. The latter, produced concurrently with Münter's photograph of Pfarrstrasse (fig. 8), reveals the site-specific nature of the street and houses, Kandinsky opening up the vista above the railings of the fence and abutting garden. <br /> <br /> It was in Murnau that Kandinsky's somewhat academic practice of retaining firm distinctions between his 'paintings', 'oil studies' and 'coloured drawings' was turned on its head. Indeed, between 1909 and 1914, visionary landscape was to become the basis for his major abstract compositions.",
+      infoFrom:
+        "Kandinsky, Landscape Painting and Avant-Gardism: the Murnau Factor by Dr Shulamith Behr",
+      src: "http://www.sothebys.com/en/auctions/ecatalogue/2017/impressionist-modern-art-evening-sale-l17006/lot.47.html?locale=en",
+      onView: "Private collection",
+    },
+  },
+  {
+    title: "The Seine at Chatou",
+    artist: "Maurice de Vlaminck",
+    medium: "Oil on canvas",
+    year: "1906",
+    src: "https://upload.wikimedia.org/wikipedia/en/2/21/SeineChatou.JPG",
+    alt: "The Seine at Chatou, Maurice de Vlaminck",
+    tags: ["fauvism"],
+    info: {
+      text: "Born in Paris to a Flemish father and a French mother, Vlaminck grew up in a musical household that was virtually impoverished. At the age of sixteen, he left home and moved to Chatou, where he later supported his wife and two children by working as a professional cyclist and an itinerant violinist. Although now considered a suburb of Paris, Chatou was then a small village situated to the west, along the Seine. Opposite it lies the Île de Chatou, a long, narrow stretch of land in the center of the river. The scene shown here appears to have been observed from a point on the island facing the village of Chatou, with its red-roofed houses, on the mainland. Vlaminck shared a studio on the island with fellow artist André Derain in 1900. Together, they formed what has been called the 'School of Chatou', and their painting style—characterized by bright colors and bold brushstrokes—was a harbinger of Fauvism. <br /> <br /> The self-taught Vlaminck embraced painting with the same unbridled passion as he did life itself, spontaneously choosing the most straightforward forms and basic hues to express his feelings: 'I try to paint with my heart and my guts without worrying about style.' After the Parisian art dealer Ambroise Vollard purchased Vlaminck's existing stock of paintings early in 1906, the artist was able to devote himself fully to painting, and his work became more lighthearted and exuberant. He spent the summer of 1906 in and around Chatou, painting pictures such as this one, in which he emulated the undisguised brushwork and intuitive application of paint of Van Gogh's late, expressive style, which he so admired. Combining the primary colors of blue and red with white, Vlaminck applied them directly from the tube in daubs and swirls of pigment, employing these conventional hues for the white houses, green leaves, reddish-orange tree trunks, and the blue, red, and white trawler in the background.",
+      infoFrom: "Met Museum",
+      src: "https://www.metmuseum.org/art/collection/search/490034",
+      onView: "The Met Fifth Avenue in Gallery 904",
+    },
+  },
+  {
+    title: "Nypmh and Satyr",
+    titleOrgLang: { lang: "German", title: "Nymphe und Satyr" },
+    artist: "Arnold Böcklin",
+    medium: "Oil on canvas",
+    year: "1871",
+    src: "https://iiif.micr.io/BptKk/full/%5E1200,/0/default.jpg",
+    alt: "Nypmh and Satyr, Arnold Böcklin",
+    tags: ["symbolism", "mythology", "romanticism"],
+    info: {
+      text: "Arnold Böcklin (16 October 1827 - 16 January 1901) was a Swiss symbolist painter. <br /> <br /> He was born in Basel. His father, Christian Frederick Böcklin (b. 1802), was descended from an old family of Schaffhausen, and engaged in the silk trade. His mother, Ursula Lippe, was a native of the same city. Arnold studied at the Düsseldorf academy under Schirmer, and became a friend of Anselm Feuerbach. He is associated with the Düsseldorf school of painting. Schirmer, who recognized in him a student of exceptional promise, sent him to Antwerp and Brussels, where he copied the works of Flemish and Dutch masters. Böcklin then went to Paris, worked at the Louvre, and painted several landscapes. <br /> <br /> After serving his time in the army, Böcklin set out for Rome in March 1850. In Rome, he married Angela Rosa Lorenza Pascucci in 1853. The many sights of Rome were a fresh stimulus to his mind. These new influences brought allegorical and mythological figures into his compositions. In 1856 he returned to Munich, and remained there for four years. <br /> <br /> He then exhibited the Great Park, one of his earliest works, in which he treated ancient mythology. Of this period are his Nymph and Satyr, Heroic Landscape (Diana Hunting), both of 1858, and Sappho (1859). These works, which were much discussed, together with Lenbach's recommendation, gained him appointment as professor at the Weimar academy. He held the office for two years, painting the Venus and Love, a Portrait of Lenbach, and a Saint Catherine. <br /> <br /> He returned to Rome from 1862 to 1866, and there gave his fancy and his taste for violent colour free play in his Portrait of Mme Böcklin, and in An Anchorite in the Wilderness (1863), a Roman Tavern, and Villa on the Seashore (1864). He returned to Basel in 1866 to finish his frescoes in the gallery, and to paint, besides several portraits, The Magdalene with Christ (1868), Anacreon's Muse (1869), and A Castle and Warriors (1871). His Portrait of Myself, with Death playing a violin (1873), was painted after his return again to Munich, where he exhibited Battle of the Centaurs, Landscape with Moorish Horsemen and A Farm (1875). From 1876 to 1885 Böcklin was working at Florence, and painted a Pietà, Ulysses and Calypso, Prometheus, and the Sacred Grove. <br /> <br /> From 1886 to 1892 he settled at Zürich. Of this period are the Naiads at Play, A Sea Idyll, and War. After 1892 Böcklin resided at San Domenico, near Florence. <br /> <br /> Böcklin died on 16 January 1901 in Fiesole. He is buried in the Cimitero Evangelico degli Allori in the southern suburb of Florence, Galluzzo (Italy). <br /> <br /> Influenced by Romanticism his painting is symbolist with mythological subjects often overlapping with the Pre-Raphaelites. His pictures portray mythological, fantastical figures along classical architecture constructions (often revealing an obsession with death) creating a strange, fantasy world. <br /> <br /> Böcklin is best known for his five versions (painted in 1880-1886) of the Isle of the Dead, which partly evokes the English Cemetery, Florence, close to his studio and where his baby daughter Maria had been buried. An early version of the painting was commissioned by a Madame Berna, a widow who wanted a painting with a dream-like atmosphere.",
+      infoFrom: "Wikipedia",
+      src: "https://www.wikiart.org/en/arnold-bocklin",
+      onView:
+        "Philadelphia Museum of Art, Gallery 255, European Art 1850-1900, second floor (Rishel Gallery)",
+    },
+  },
+  {
+    title: "Open Window, Collioure",
+    artist: "Henri Matisse",
+    medium: "Oil on canvas",
+    year: "1905",
+    src: "https://smarthistory.org/wp-content/uploads/2020/01/matisse-open-window-collioure.jpg",
+    alt: "Open Window, Collioure, Henri Matisse",
+    tags: ["fauvism"],
+    info: {
+      text: "Matisse's Open Window, Collioure is an icon of early modernism. A small but explosive work, it is celebrated as one of the most important early paintings of the so-called fauve school, a group of artists, including André Derain, Maurice de Vlaminck, and Georges Braque, that emerged in 1904. Fauve paintings are distinguished by a startling palette of saturated, unmixed colors and broad brushstrokes. The effect is one of spontaneity, although the works reveal a calculated assimilation of techniques from postimpressionism and neo-impressionism. Open Window represents the very inception of the new manner in Matisse's art. [1] It was painted in Collioure, a small town on the Mediterranean coast of France to which Matisse traveled with Derain in the summer of 1905. <br /> <br /> Open Window was exhibited at the landmark Salon d'automne of 1905, where Matisse and other fauve painters were greeted with critical skepticism and public disdain. The 'fauve' (savage beast) label itself originated in the art critic Louis Vauxcelles' newspaper review of the exhibition. Vauxcelles, who reproached Matisse for the diminishing coherence of form in his work, praised the artist as 'one of the most robustly gifted of today's painters'; his use of the term 'fauves', which appears twice, is actually ambiguous: it alludes both to Matisse's fellow painters in Salle VII of the Salon and to the insensitive public, who scorned Matisse's work. Nonetheless, the press was soon referring to Salle VII as a cage aux fauves (cage of wild beasts), and, by 1906, this had become an accepted epithet for Matisse, Derain, and his fellow painters. [2] <br /> <br /> The lyrical beauty of Open Window belies the optical and conceptual complexity of the work, in which conventional representation is subordinated throughout by other pictorial concerns. During the time when this work was painted, Derain wrote that even the shadows in Collioure were a 'whole world of clarity and luminosity.' [3] Matisse courts the maximum intensity of color, essentially eschewing chiaroscuro, the play of light and dark that creates an illusion of volume and spatial depth. Instead, the interior wall surrounding the window is equally divided into broad areas of blue-green and fuchsia, a contrast that is derived from the complementary opposition of green and red on the color wheel (this contrast recurs in the flowerpots at the bottom of the picture). Virtually the same, almost abstract, color relationship occurs in the background of Matisse's The Woman with the Hat (San Francisco Museum of Modern Art), also from this period. Further, Open Window also contains a dazzling variety of brushstrokes, from long blended marks to short, staccato touches. Matisse represented each area of the image—the interior of the room, the window itself, the balcony, the harbor view—with a distinctly different handling of the brush, creating an overall surface effect of pulsating cross-rhythms. Finally, the composition of the work is a series of frames within frames: the wall contains the window; the window frames the middle ground; and the balcony crops the landscape. <br /> <br /> Comparing a painting to a window has been a conventional trope in art theory since the Renaissance. In making this comparison the very subject of a picture that is only cryptically representational (by the standards of the day), Matisse allowed Open Window, Collioure to epitomize a new direction in modern art, one in which paintings develop an increasing autonomy from the things they depict. The open window (and the painting-window metaphor) would subsequently become a central motif in Matisse's oeuvre.",
+      infoFrom:
+        "Text by Jeffrey Weiss, published in the National Gallery of Art exhibition catalogue, Art for the Nation, 2000",
+      src: "https://www.nga.gov/collection/art-object-page.106384.html",
+      onView:
+        "National Gallery of Art, East Building, Mezzanine - Gallery 217B",
+    },
+  },
+  {
+    title: "Waterloo Bridge",
+    artist: "André Derain",
+    medium: "Oil on canvas",
+    year: "1906",
+    src: "https://www.museothyssen.org/sites/default/files/styles/full_resolution/public/imagen/obras/1972.17_puente-waterloo.jpg",
+    alt: "Waterloo Bridge, André Derain",
+    tags: ["fauvism"],
+    info: {
+      text: "Waterloo Bridge is one of the series of canvases Derain painted in London for the art dealer Ambroise Vollard. Fascinated by the atmosphere of the British capital, the artist provided a Fauvist interpretation of the banks of the Thames, depicted earlier by Turner and Monet. In this work, the main pictorial motif is Waterloo Bridge as seen from the Victoria Embankment; the horizontal line of the bridge—painted in bright blue—serves as the horizon for the composition. The pointillist technique and the use of pure colours give the surface a mosaic-like appearance. The intense blues and bright yellows of Derain's Collioure landscapes have given way here to colder tonal values, more appropriate to London's climate, and the explosion of greens, blues and purples illustrates the Fauvist idea of the expressive violence of colour.",
+      infoFrom: "Museo Nacional Thyssen-Bornemisza",
+      src: "https://www.museothyssen.org/en/collection/artists/derain-andre/waterloo-bridge",
+      onView: "Museo Nacional Thyssen-Bornemisza, Madrid, Room 34",
+    },
+  },
+  {
+    title: "Luxury, Calm and Pleasure",
+    titleOrgLang: { lang: "French", title: "Luxe, Calme et Volupté" },
+    artist: "Henri Matisse",
+    medium: "Oil on canvas",
+    year: "1904",
+    src: "https://cdn.mediatheque.epmoo.fr/link/xuf189jqbt9ojsw.jpg",
+    alt: "Luxury, Calm and Pleasure, Henri Matisse",
+    tags: [],
+    info: {
+      text: "Luxe, Calme et Volupté is a 1904 oil painting by the French artist Henri Matisse. Both foundational in the oeuvre of Matisse and a pivotal work in the history of art, Luxe, Calme et Volupté is considered the starting point of Fauvism. This painting is a dynamic and vibrant work created early on in his career as a painter.  It displays an evolution of the Neo-Impressionist style mixed with a new conceptual meaning based in fantasy and leisure that had not been seen in works before. [...] Prior to the beginning of his Fauvist period Matisse had been formally educated in the arts and started his career copying works from old masters. His first original works resembled those from his education.[4] After he left school, influence from Impressionism developed into his work and gradually led him to the Post-Impressionist movement where this style stuck with him until it evolved into Fauvism. Matisse frequently purchased works from artists such as Cézanne, Van Gogh, and Gauguin during his time before Fauvism that influenced his painting and the development of his style over time. <br /> <br /> Luxe, Calme et Volupté was painted by Matisse in 1904, after a summer spent working in St. Tropez on the French Riviera alongside the Neo-Impressionist painters Paul Signac and Henri-Edmond Cross.[5] Signac purchased the work, which was exhibited in 1905 at the Salon des Indépendants. <br /> <br /> The painting's title comes from the poem L'Invitation au voyage, from Charles Baudelaire's volume Les Fleurs du mal (The Flowers of Evil): <i>Là, tout n'est qu'ordre et beauté, <br /> <br /> Luxe, calme et volupté.</i> <br /> <br /> There, all is order and beauty, <br /> <br /> Luxury, peace, and pleasure. <br /> <br /> The painting is Matisse's most important work in which he used the Divisionist technique advocated by Signac. Divisionism is created by individual dots of colors placed strategically on the canvas in order to appear blended from a distance; Matisse's variant of this style is created by numerous short dashes of color to develop the forms that are seen in the image. He first adopted the style after reading Signac's essay 'D'Eugène Delacroix au Néo-impressionisme' in 1898. <br /> <br /> The simplification of form and details is a trademark of Fauvist landscapes in which artists intentionally created artificial structures that distorted the reality of images. Many of these same qualities can be found in Matisse's other works. Other Fauvist painters worked on large scale landscapes that did not focus as much on figures within the composition as with Matisse's works. <br /> <br /> Scholars suggest that interpreting the paintings requires the viewer to acknowledge its resistance to interpretation. Matisse's previous works were all firmly rooted in the visual aspects of Post-Impression leading scholars to question how his work had taken such a drastic turn into a depiction of fantasy. David Carrier writes that the painting is ambiguous and lacks reference to any of its supposed sources of inspiration. Despite the literary source for the work's title, Luxe, Calme, et Volupté, it is not related to the narrative of poem in any way.",
+      infoFrom: "Wikipedia",
+      src: "https://en.wikipedia.org/wiki/Luxe,_Calme_et_Volupté",
+      onView: "Musée d'Orsay, not on view",
+    },
+  },
+  {
+    title: "Satyr Carrying a Nymph on His Back",
+    artist: "Salomon Gessner",
+    medium: "Etching on laid paper",
+    year: "1769/71",
+    src: "https://d7hftxdivxxvm.cloudfront.net/?resize_to=fit&width=800&height=655&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F7890KjYrWmKLrsf5cmonfw%2Fnormalized.jpg",
+    alt: "Satyr Carrying a Nymph on His Back, Salomon Gessner",
+    tags: [],
+    info: {
+      text: "Gessner was the first imaginative writer in the German language to achieve international fame. The son of a bookseller in Zurich, and apprenticed to that trade, he took up drawing, and only later, as a sideline, began to write idylls, based on Theocritus and Virgil, in a heightened poetic prose. His Idylls of 1756 and his Old Testament epic Der Tod Abels of 1758 achieved widespread success. The appeal of his description of an uncorrupted pastoral bliss (his books were translated into no less than nineteen languages) must be seen in the context of the pervasive influence of the writings of another Swiss author, Jean-Jacques Rousseau, and especially of the novel Julie ou la nouvelle Héloïse of 1761, which is set in a small town at the foot of the Alps. Rousseau was himself an admirer and correspondent of Gessner. <br /> <br /> In 1761 Gessner married, and left his father's business to join his brother-in-law, Heinrich Heidegger, in running a firm that from 1770 became Orell, Gessner, Füssli & Cie, and one of the most successful German-language publishers of the time, with most of the distinguished German authors of the day on their list, as well as a remarkable number of translations from the English (the press continues today). He was a backer of the Zurich porcelain factory (whose losses were eventually to ruin his family), a member of the Zurich city council, and successfully administered a number of public offices. He lived a life as idyllic as his texts, and did much to popularize the idea that Switzerland was the natural home of a virtue and simplicity that had been lost elsewhere in Europe. He began to make etchings in 1752, and in his early years solicited advice from Hagedorn and Zingg in Dresden. From the early 1770s he wrote little, and devoted most of his creative energies to his etching, and from about 1780 to his paintings (in gouache rather than oil paints) which he sold to visitors.",
+      infoFrom:
+        "Antony Griffiths and Frances Carey, German Printmaking in the Age of Goethe, London, 1994, p. 109",
+      src: "https://www.nga.gov/collection/artist-info.7006.html",
+      onView: "National Gallery of Art, Washington, D.C.",
+    },
+  },
+  {
+    title: "Hylas and the Nymphs",
+    artist: "John William Waterhouse",
+    medium: "Oil",
+    year: "1896",
+    src: "https://upload.wikimedia.org/wikipedia/commons/b/bd/Waterhouse_Hylas_and_the_Nymphs_Manchester_Art_Gallery_1896.15.jpg",
+    alt: "Hylas and the Nymphs, John William Waterhouse",
+    tags: ["romanticism", "mythology"],
+    info: {
+      text: "John William Waterhouse created the breaktaking painting, Hylas and the Nymphs, in 1896. Waterhouse was inspired by the classical tale of tragedy and love and eloquently depicted on canvas his version and vision of events. <br /> <br /> Hylas and the Nymphs is a story within the Greek myth of Jason and the Argonauts in which they set sail for the iconic Golden Fleece. Today, Hylas and the Nymphs remains Waterhouse's most accomplished and world renowned work of art. It is still unknown why Waterhouse was so driven to paint such a picture. Many art critics believe that he was drawn to the natural and idyllic environment of the legend, and that both the women and nymphs in the story intrigued him with their magic and great power. <br /> <br /> He obviously found something appealing which eventually drew him to paint this masterpiece. Manchester Arts Gallery decided to buy the painting shortly after Waterhouse had finished painting it. The painting depicts Hylas, who was a warrior, an Argonaut, as well as that of an incredibly handsome man. His role in the story was to fetch water once they had reached the shore. When he found a pool of water in which to fetch water, he placed his pitcher in and it was then that he noticed he was surrounded by many nymphs. <br /> <br /> He was stunned and therefore stopped fetching the water in order to kiss one of them. The remainder of the story is unknown, as Hylas simply disappeared. The island was searched several times over, but he was never found. The ship eventually had to leave without him. Waterhouse was a classical artist, who was influenced from a very young age by other classical painters such as Lord Leighton and Alma-Tadema. This is clearly evident when observing the scenery and characterisation in Hylas and the Nymphs. What is unique about this painting is that our eyes are not drawn to the character of Hylas, who is the central character of this Greek myth, but rather to one nymph, the one who entices him into the water. <br /> <br /> We cannot view him properly, as he is facing away from the observer, with only his back on view. Perhaps Waterhouse painted the picture in such a way, so that we could see the image from Hylas's viewpoint. What is obvious, while observing this evocative imagery, is that the nymph concerned is acting in the the role of a femme fatale. Hylas and the Nymphs is an incredibly intricate composition, with many figures incorporated into the overall imagery. What is magical, is that the background remains interesting, but does not detract from the central figures. The nymphs in particular, are painted in such a way, that it is obvious that they are about to lure him away from his colleagues. <br /> <br /> Waterhouse was well known for his use of colour and texture, and in Hylas and the Nymphs, he has managed to paint the nymphs with luminous skin, that both echo and reflect the clear waters of the lake. Also, in painting the nymphs in an ethereal light, Hylas is made to appear more human with his dark olive skin tone. In legend, Hylas is described as an incredibly handsome man, but as an observer we cannot see his face, so his beauty is unseen. Perhaps Waterhouse saw this point as irrelevant, preferring the viewer to be overwhelmed and drawn to the nymphs beauty, just as Hylas too was hypnotised. It was well known that to create the perfect composition for his paintings, Waterhouse often utilised the services of models. Due to the watery nature of the painting, Waterhouse could not have recreated the scene in his art studio, but perhaps Waterhouse based the nymphs in his paintings on those of nymph models.",
+      infoFrom: "www.john-william-waterhouse.com",
+      src: "https://www.john-william-waterhouse.com/hylas-and-the-nymphs/",
+      onView: "Manchester Art Gallery",
+    },
+  },
+  {
+    title: "The Farm",
+    artist: "Joan Miró",
+    medium: "oil on canvas",
+    year: "1921-1922",
+    src: "https://www.sartle.com/media/artwork/the-farm-joan-miro.jpg",
+    alt: "The Farm, Joan Miró",
+    tags: [],
+    info: {
+      text: "Miró moved from Barcelona to Paris in 1920, determined to participate in the artistic vanguard of the French capital. Nevertheless, he remained deeply attached to his native Catalonia, and returned each summer to his family's farm in the village of Montroig. In 1921, he determined to make a painting of this farm, a painting that he came to regard as one of the key works in his career. <br /> <br /> The Farm represents a brilliant amalgamation of an intense, even primitive realism with the formal vocabulary of cubism. The painting is a compendium of separate details, each carefully observed and precisely described. This detailed realism, however, is matched by a tendency to simplify forms into abstract, geometric shapes. Moreover, space in The Farm is defined by a ground plane that tilts sharply upward, while individual forms are similarly tilted, so that they sit silhouetted, parallel to the picture plane. <br /> <br /> By the mid-1920s, Miró had abandoned the realist manner of The Farm and had created a surrealist style of automatism and abstraction. Elements from The Farm continued to appear in his work, however, and the intensity of vision found in this painting remained a standard for all of his later art.",
+      infoFrom: "National Gallery of Art",
+      src: "https://www.nga.gov/collection/art-object-page.69660.html#overview",
+      onView:
+        "National Gallery of Art, East Building, Upper Level - Gallery 415B",
+    },
+  },
+].map((image) => ({
+  ...image,
+  id: image.title.toLowerCase().replace(",", "").split(" ").join("-"),
+}));
+/*    
+{
+        id: ,
+        title: ,
+        titleOrgLang: [],
+        artist: ,
+        medium: ,
+        year: ,
+        src: ,
+        alt: ,
+        tags: [],
+        info: {
+            text: ,
+            from: ,
+            src: ,
+            onView: ,
+        }
+    },
+    */
+
+export default images;

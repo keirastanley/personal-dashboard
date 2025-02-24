@@ -2,8 +2,8 @@
 import { css } from "@emotion/react";
 import React, { ComponentProps } from "react";
 import Weather from "../Weather/index";
-import Gallery from "../Gallery/index";
-import Poetry from "../Poetry/index";
+import Gallery from "../Gallery/GalleryWidget";
+import Poetry from "../Poetry/PoetryWidget";
 import Goals from "../Goals/index";
 import Ideas from "../Ideas/index";
 import Favourites from "../Favourites/index";

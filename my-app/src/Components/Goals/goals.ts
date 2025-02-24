@@ -13,35 +13,24 @@ export const initialGoals: Goal[] = [
     progress: 50,
   },
   {
-    name: "Reach 3kyu on Codewars",
+    name: "Try inline skating",
     starred: false,
-    progress: 20,
-    href: "https://www.codewars.com/",
+    progress: 0,
   },
   {
-    name: "Learn to play tennis",
-    starred: false,
-    progress: 3,
+    name: "Master backwards lemons",
+    starred: true,
+    progress: 40,
   },
   {
-    name: "Exercise everyday",
+    name: "Learn crossover forwards",
     starred: false,
-    progress: 15,
+    progress: 0,
   },
   {
-    name: "Exercise everyday",
+    name: "Master T stop",
     starred: false,
-    progress: 15,
-  },
-  {
-    name: "Exercise everyday",
-    starred: false,
-    progress: 15,
-  },
-  {
-    name: "Exercise everyday",
-    starred: false,
-    progress: 15,
+    progress: 10,
   },
 ];
 
