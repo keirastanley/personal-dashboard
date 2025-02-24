@@ -33,8 +33,7 @@
     "**/*.spec.tsx",
     "jest.setup.ts",
     "jest.config.ts",
-    "jest/types",
-    "src/Components/Goals/Goals List/index.js"
+    "jest/types"
   ],
   "exclude": ["node_modules"]
 }
