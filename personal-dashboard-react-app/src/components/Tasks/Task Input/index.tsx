@@ -1,15 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useState } from "react";
-import { Priority, Status, Task } from "@schemas/data";
+import { Dispatch, SetStateAction, useState } from "react";
+import { Priority, Status, Task, TaskDb } from "@schemas/data";
 import { Button, InputSectionRow } from "../../shared";
+import { addItem } from "../../api";
 
 export default function TaskInput({
-  tasks,
   setTasks,
 }: {
-  tasks: Task[];
-  setTasks: (tasks: Task[]) => void;
+  setTasks: Dispatch<SetStateAction<TaskDb[]>>;
 }) {
   const [newTask, setNewTask] = useState<
     Pick<Task, "name" | "priority" | "deadline">
@@ -42,13 +41,20 @@ export default function TaskInput({
         }
       >
         <option>Priority</option>
-        <option value="Low">Low</option>
-        <option value="Medium">Medium</option>
-        <option value="High">High</option>
+        <option value={Priority.low}>Low</option>
+        <option value={Priority.medium}>Medium</option>
+        <option value={Priority.high}>High</option>
       </select>
       <Button
         onClick={() =>
-          setTasks([...tasks, { ...newTask, status: Status.notStarted }])
+          addItem<Task, TaskDb>("tasks", {
+            ...newTask,
+            status: Status.notStarted,
+          }).then((response) => {
+            if (response.success) {
+              setTasks((prevTasks) => [...prevTasks, response.payload]);
+            }
+          })
         }
       >
         Add new

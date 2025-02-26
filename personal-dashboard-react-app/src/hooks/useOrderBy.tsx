@@ -4,7 +4,7 @@ import { Goal, Item, Priority, Status, Task } from "@schemas/data";
 export type OrderBy = string;
 
 export function useOrderBy<ArrType extends Item>(
-  items: ArrType[],
+  items: ArrType[] | undefined,
   setItems: (items: ArrType[]) => void
 ) {
   const [orderBy, setOrderBy] = useState<string>();
@@ -30,7 +30,6 @@ export function useOrderBy<ArrType extends Item>(
   };
 
   useEffect(() => {
-    console.log("HERE");
     const reorderedItems = getReorderedItems<ArrType>(
       items,
       orderBy,
@@ -49,17 +48,22 @@ export function useOrderBy<ArrType extends Item>(
 }
 
 function getReorderedItems<ArrType extends Item>(
-  items: ArrType[],
+  items?: ArrType[],
   orderBy?: OrderBy,
   isAscending = true
 ) {
+  if (!items) {
+    return [];
+  }
   let orderedItems = items;
   if (orderBy === "name") {
     orderedItems = [
       ...items.sort((a, b) =>
-        (isAscending ? a : b).name > (isAscending ? b : a).name
+        (isAscending ? a : b).name.toLowerCase() >
+        (isAscending ? b : a).name.toLowerCase()
           ? 1
-          : (isAscending ? b : a).name > (isAscending ? a : b).name
+          : (isAscending ? b : a).name.toLowerCase() >
+            (isAscending ? a : b).name.toLowerCase()
           ? -1
           : 0
       ),

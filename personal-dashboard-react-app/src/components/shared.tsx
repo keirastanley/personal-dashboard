@@ -181,3 +181,8 @@ export const LinkStyled = styled.a`
   font-size: ${({ fontSize }: LinkStyledProps) => fontSize ?? "12px"};
   color: black;
 `;
+
+export const WidgetPageWrapper = styled.div`
+  padding: 20px 200px 20px 200px;
+  height: calc(100vh - 40px);
+`;

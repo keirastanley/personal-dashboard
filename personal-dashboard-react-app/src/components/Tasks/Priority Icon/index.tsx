@@ -3,7 +3,11 @@ import { css } from "@emotion/react";
 import { FaCircle, FaExclamation } from "react-icons/fa";
 import { Priority, Task } from "../../../../../schemas/src/data";
 
-function PriorityIcon({ priority }: { priority?: Task["priority"] }) {
+export default function PriorityIcon({
+  priority,
+}: {
+  priority?: Task["priority"];
+}) {
   switch (priority) {
     case Priority.low:
       return (
@@ -40,5 +44,3 @@ function PriorityIcon({ priority }: { priority?: Task["priority"] }) {
       return null;
   }
 }
-
-export default PriorityIcon;

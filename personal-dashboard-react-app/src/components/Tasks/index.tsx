@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import TaskInput from "./Task Input/index";
 import TaskList from "./Task List";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ControlsContainer,
   Heading3,
@@ -11,75 +11,76 @@ import {
   MainContainer,
   IconButton,
 } from "../shared";
-import { Priority, Status, Task } from "@schemas/data";
+import { TaskDb } from "@schemas/data";
 import { useOrderBy } from "../../hooks/useOrderBy";
 import { TbArrowDown, TbArrowUp } from "react-icons/tb";
+import { getItems } from "../api";
 
-const initialTasks: Task[] = [
-  {
-    name: "Do the laundry",
-    priority: Priority.low,
-    status: Status.notStarted,
-    deadline: "2022-12-22",
-  },
-  {
-    name: "Finish yesterday's workshop",
-    priority: Priority.medium,
-    status: Status.notStarted,
-    deadline: "2022-12-25",
-  },
-  {
-    name: "Go to the supermarket",
-    priority: Priority.medium,
-    status: Status.notStarted,
-    deadline: "2022-11-26",
-  },
-  {
-    name: "Write final essay",
-    priority: Priority.high,
-    status: Status.notStarted,
-    deadline: "2022-12-26",
-  },
-  {
-    name: "Make birthday cake for Susan",
-    priority: Priority.medium,
-    status: Status.notStarted,
-    deadline: "2022-12-23",
-  },
-  {
-    name: "Make birthday cake for Susan",
-    priority: Priority.medium,
-    status: Status.notStarted,
-    deadline: "2022-12-23",
-  },
-  {
-    name: "Make birthday cake for Susan",
-    priority: Priority.medium,
-    status: Status.notStarted,
-    deadline: "2022-12-23",
-  },
-  {
-    name: "Make birthday cake for Susan",
-    priority: Priority.low,
-    status: Status.notStarted,
-    deadline: "2022-12-23",
-  },
-  {
-    name: "Make birthday cake for Susan",
-    priority: Priority.medium,
-    status: Status.notStarted,
-    deadline: "2022-12-23",
-  },
-  {
-    name: "Make birthday cake for Susan",
-    priority: Priority.medium,
-    status: Status.notStarted,
-    deadline: "2022-12-23",
-  },
-];
+// const initialTasks: Task[] = [
+//   {
+//     name: "Do the laundry",
+//     priority: Priority.low,
+//     status: Status.notStarted,
+//     deadline: "2022-12-22",
+//   },
+//   {
+//     name: "Finish yesterday's workshop",
+//     priority: Priority.medium,
+//     status: Status.notStarted,
+//     deadline: "2022-12-25",
+//   },
+//   {
+//     name: "Go to the supermarket",
+//     priority: Priority.medium,
+//     status: Status.notStarted,
+//     deadline: "2022-11-26",
+//   },
+//   {
+//     name: "Write final essay",
+//     priority: Priority.high,
+//     status: Status.notStarted,
+//     deadline: "2022-12-26",
+//   },
+//   {
+//     name: "Make birthday cake for Susan",
+//     priority: Priority.medium,
+//     status: Status.notStarted,
+//     deadline: "2022-12-23",
+//   },
+//   {
+//     name: "Make birthday cake for Susan",
+//     priority: Priority.medium,
+//     status: Status.notStarted,
+//     deadline: "2022-12-23",
+//   },
+//   {
+//     name: "Make birthday cake for Susan",
+//     priority: Priority.medium,
+//     status: Status.notStarted,
+//     deadline: "2022-12-23",
+//   },
+//   {
+//     name: "Make birthday cake for Susan",
+//     priority: Priority.low,
+//     status: Status.notStarted,
+//     deadline: "2022-12-23",
+//   },
+//   {
+//     name: "Make birthday cake for Susan",
+//     priority: Priority.medium,
+//     status: Status.notStarted,
+//     deadline: "2022-12-23",
+//   },
+//   {
+//     name: "Make birthday cake for Susan",
+//     priority: Priority.medium,
+//     status: Status.notStarted,
+//     deadline: "2022-12-23",
+//   },
+// ];
 
 function Tasks() {
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [tasks, setTasks] = useState<TaskDb[]>([]);
 
   const {
     orderBy,
@@ -89,11 +90,19 @@ function Tasks() {
     onDescendingClick,
   } = useOrderBy(tasks, setTasks);
 
+  useEffect(() => {
+    getItems<TaskDb[]>("tasks").then((response) => {
+      if (response.success) {
+        setTasks(response.payload);
+      }
+    });
+  }, []);
+
   return (
     <MainContainer color="#c7c7c7;">
       <TopSection>
         <Heading3>Things to do</Heading3>
-        <TaskInput tasks={tasks} setTasks={setTasks} />
+        <TaskInput setTasks={setTasks} />
       </TopSection>
       <InnerBox color="white">
         <ControlsContainer>

@@ -9,6 +9,7 @@ import GalleryPage from "./components/Gallery/GalleryPage";
 import { ImagePage } from "./components/Gallery/ImagePage";
 import Ideas from "./components/Ideas/index";
 import Goals from "./components/Goals/index";
+import { WidgetPageWrapper } from "./components/shared";
 
 const routes = [
   {
@@ -18,7 +19,11 @@ const routes = [
   },
   {
     path: "tasks",
-    element: <Tasks />,
+    element: (
+      <WidgetPageWrapper>
+        <Tasks />
+      </WidgetPageWrapper>
+    ),
   },
   {
     path: "favourites",
