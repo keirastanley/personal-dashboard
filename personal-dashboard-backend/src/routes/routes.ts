@@ -1,9 +1,14 @@
 import { Router, Request, Response } from "express";
 import { ObjectId, Db, WithId, Document } from "mongodb";
-import { Task, taskSchema } from "../../../schemas/src/data";
+import {
+  favouriteSchema,
+  goalSchema,
+  ideaSchema,
+  taskSchema,
+} from "../../../schemas/src/data";
 import { DbError, DbSuccess } from "../../../schemas/src/api";
 
-const router = Router();
+type Collection = "tasks" | "goals" | "favourites" | "ideas";
 
 const getSuccessResponse = <Payload>(payload: Payload): DbSuccess<Payload> => ({
   success: true,
@@ -15,11 +20,28 @@ const getErrResponse = (error: unknown, defaultMessage: string): DbError => ({
   message: error instanceof Error ? error.message : defaultMessage,
 });
 
-export const getRoutes = (db: Db, collection: string) => {
+const getSchema = (collection: Collection) => {
+  switch (collection) {
+    case "tasks":
+      return taskSchema;
+    case "favourites":
+      return favouriteSchema;
+    case "goals":
+      return goalSchema;
+    case "ideas":
+    default:
+      return ideaSchema;
+  }
+};
+
+export const getRoutes = (db: Db, collection: Collection) => {
+  const router = Router();
+
   router.get("/", async (req: Request, res: Response) => {
     try {
-      const tasks = await db.collection(collection).find().toArray();
-      res.status(200).json(getSuccessResponse(tasks));
+      console.log({ collection });
+      const items = await db.collection(collection).find().toArray();
+      res.status(200).json(getSuccessResponse(items));
     } catch (error) {
       res
         .status(500)
@@ -29,17 +51,18 @@ export const getRoutes = (db: Db, collection: string) => {
 
   router.post("/", async (req: Request, res: Response) => {
     try {
-      const { error, success, data } = taskSchema.safeParse(req.body);
+      const schema = getSchema(collection);
+      const { error, success, data } = schema.safeParse(req.body);
 
       if (error || !success || !data) {
         res.status(400).json(getErrResponse(error, "Invalid data"));
       } else {
         const { insertedId } = await db.collection(collection).insertOne(data);
-        const task = await db
+        const item = await db
           .collection(collection)
           .findOne({ _id: new ObjectId(insertedId) });
 
-        res.status(201).json(getSuccessResponse(task));
+        res.status(201).json(getSuccessResponse(item));
       }
     } catch (error) {
       res.status(400).json(getErrResponse(error, "Invalid data"));
@@ -47,22 +70,22 @@ export const getRoutes = (db: Db, collection: string) => {
   });
 
   router.get("/:id", async (req: Request, res: Response) => {
-    const taskId = req.params.id;
+    const itemId = req.params.id;
 
     try {
-      if (!ObjectId.isValid(taskId)) {
+      if (!ObjectId.isValid(itemId)) {
         res.status(400).json(getErrResponse(null, `Invalid ${collection} ID`));
+      } else {
+        const item = await db
+          .collection(collection)
+          .findOne({ _id: new ObjectId(itemId) });
+
+        if (!item) {
+          res.status(404).json(getErrResponse(null, "Item not found"));
+        } else {
+          res.status(200).json(getSuccessResponse(item));
+        }
       }
-
-      const task = await db
-        .collection(collection)
-        .findOne({ _id: new ObjectId(taskId) });
-
-      if (!task) {
-        res.status(404).json(getErrResponse(null, "Task not found"));
-      }
-
-      res.status(200).json(getSuccessResponse(task));
     } catch (error) {
       res
         .status(500)
@@ -71,30 +94,30 @@ export const getRoutes = (db: Db, collection: string) => {
   });
 
   router.patch("/:id", async (req: Request, res: Response) => {
-    console.log(req.body);
-    const taskId = req.params.id;
+    const itemID = req.params.id;
 
     try {
-      if (!ObjectId.isValid(taskId)) {
+      if (!ObjectId.isValid(itemID)) {
         res.status(400).json(getErrResponse(null, `Invalid ${collection} ID`));
-      }
-
-      const { error, success, data } = taskSchema.partial().safeParse(req.body);
-
-      if (error || !success || !data) {
-        res.status(400).json(getErrResponse(error, "Invalid data"));
       } else {
-        const result = await db
-          .collection(collection)
-          .updateOne({ _id: new ObjectId(taskId) }, { $set: data });
+        const schema = getSchema(collection);
+        const { error, success, data } = schema.partial().safeParse(req.body);
 
-        if (result.matchedCount === 0) {
-          res.status(404).json(getErrResponse(null, "Item not found"));
+        if (error || !success || !data) {
+          res.status(400).json(getErrResponse(error, "Invalid data"));
         } else {
-          const task = await db
+          const result = await db
             .collection(collection)
-            .findOne({ _id: new ObjectId(taskId) });
-          res.status(201).json(getSuccessResponse(task));
+            .updateOne({ _id: new ObjectId(itemID) }, { $set: data });
+
+          if (result.matchedCount === 0) {
+            res.status(404).json(getErrResponse(null, "Item not found"));
+          } else {
+            const item = await db
+              .collection(collection)
+              .findOne({ _id: new ObjectId(itemID) });
+            res.status(201).json(getSuccessResponse(item));
+          }
         }
       }
     } catch (error) {
@@ -103,21 +126,21 @@ export const getRoutes = (db: Db, collection: string) => {
   });
 
   router.delete("/:id", async (req: Request, res: Response) => {
-    const taskId = req.params.id;
+    const itemId = req.params.id;
 
     try {
-      if (!ObjectId.isValid(taskId)) {
+      if (!ObjectId.isValid(itemId)) {
         res.status(400).json(getErrResponse(null, "Invalid item ID"));
       } else {
         const result = await db
           .collection(collection)
-          .deleteOne({ _id: new ObjectId(taskId) });
+          .deleteOne({ _id: new ObjectId(itemId) });
 
         if (result.deletedCount === 0) {
           res.status(404).json(getErrResponse(null, "Item not found"));
+        } else {
+          res.status(200).json(getSuccessResponse("Item deleted successfully"));
         }
-
-        res.status(200).json(getSuccessResponse("Item deleted successfully"));
       }
     } catch (error) {
       res.status(500).json(getErrResponse(error, "Error deleting item"));
