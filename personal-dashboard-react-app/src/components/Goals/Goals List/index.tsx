@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { RiDeleteBinLine } from "react-icons/ri";
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
-import { Goal } from "personal-dashboard-schemas/data";
+import { Goal } from "@schemas/data";
 import styled from "@emotion/styled";
-import { HTMLAttributes } from "react";
+import { Dispatch, HTMLAttributes, SetStateAction } from "react";
 import {
   IconButton,
   LinkStyled,
@@ -13,6 +13,7 @@ import {
   ListItemsContainer,
   StarIcon,
 } from "../../shared";
+import { deleteItem, editItem } from "../../api";
 
 const ProgressBar = styled.div`
   width: 70%;
@@ -58,7 +59,7 @@ function GoalsList({
   setGoals,
 }: {
   goals: Goal[];
-  setGoals: (goals: Goal[]) => void;
+  setGoals: Dispatch<SetStateAction<Goal[]>>;
 }) {
   return (
     <ListItemsContainer>
@@ -67,11 +68,17 @@ function GoalsList({
           <ListItemLeft width="50%">
             <IconButton
               onClick={() => {
-                setGoals([
-                  ...goals.slice(0, i),
-                  { ...goal, starred: true },
-                  ...goals.slice(i + 1),
-                ]);
+                editItem<Goal>("goals", goal._id, {
+                  starred: !goal.starred,
+                }).then((response) => {
+                  if (response.success) {
+                    setGoals((prevGoals) => [
+                      ...prevGoals.slice(0, i),
+                      response.payload,
+                      ...prevGoals.slice(i + 1),
+                    ]);
+                  }
+                });
               }}
             >
               <StarIcon starred={goal.starred} />
@@ -90,28 +97,34 @@ function GoalsList({
             </ProgressBar>
             <IconButton
               onClick={() => {
-                setGoals([
-                  ...goals.slice(0, i),
-                  {
-                    ...goal,
-                    progress: goal.progress + 5 < 100 ? goal.progress + 5 : 100,
-                  },
-                  ...goals.slice(i + 1),
-                ]);
+                editItem<Goal>("goals", goal._id, {
+                  progress: goal.progress + 5 < 100 ? goal.progress + 5 : 100,
+                }).then((response) => {
+                  if (response.success) {
+                    setGoals((prevGoals) => [
+                      ...prevGoals.slice(0, i),
+                      response.payload,
+                      ...prevGoals.slice(i + 1),
+                    ]);
+                  }
+                });
               }}
             >
               <AiOutlinePlusSquare />
             </IconButton>
             <IconButton
               onClick={() => {
-                setGoals([
-                  ...goals.slice(0, i),
-                  {
-                    ...goal,
-                    progress: goal.progress - 5 > 0 ? goal.progress - 5 : 0,
-                  },
-                  ...goals.slice(i + 1),
-                ]);
+                editItem<Goal>("goals", goal._id, {
+                  progress: goal.progress - 5 > 0 ? goal.progress - 5 : 0,
+                }).then((response) => {
+                  if (response.success) {
+                    setGoals((prevGoals) => [
+                      ...prevGoals.slice(0, i),
+                      response.payload,
+                      ...prevGoals.slice(i + 1),
+                    ]);
+                  }
+                });
               }}
             >
               <AiOutlineMinusSquare />
@@ -119,7 +132,13 @@ function GoalsList({
             <IconButton
               onClick={() => {
                 if (window.confirm(`Do you want to delete '${goal.name}'?`)) {
-                  setGoals([...goals.slice(0, i), ...goals.slice(i + 1)]);
+                  deleteItem("goals", goal._id).then((response) => {
+                    if (response.success) {
+                      setGoals((prevGoals) =>
+                        prevGoals.filter(({ _id }) => _id !== goal._id)
+                      );
+                    }
+                  });
                 }
               }}
             >

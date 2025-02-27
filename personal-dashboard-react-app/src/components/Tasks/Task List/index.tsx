@@ -2,28 +2,25 @@
 import { css } from "@emotion/react";
 import PriorityIcon from "../Priority Icon/index";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { DbId, Priority, Status, Task, TaskDb } from "@schemas/data";
+import { Priority, Status, Task } from "@schemas/data";
 import {
+  EditableTextInput,
   IconButton,
   ListItem,
   ListItemLeft,
   ListItemRight,
   ListItemsContainer,
 } from "../../shared";
-import { Dispatch, SetStateAction, useRef, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { deleteItem, editItem } from "../../api";
 
 export default function TaskList({
   tasks,
   setTasks,
 }: {
-  tasks: TaskDb[];
-  setTasks: Dispatch<SetStateAction<TaskDb[]>>;
+  tasks: Task[];
+  setTasks: Dispatch<SetStateAction<Task[]>>;
 }) {
-  const [selectedName, setSelectedName] = useState<DbId>();
-  const [updatedName, setUpdatedName] = useState<string>();
-  const nameInputRef = useRef<HTMLInputElement>(null);
-
   const changePriority = (priority: Task["priority"]) => {
     switch (priority) {
       case Priority.high:
@@ -43,7 +40,7 @@ export default function TaskList({
           <ListItemLeft width="50%">
             <IconButton
               onClick={() => {
-                editItem<Pick<Task, "priority">, TaskDb>("tasks", task._id, {
+                editItem<Task>("tasks", task._id, {
                   priority: changePriority(task.priority),
                 }).then((response) => {
                   if (response.success) {
@@ -58,47 +55,31 @@ export default function TaskList({
             >
               <PriorityIcon priority={task.priority} />
             </IconButton>
-            {selectedName === task._id ? (
-              <input
-                autoFocus
-                ref={nameInputRef}
-                value={updatedName ?? task.name}
-                onChange={(e) => setUpdatedName(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    nameInputRef.current?.blur();
-                  }
-                }}
-                onBlur={() => {
-                  setSelectedName(undefined);
-                  if (updatedName) {
-                    editItem<Pick<Task, "name">, TaskDb>("tasks", task._id, {
-                      name: updatedName,
-                    }).then((response) => {
-                      if (response.success) {
-                        setTasks((prevTasks) => [
-                          ...prevTasks.slice(0, i),
-                          response.payload,
-                          ...prevTasks.slice(i + 1),
-                        ]);
-                      }
-                    });
-                  }
-                }}
-              />
-            ) : (
-              <span
-                css={css`
-                  ${task.status === Status.completed &&
-                  css`
-                    text-decoration: line-through;
-                  `};
-                `}
-                onClick={() => setSelectedName(task._id)}
-              >
-                {task.name}
-              </span>
-            )}
+            <EditableTextInput
+              id={task._id}
+              textElementCss={css`
+                ${task.status === Status.completed &&
+                css`
+                  text-decoration: line-through;
+                `};
+              `}
+              textValue={task.name}
+              onBlur={(updatedName?: string) => {
+                if (updatedName) {
+                  editItem<Task>("tasks", task._id, {
+                    name: updatedName,
+                  }).then((response) => {
+                    if (response.success) {
+                      setTasks((prevTasks) => [
+                        ...prevTasks.slice(0, i),
+                        response.payload,
+                        ...prevTasks.slice(i + 1),
+                      ]);
+                    }
+                  });
+                }
+              }}
+            />
           </ListItemLeft>
           <ListItemRight width="50%">
             <select
@@ -123,7 +104,7 @@ export default function TaskList({
               `}
               onChange={
                 (e) => {
-                  editItem<Pick<Task, "status">, TaskDb>("tasks", task._id, {
+                  editItem<Task>("tasks", task._id, {
                     status: e.target.value as Status,
                   }).then((response) => {
                     if (response.success) {
@@ -154,7 +135,7 @@ export default function TaskList({
               type="date"
               value={task.deadline}
               onChange={(e) => {
-                editItem<Pick<Task, "deadline">, TaskDb>("tasks", task._id, {
+                editItem<Task>("tasks", task._id, {
                   deadline: e.target.value,
                 }).then((response) => {
                   if (response.success) {

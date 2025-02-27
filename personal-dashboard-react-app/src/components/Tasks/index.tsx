@@ -10,77 +10,15 @@ import {
   InnerBox,
   MainContainer,
   IconButton,
+  LinkStyled,
 } from "../shared";
-import { TaskDb } from "@schemas/data";
+import { Task } from "@schemas/data";
 import { useOrderBy } from "../../hooks/useOrderBy";
 import { TbArrowDown, TbArrowUp } from "react-icons/tb";
 import { getItems } from "../api";
 
-// const initialTasks: Task[] = [
-//   {
-//     name: "Do the laundry",
-//     priority: Priority.low,
-//     status: Status.notStarted,
-//     deadline: "2022-12-22",
-//   },
-//   {
-//     name: "Finish yesterday's workshop",
-//     priority: Priority.medium,
-//     status: Status.notStarted,
-//     deadline: "2022-12-25",
-//   },
-//   {
-//     name: "Go to the supermarket",
-//     priority: Priority.medium,
-//     status: Status.notStarted,
-//     deadline: "2022-11-26",
-//   },
-//   {
-//     name: "Write final essay",
-//     priority: Priority.high,
-//     status: Status.notStarted,
-//     deadline: "2022-12-26",
-//   },
-//   {
-//     name: "Make birthday cake for Susan",
-//     priority: Priority.medium,
-//     status: Status.notStarted,
-//     deadline: "2022-12-23",
-//   },
-//   {
-//     name: "Make birthday cake for Susan",
-//     priority: Priority.medium,
-//     status: Status.notStarted,
-//     deadline: "2022-12-23",
-//   },
-//   {
-//     name: "Make birthday cake for Susan",
-//     priority: Priority.medium,
-//     status: Status.notStarted,
-//     deadline: "2022-12-23",
-//   },
-//   {
-//     name: "Make birthday cake for Susan",
-//     priority: Priority.low,
-//     status: Status.notStarted,
-//     deadline: "2022-12-23",
-//   },
-//   {
-//     name: "Make birthday cake for Susan",
-//     priority: Priority.medium,
-//     status: Status.notStarted,
-//     deadline: "2022-12-23",
-//   },
-//   {
-//     name: "Make birthday cake for Susan",
-//     priority: Priority.medium,
-//     status: Status.notStarted,
-//     deadline: "2022-12-23",
-//   },
-// ];
-
 function Tasks() {
-  const [tasks, setTasks] = useState<TaskDb[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   const {
     orderBy,
@@ -91,7 +29,7 @@ function Tasks() {
   } = useOrderBy(tasks, setTasks);
 
   useEffect(() => {
-    getItems<TaskDb[]>("tasks").then((response) => {
+    getItems<Task[]>("tasks").then((response) => {
       if (response.success) {
         setTasks(response.payload);
       }
@@ -133,15 +71,7 @@ function Tasks() {
               />
             </IconButton>
           )}
-          <a
-            href="tasks"
-            css={css`
-              color: black;
-              font-size: 12px;
-            `}
-          >
-            See all
-          </a>
+          <LinkStyled href="tasks">See all</LinkStyled>
         </ControlsContainer>
         <TaskList tasks={tasks} setTasks={setTasks} />
       </InnerBox>

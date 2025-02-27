@@ -1,19 +1,19 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Button, InputSectionRow } from "../../shared";
-import { Goal } from "personal-dashboard-schemas/data";
+import { Goal } from "@schemas/data";
+import { addItem } from "../../api";
 
 function GoalsInput({
-  goals,
   setGoals,
 }: {
-  goals: Goal[];
-  setGoals: (goals: Goal[]) => void;
+  setGoals: Dispatch<SetStateAction<Goal[]>>;
 }) {
   const [newGoal, setNewGoal] = useState<Pick<Goal, "name" | "href">>({
     name: "",
   });
+
   return (
     <InputSectionRow>
       <input
@@ -42,8 +42,16 @@ function GoalsInput({
       />
       <Button
         onClick={() => {
-          setGoals([...goals, { ...newGoal, starred: false, progress: 0 }]);
-          setNewGoal({ name: "" });
+          addItem<Goal>("goals", {
+            ...newGoal,
+            starred: false,
+            progress: 0,
+          }).then((response) => {
+            console.log({ response });
+            if (response.success) {
+              setGoals((prevGoals) => [...prevGoals, response.payload]);
+            }
+          });
         }}
       >
         Add new

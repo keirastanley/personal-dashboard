@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Do the laundry",
+    "priority": "low",
+    "status": "not-started",
+    "deadline": "2022-12-22"
+  },
+  {
+    "name": "Finish yesterday's workshop",
+    "priority": "medium",
+    "status": "not-started",
+    "deadline": "2022-12-25"
+  },
+  {
+    "name": "Go to the supermarket",
+    "priority": "medium",
+    "status": "not-started",
+    "deadline": "2022-11-26"
+  },
+  {
+    "name": "Write final essay",
+    "priority": "high",
+    "status": "in-progress",
+    "deadline": "2022-12-26"
+  },
+  {
+    "name": "Make birthday cake for Susan",
+    "priority": "medium",
+    "status": "not-started",
+    "deadline": "2022-12-23"
+  }
+]

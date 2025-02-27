@@ -1,5 +1,9 @@
-import { z, ZodObject, ZodRawShape, ZodSchema } from "zod";
-import { ObjectId } from "mongodb";
+import { z } from "zod";
+import {
+  ObjectId as ObjectIdMongoDb,
+  WithId as WithIdMongoDb,
+  WithoutId as WithoutIdMongoDb,
+} from "mongodb";
 
 export enum Priority {
   low = "low",
@@ -39,15 +43,14 @@ export const taskSchema = baseItem.extend({
   deadline: z.string().date(),
 });
 
-export type Favourite = z.infer<typeof favouriteSchema>;
-export type Goal = z.infer<typeof goalSchema>;
-export type Idea = z.infer<typeof ideaSchema>;
-export type Task = z.infer<typeof taskSchema>;
+export type ObjectId = ObjectIdMongoDb;
+
+export type WithId<T> = WithIdMongoDb<T>;
+
+export type WithoutId<T> = WithoutIdMongoDb<T>;
+
+export type Favourite = WithIdMongoDb<z.infer<typeof favouriteSchema>>;
+export type Goal = WithIdMongoDb<z.infer<typeof goalSchema>>;
+export type Idea = WithIdMongoDb<z.infer<typeof ideaSchema>>;
+export type Task = WithIdMongoDb<z.infer<typeof taskSchema>>;
 export type Item = Favourite | Goal | Idea | Task;
-
-export type DbId = ObjectId;
-
-export type FavouriteDb = Favourite & { _id: DbId };
-export type GoalDb = Goal & { _id: DbId };
-export type IdeaDb = z.infer<typeof ideaSchema> & { _id: DbId };
-export type TaskDb = z.infer<typeof taskSchema> & { _id: DbId };

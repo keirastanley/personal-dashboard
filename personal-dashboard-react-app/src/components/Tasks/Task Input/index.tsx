@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Dispatch, SetStateAction, useState } from "react";
-import { Priority, Status, Task, TaskDb } from "@schemas/data";
+import { Priority, Status, Task } from "@schemas/data";
 import { Button, InputSectionRow } from "../../shared";
 import { addItem } from "../../api";
 
 export default function TaskInput({
   setTasks,
 }: {
-  setTasks: Dispatch<SetStateAction<TaskDb[]>>;
+  setTasks: Dispatch<SetStateAction<Task[]>>;
 }) {
   const [newTask, setNewTask] = useState<
     Pick<Task, "name" | "priority" | "deadline">
@@ -47,7 +47,7 @@ export default function TaskInput({
       </select>
       <Button
         onClick={() =>
-          addItem<Task, TaskDb>("tasks", {
+          addItem<Task>("tasks", {
             ...newTask,
             status: Status.notStarted,
           }).then((response) => {

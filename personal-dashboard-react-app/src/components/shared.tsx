@@ -1,8 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
+import { css, Interpolation, Theme } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ComponentProps, HTMLAttributes } from "react";
 import { IoStarSharp } from "react-icons/io5";
+import { useEditText } from "../hooks/useEditText";
+import { ObjectId } from "@schemas/data";
 
 export const MainContainer = styled.div`
   width: 100%;
@@ -186,3 +188,45 @@ export const WidgetPageWrapper = styled.div`
   padding: 20px 200px 20px 200px;
   height: calc(100vh - 40px);
 `;
+
+export const Select = styled.select`
+  background: #f1e2e5;
+  border: 1px solid #969696;
+`;
+
+export function EditableTextInput({
+  id,
+  textValue,
+  onBlur,
+  textElementCss,
+}: {
+  id: ObjectId;
+  textValue: string;
+  onBlur: () => void;
+  textElementCss: Interpolation<Theme>;
+}) {
+  const {
+    updatedName,
+    shouldShowInput,
+    inputRef,
+    onInputChange,
+    onInputKeyDown,
+    onInputBlur,
+    onTextElementClick,
+  } = useEditText(id, onBlur);
+
+  return shouldShowInput ? (
+    <input
+      autoFocus
+      ref={inputRef}
+      value={updatedName ?? textValue}
+      onChange={onInputChange}
+      onKeyDown={onInputKeyDown}
+      onBlur={onInputBlur}
+    />
+  ) : (
+    <span css={textElementCss} onClick={onTextElementClick}>
+      {textValue}
+    </span>
+  );
+}

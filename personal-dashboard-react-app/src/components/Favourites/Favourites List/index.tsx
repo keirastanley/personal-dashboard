@@ -10,13 +10,15 @@ import {
   StarIcon,
 } from "../../shared";
 import { Favourite } from "@schemas/data";
+import { Dispatch, SetStateAction } from "react";
+import { editItem } from "../../api";
 
 function FavouritesList({
   favourites,
   setFavourites,
 }: {
   favourites: Favourite[];
-  setFavourites: (favourites: Favourite[]) => void;
+  setFavourites: Dispatch<SetStateAction<Favourite[]>>;
 }) {
   return (
     <ListItemsContainer>
@@ -25,11 +27,21 @@ function FavouritesList({
           <ListItemLeft width="80%">
             <IconButton
               onClick={() => {
-                setFavourites([
-                  ...favourites.slice(0, i),
-                  { ...favourite, starred: true },
-                  ...favourites.slice(i + 1),
-                ]);
+                editItem<Pick<Favourite, "starred">, Favourite>(
+                  "favourites",
+                  favourite._id,
+                  {
+                    starred: !favourite.starred,
+                  }
+                ).then((response) => {
+                  if (response.success) {
+                    setFavourites((prevFavourites) => [
+                      ...prevFavourites.slice(0, i),
+                      response.payload,
+                      ...prevFavourites.slice(i + 1),
+                    ]);
+                  }
+                });
               }}
             >
               <StarIcon starred={favourite.starred} />

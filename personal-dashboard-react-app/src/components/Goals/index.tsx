@@ -2,8 +2,7 @@
 import { css } from "@emotion/react";
 import GoalsList from "./Goals List";
 import GoalsInput from "./Goals Input";
-import { useState } from "react";
-import { initialGoals } from "./goals";
+import { useEffect, useState } from "react";
 import { TbArrowUp, TbArrowDown } from "react-icons/tb";
 import {
   ControlsContainer,
@@ -14,11 +13,20 @@ import {
   MainContainer,
   LinkStyled,
 } from "../shared";
-import { Goal } from "personal-dashboard-schemas/data";
+import { Goal } from "@schemas/data";
 import { useOrderBy } from "../../hooks/useOrderBy";
+import { getItems } from "../api";
 
 function Goals() {
-  const [goals, setGoals] = useState<Goal[]>(initialGoals);
+  const [goals, setGoals] = useState<Goal[]>([]);
+
+  useEffect(() => {
+    getItems<Goal[]>("goals").then((response) => {
+      if (response.success) {
+        setGoals(response.payload);
+      }
+    });
+  }, []);
 
   const {
     orderBy,
@@ -32,7 +40,7 @@ function Goals() {
     <MainContainer color="#d9c9c9">
       <TopSection>
         <Heading3>My Goals</Heading3>
-        <GoalsInput goals={goals} setGoals={setGoals} />
+        <GoalsInput setGoals={setGoals} />
       </TopSection>
       <InnerBox color="#e7d2d7">
         <ControlsContainer color="#e7d2d7">

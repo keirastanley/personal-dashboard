@@ -1,6 +1,6 @@
 import { DbError, DbSuccess } from "@schemas/api";
 import { API_BASE_URL } from "./constants";
-import { DbId } from "@schemas/data";
+import { ObjectId, WithoutId } from "@schemas/data";
 
 export const getItems = <ItemType>(path: string) =>
   fetch(`${API_BASE_URL}/${path}`, {
@@ -10,10 +10,7 @@ export const getItems = <ItemType>(path: string) =>
     .then((data) => data as DbSuccess<ItemType>)
     .catch((error) => error as DbError);
 
-export const addItem = <ItemType, ReturnedItemType>(
-  path: string,
-  body: ItemType
-) =>
+export const addItem = <ItemType>(path: string, body: WithoutId<ItemType>) =>
   fetch(`${API_BASE_URL}/${path}`, {
     method: "POST",
     headers: {
@@ -22,13 +19,13 @@ export const addItem = <ItemType, ReturnedItemType>(
     body: JSON.stringify(body),
   })
     .then((response) => response.json())
-    .then((data) => data as DbSuccess<ReturnedItemType>)
+    .then((data) => data as DbSuccess<ItemType>)
     .catch((error) => error as DbError);
 
-export const editItem = <ItemType, ReturnedItemType>(
+export const editItem = <ItemType>(
   path: string,
-  id: DbId,
-  body: ItemType
+  id: ObjectId,
+  body: Partial<ItemType>
 ) =>
   fetch(`${API_BASE_URL}/${path}/${id}`, {
     method: "PATCH",
@@ -38,10 +35,10 @@ export const editItem = <ItemType, ReturnedItemType>(
     body: JSON.stringify(body),
   })
     .then((response) => response.json())
-    .then((data) => data as DbSuccess<ReturnedItemType>)
+    .then((data) => data as DbSuccess<ItemType>)
     .catch((error) => error as DbError);
 
-export const deleteItem = (path: string, id: DbId) =>
+export const deleteItem = (path: string, id: ObjectId) =>
   fetch(`${API_BASE_URL}/${path}/${id}`, {
     method: "DELETE",
   })

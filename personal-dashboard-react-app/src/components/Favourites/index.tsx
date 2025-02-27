@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import FavouritesList from "./Favourites List";
 import FavouritesInput from "./Favourites Input";
-import { Favourite } from "personal-dashboard-schemas/data";
+import { Favourite } from "@schemas/data";
 import { initialFavourites } from "./favourites";
 import "./index.css";
 import {
@@ -14,6 +14,7 @@ import {
   ControlsContainer,
   LinkStyled,
   IconButton,
+  Select,
 } from "../shared";
 import { useOrderBy } from "../../hooks/useOrderBy";
 import { TbArrowDown, TbArrowUp } from "react-icons/tb";
@@ -34,20 +35,13 @@ function Favourites() {
       <TopSection>
         <Heading3>Favourites</Heading3>
       </TopSection>
-      <InnerBox
-        css={css`
-          select {
-            background: #f1e2e5;
-            border: 1px solid #969696;
-          }
-        `}
-      >
+      <InnerBox>
         <ControlsContainer>
-          <select name="favourites-order" onChange={onOrderByChange}>
+          <Select name="favourites-order" onChange={onOrderByChange}>
             <option>Order by</option>
             <option value="name">Name</option>
             <option value="starred">Starred</option>
-          </select>
+          </Select>
           {orderBy && (
             <IconButton>
               <TbArrowUp
