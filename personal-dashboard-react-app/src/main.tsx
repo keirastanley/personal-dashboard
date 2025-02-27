@@ -27,7 +27,11 @@ const routes = [
   },
   {
     path: "favourites",
-    element: <Favourites />,
+    element: (
+      <WidgetPageWrapper>
+        <Favourites />
+      </WidgetPageWrapper>
+    ),
   },
   {
     path: "gallery",
@@ -48,7 +52,11 @@ const routes = [
   // },
   {
     path: "goals",
-    element: <Goals />,
+    element: (
+      <WidgetPageWrapper>
+        <Goals />
+      </WidgetPageWrapper>
+    ),
   },
   // {
   //   path: "about",
