@@ -10,6 +10,7 @@ import { ImagePage } from "./components/Gallery/ImagePage";
 import Ideas from "./components/Ideas/index";
 import Goals from "./components/Goals/index";
 import { WidgetPageWrapper } from "./components/shared";
+import { PoetryPage } from "./components/Poetry/PoetryPage";
 
 const routes = [
   {
@@ -46,10 +47,10 @@ const routes = [
   //   path: "help",
   //   element: <HelpPage />,
   // },
-  // {
-  //   path: "poetry",
-  //   element: <PoetryPage />,
-  // },
+  {
+    path: "poetry",
+    element: <PoetryPage />,
+  },
   {
     path: "goals",
     element: (

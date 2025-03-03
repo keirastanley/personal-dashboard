@@ -1,8 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import { useState, useEffect } from "react";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { GoBook } from "react-icons/go";
-import { TbRefresh } from "react-icons/tb";
+import { useState, useEffect, useMemo } from "react";
+import {
+  HeartFillIcon,
+  HeartOutlineIcon,
+  BookIcon,
+  RefreshIcon,
+} from "../icons";
 import { css } from "@emotion/react";
 import {
   ControlsContainerColumn,
@@ -11,49 +14,47 @@ import {
   LinkStyled,
   MainContainer,
 } from "../shared";
+import { Poem } from "@schemas/data";
+import { addItem } from "../api";
+import { PoemToRender } from "./PoetryPage";
 
-interface Poem {
-  title: string;
-  author: string;
-  lines: string[];
-}
-
-function Poetry() {
+function Poetry({ savedPoem }: { savedPoem?: PoemToRender }) {
   const [toggle, setToggle] = useState(false);
-  const [added, setAdded] = useState(false);
-  const [poem, setPoem] = useState<Poem>();
+  const [randomPoem, setRandomPoem] = useState<Poem>();
+  const [addedPoem, setAddedPoem] = useState<Poem>();
 
   async function getPoem() {
     const response = await fetch("https://poetrydb.org/random");
     const data = await response.json();
-    setPoem(data[0]);
+    setRandomPoem(data[0]);
   }
 
   useEffect(() => {
     getPoem();
   }, []);
 
-  // async function addNewPoem(poem: Poem) {
-  //   const data = await addItem("poems", poem);
-  // }
+  const poem = useMemo(() => savedPoem ?? randomPoem, [randomPoem]);
 
   function handleHeart() {
     if (
-      poem &&
+      randomPoem &&
       window.confirm(
-        `Add ${poem?.title} by ${poem?.author} to your reading list?`
+        `Add ${randomPoem?.title} by ${randomPoem?.author} to your reading list?`
       )
     ) {
-      setToggle(true);
-      // addNewPoem(poem);
-      setAdded(true);
-    }
-    if (added) {
-      alert(
-        `${poem?.title} by ${poem?.author} is already in your reading list.`
-      );
+      addItem<Poem>("poems", randomPoem).then((response) => {
+        if (response.success) {
+          setAddedPoem(response.payload);
+        }
+      });
     }
   }
+
+  useEffect(() => {
+    if (addedPoem) {
+      window.alert(`${addedPoem.title} has been added to your reading list.`);
+    }
+  }, [addedPoem]);
 
   return (
     <MainContainer
@@ -72,63 +73,93 @@ function Poetry() {
           overflow-y: hidden;
         `}
       >
+        {savedPoem && savedPoem.numberOfMatches && (
+          <div
+            css={css`
+              text-align: center;
+              font-size: 12px;
+              position: absolute;
+              background-color: #f9dfdf;
+              padding: 5px;
+            `}
+          >
+            {`${savedPoem.numberOfMatches} ${
+              savedPoem.numberOfMatches > 1 ? "matches" : "match"
+            } 
+            found`}
+          </div>
+        )}
         <div
           css={css`
             max-height: 100%;
             overflow-y: auto;
-            width: calc(95% - 20px);
+            ${savedPoem
+              ? css`
+                  width: calc(100% - 30px);
+                `
+              : css`
+                  width: calc(95% - 20px);
+                `}
             background-color: var(--background);
             padding: 10px;
           `}
         >
-          {poem && (
+          {(savedPoem || poem) && (
             <>
-              <Heading3>
-                <i>{poem.title}</i> by <i>{poem.author}</i>
-              </Heading3>
-              <ul
+              <div
                 css={css`
-                  list-style: none;
-                  margin: 0;
-                  margin-top: 20px;
-                  padding: 0;
+                  ${savedPoem &&
+                  savedPoem.numberOfMatches &&
+                  css`
+                    margin-top: 15px;
+                  `}
                 `}
               >
-                {poem.lines.map((line, i) => (
-                  <li key={line + i}>{line}</li>
-                ))}
-              </ul>
+                <Heading3>
+                  <i>{savedPoem ? savedPoem.title : poem?.title}</i> by{" "}
+                  <i>{savedPoem ? savedPoem.author : poem?.author}</i>
+                </Heading3>
+                <div
+                  css={css`
+                    margin-top: 10px;
+                  `}
+                >
+                  {savedPoem ? savedPoem.lines : poem?.lines}
+                </div>
+              </div>
             </>
           )}
         </div>
-        <div
-          css={css`
-            width: 5%;
-          `}
-        >
-          <ControlsContainerColumn>
-            <IconButton onClick={handleHeart} fontSize="20px">
-              {toggle ? (
-                <AiFillHeart color="var(--filled-heart)" />
-              ) : (
-                <AiOutlineHeart color="black" />
-              )}
-            </IconButton>
-            <IconButton>
-              <LinkStyled href="poetry" fontSize="20px">
-                <GoBook />
-              </LinkStyled>
-            </IconButton>
-            <IconButton fontSize="20px">
-              <TbRefresh
-                onClick={() => {
-                  setToggle(false);
-                  getPoem();
-                }}
-              />
-            </IconButton>
-          </ControlsContainerColumn>
-        </div>
+        {!savedPoem && (
+          <div
+            css={css`
+              width: 5%;
+            `}
+          >
+            <ControlsContainerColumn>
+              <IconButton onClick={handleHeart} fontSize="20px">
+                {toggle ? (
+                  <HeartFillIcon color="var(--filled-heart)" />
+                ) : (
+                  <HeartOutlineIcon color="black" />
+                )}
+              </IconButton>
+              <IconButton>
+                <LinkStyled href="poetry" fontSize="20px">
+                  <BookIcon />
+                </LinkStyled>
+              </IconButton>
+              <IconButton fontSize="20px">
+                <RefreshIcon
+                  onClick={() => {
+                    setToggle(false);
+                    getPoem();
+                  }}
+                />
+              </IconButton>
+            </ControlsContainerColumn>
+          </div>
+        )}
       </div>
     </MainContainer>
   );
