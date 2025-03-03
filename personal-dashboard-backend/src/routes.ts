@@ -1,14 +1,13 @@
 import { Router, Request, Response } from "express";
-import { ObjectId, Db, WithId, Document } from "mongodb";
+import { ObjectId, Db } from "mongodb";
 import {
   favouriteSchema,
   goalSchema,
   ideaSchema,
   taskSchema,
-} from "../../../schemas/src/data";
-import { DbError, DbSuccess } from "../../../schemas/src/api";
-
-type Collection = "tasks" | "goals" | "favourites" | "ideas";
+  poemSchema,
+} from "../../schemas/src/data";
+import { Collection, DbError, DbSuccess } from "../../schemas/src/api";
 
 const getSuccessResponse = <Payload>(payload: Payload): DbSuccess<Payload> => ({
   success: true,
@@ -28,6 +27,8 @@ const getSchema = (collection: Collection) => {
       return favouriteSchema;
     case "goals":
       return goalSchema;
+    case "poems":
+      return poemSchema;
     case "ideas":
     default:
       return ideaSchema;

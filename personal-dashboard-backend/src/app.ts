@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { MongoClient } from "mongodb";
-import { getRoutes } from "./routes/routes.js";
+import { getRoutes } from "./routes.js";
 
 dotenv.config();
 
@@ -20,6 +20,7 @@ MongoClient.connect(process.env.MONGO_URI!)
     app.use("/api/tasks", getRoutes(db, "tasks"));
     app.use("/api/favourites", getRoutes(db, "favourites"));
     app.use("/api/ideas", getRoutes(db, "ideas"));
+    app.use("/api/poems", getRoutes(db, "poems"));
 
     app.listen(port, () => {
       console.log(`Listening on port ${port}`);
