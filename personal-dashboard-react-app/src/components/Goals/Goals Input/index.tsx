@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Dispatch, SetStateAction, useState } from "react";
-import { Button, InputSectionRow } from "../../shared";
+import { Button, Input, InputSectionRow } from "../../shared";
 import { Goal } from "@schemas/data";
 import { addItem } from "../../api";
 
@@ -16,7 +16,7 @@ function GoalsInput({
 
   return (
     <InputSectionRow>
-      <input
+      <Input
         value={newGoal.name}
         name="goal"
         type="text"
@@ -28,7 +28,7 @@ function GoalsInput({
           width: 180px;
         `}
       />
-      <input
+      <Input
         value={newGoal.href ?? undefined}
         name="href"
         type="text"
@@ -47,11 +47,11 @@ function GoalsInput({
             starred: false,
             progress: 0,
           }).then((response) => {
-            console.log({ response });
             if (response.success) {
               setGoals((prevGoals) => [...prevGoals, response.payload]);
             }
           });
+          setNewGoal({ name: "", href: undefined });
         }}
       >
         Add new

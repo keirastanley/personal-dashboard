@@ -1,10 +1,18 @@
 /** @jsxImportSource @emotion/react */
-import { css, Interpolation, Theme } from "@emotion/react";
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { ComponentProps, HTMLAttributes } from "react";
+import {
+  ChangeEvent,
+  ComponentProps,
+  HTMLAttributes,
+  PropsWithChildren,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { IoStarSharp } from "react-icons/io5";
-import { useEditText } from "../hooks/useEditText";
-import { ObjectId } from "@schemas/data";
+import { FiEdit2 } from "react-icons/fi";
+import { MdDone } from "react-icons/md";
 
 export const MainContainer = styled.div`
   width: 100%;
@@ -143,6 +151,7 @@ export const ListItemRight = styled.div`
 export const InputSectionColumn = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   padding: 10px;
 `;
@@ -151,10 +160,6 @@ export const InputSectionRow = styled(InputSectionColumn)`
   flex-direction: row;
   align-items: center;
   padding: 0px;
-`;
-
-export const InputColumn = styled.input`
-  width: 100%;
 `;
 
 export const Button = styled.button`
@@ -194,39 +199,216 @@ export const Select = styled.select`
   border: 1px solid #969696;
 `;
 
-export function EditableTextInput({
-  id,
+export const Input = styled.input`
+  width: 180px;
+`;
+
+interface EditableTextInputProps extends PropsWithChildren {
+  // id: ObjectId;
+  textValue: string;
+  onBlur: (updatedName?: string) => void;
+  setIsEditingSiblingInput?: (isEditingSiblingInput: boolean) => void;
+  crossThroughText?: boolean;
+}
+
+export const EditableTextInput = ({
   textValue,
   onBlur,
-  textElementCss,
-}: {
-  id: ObjectId;
-  textValue: string;
-  onBlur: () => void;
-  textElementCss: Interpolation<Theme>;
-}) {
-  const {
-    updatedName,
-    shouldShowInput,
-    inputRef,
-    onInputChange,
-    onInputKeyDown,
-    onInputBlur,
-    onTextElementClick,
-  } = useEditText(id, onBlur);
+  setIsEditingSiblingInput,
+  crossThroughText,
+}: EditableTextInputProps) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [updatedName, setUpdatedName] = useState<string>();
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  return shouldShowInput ? (
-    <input
-      autoFocus
-      ref={inputRef}
-      value={updatedName ?? textValue}
-      onChange={onInputChange}
-      onKeyDown={onInputKeyDown}
-      onBlur={onInputBlur}
-    />
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setUpdatedName(e.target.value);
+
+  const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      inputRef.current?.blur();
+    }
+  };
+
+  const onInputBlur = () => {
+    if (updatedName) {
+      onBlur(updatedName);
+    }
+    setIsEditing(false);
+  };
+
+  return isEditing ? (
+    <div
+      css={css`
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      `}
+    >
+      <input
+        autoFocus
+        ref={inputRef}
+        value={updatedName ?? textValue}
+        onChange={onInputChange}
+        onKeyDown={onInputKeyDown}
+        onBlur={onInputBlur}
+      />
+      <IconButton
+        onClick={() => {
+          setIsEditing(false);
+          if (setIsEditingSiblingInput) {
+            setIsEditingSiblingInput(false);
+          }
+        }}
+      >
+        <MdDone />
+      </IconButton>
+    </div>
   ) : (
-    <span css={textElementCss} onClick={onTextElementClick}>
-      {textValue}
-    </span>
+    <div
+      css={css`
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      `}
+    >
+      <span
+        css={css`
+          ${crossThroughText &&
+          css`
+            text-decoration: line-through;
+          `};
+        `}
+      >
+        {textValue}
+      </span>
+      <IconButton
+        onClick={() => {
+          setIsEditing(true);
+          if (setIsEditingSiblingInput) {
+            setIsEditingSiblingInput(true);
+          }
+        }}
+      >
+        <FiEdit2 />
+      </IconButton>
+    </div>
   );
-}
+};
+
+export const EditableLinkInput = ({
+  displayText,
+  href,
+  onDisplayTextBlur,
+  onHrefBlur,
+  crossThroughText,
+}: {
+  displayText: string;
+  href?: string;
+  onDisplayTextBlur: (updatedDisplayText?: string) => void;
+  onHrefBlur: (updatedHref?: string) => void;
+  crossThroughText?: boolean;
+}) => {
+  const [isEditingDisplayText, setIsEditingDisplayText] = useState(false);
+  const [updatedDisplayText, setUpdatedDisplayText] = useState<string>();
+  const displayTextInputRef = useRef<HTMLInputElement>(null);
+  const [isEditingHref, setIsEditingHref] = useState(false);
+  const [updatedHref, setUpdatedHref] = useState<string>();
+  const hrefInputRef = useRef<HTMLInputElement>(null);
+
+  return (
+    <div
+      css={css`
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      `}
+    >
+      {isEditingDisplayText && (
+        <input
+          autoFocus
+          ref={displayTextInputRef}
+          value={updatedDisplayText ?? displayText}
+          onChange={(e) => setUpdatedDisplayText(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              hrefInputRef.current?.focus();
+            }
+          }}
+        />
+      )}
+      {isEditingHref ? (
+        <div
+          css={css`
+            display: flex;
+            align-items: center;
+            gap: 5px;
+          `}
+        >
+          <input
+            ref={hrefInputRef}
+            placeholder="(Optional) Enter a link"
+            value={updatedHref ?? href}
+            onChange={(e) => setUpdatedHref(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                hrefInputRef.current?.blur();
+              }
+            }}
+            onBlur={() => {
+              if (updatedDisplayText) {
+                onDisplayTextBlur(updatedDisplayText);
+              }
+              if (updatedHref) {
+                onHrefBlur(updatedHref);
+              }
+              setIsEditingHref(false);
+              setIsEditingDisplayText(false);
+            }}
+          />
+          <IconButton
+            onClick={() => {
+              setIsEditingHref(false);
+              setIsEditingDisplayText(false);
+            }}
+          >
+            <MdDone />
+          </IconButton>
+        </div>
+      ) : (
+        <div
+          css={css`
+            display: flex;
+            align-items: center;
+            gap: 5px;
+          `}
+        >
+          <a href={href}>
+            <span
+              css={css`
+                ${crossThroughText &&
+                css`
+                  text-decoration: line-through;
+                `};
+              `}
+            >
+              {displayText}
+            </span>
+          </a>
+          <IconButton
+            onClick={() => {
+              setIsEditingHref(true);
+              setIsEditingDisplayText(true);
+            }}
+          >
+            <FiEdit2 />
+          </IconButton>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const HighlightedText = styled.span`
+  background-color: #f6f699;
+`;

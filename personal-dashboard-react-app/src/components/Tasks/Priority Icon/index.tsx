@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { FaCircle, FaExclamation } from "react-icons/fa";
+import { CircleIcon, ExclamationIcon } from "../../icons";
 import { Priority, Task } from "../../../../../schemas/src/data";
 
 export default function PriorityIcon({
@@ -11,7 +11,7 @@ export default function PriorityIcon({
   switch (priority) {
     case Priority.low:
       return (
-        <FaCircle
+        <CircleIcon
           css={css`
             font-size: 10px;
             color: white;
@@ -22,7 +22,7 @@ export default function PriorityIcon({
       );
     case Priority.medium:
       return (
-        <FaCircle
+        <CircleIcon
           css={css`
             font-size: 10px;
             color: #ffb265;
@@ -31,7 +31,7 @@ export default function PriorityIcon({
       );
     case Priority.high:
       return (
-        <FaExclamation
+        <ExclamationIcon
           css={css`
             font-size: 10px;
             color: red;

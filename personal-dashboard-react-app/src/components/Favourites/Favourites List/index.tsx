@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { RiDeleteBinLine } from "react-icons/ri";
+import { DeleteIcon } from "../../icons";
 import {
   IconButton,
   LinkStyled,
@@ -11,7 +11,7 @@ import {
 } from "../../shared";
 import { Favourite } from "@schemas/data";
 import { Dispatch, SetStateAction } from "react";
-import { editItem } from "../../api";
+import { deleteItem, editItem } from "../../api";
 
 function FavouritesList({
   favourites,
@@ -27,13 +27,9 @@ function FavouritesList({
           <ListItemLeft width="80%">
             <IconButton
               onClick={() => {
-                editItem<Pick<Favourite, "starred">, Favourite>(
-                  "favourites",
-                  favourite._id,
-                  {
-                    starred: !favourite.starred,
-                  }
-                ).then((response) => {
+                editItem<Favourite>("favourites", favourite._id, {
+                  starred: !favourite.starred,
+                }).then((response) => {
                   if (response.success) {
                     setFavourites((prevFavourites) => [
                       ...prevFavourites.slice(0, i),
@@ -56,14 +52,19 @@ function FavouritesList({
                 if (
                   window.confirm(`Do you want to delete '${favourite.name}'?`)
                 ) {
-                  setFavourites([
-                    ...favourites.slice(0, i),
-                    ...favourites.slice(i + 1),
-                  ]);
+                  deleteItem("favourites", favourite._id).then((response) => {
+                    if (response.success) {
+                      setFavourites((prevFavourites) =>
+                        prevFavourites.filter(
+                          ({ _id }) => _id !== favourite._id
+                        )
+                      );
+                    }
+                  });
                 }
               }}
             >
-              <RiDeleteBinLine />
+              <DeleteIcon />
             </IconButton>
           </ListItemRight>
         </ListItem>

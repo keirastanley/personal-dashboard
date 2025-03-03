@@ -3,12 +3,21 @@ import { css } from "@emotion/react";
 import { useMemo } from "react";
 import { useParams } from "react-router";
 import { Heading1, Heading2 } from "../shared";
-import images from "./gallery-images";
+import images from "./gallery-images.json";
 import parse from "html-react-parser";
 
 export const ImagePage = () => {
   const { id } = useParams();
-  const image = useMemo(() => images.find((img) => img.id === id), [id]);
+  const image = useMemo(
+    () =>
+      images
+        .map((image) => ({
+          ...image,
+          id: image.name.toLowerCase().replace(",", "").split(" ").join("-"),
+        }))
+        .find((img) => img.id === id),
+    [id]
+  );
 
   return (
     <div
@@ -21,12 +30,12 @@ export const ImagePage = () => {
       `}
     >
       <Heading1>
-        {image?.title}, {image?.year} by {image?.artist}
+        {image?.name}, {image?.year} by {image?.artist}
       </Heading1>
-      {image?.titleOrgLang && (
+      {image?.nameOrgLang && (
         <Heading2>
           <i>
-            {image.titleOrgLang.lang}: {image.titleOrgLang.title}
+            {image.nameOrgLang.lang}: {image.nameOrgLang.name}
           </i>
         </Heading2>
       )}

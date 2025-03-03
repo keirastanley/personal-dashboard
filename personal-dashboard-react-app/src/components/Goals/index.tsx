@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import GoalsList from "./Goals List";
 import GoalsInput from "./Goals Input";
 import { useEffect, useState } from "react";
-import { TbArrowUp, TbArrowDown } from "react-icons/tb";
+import { ArrowUp, ArrowDown } from "../icons";
 import {
   ControlsContainer,
   Heading3,
@@ -61,7 +61,7 @@ function Goals() {
             </select>
             {orderBy && (
               <IconButton>
-                <TbArrowUp
+                <ArrowUp
                   onClick={onAscendingClick}
                   css={css`
                     color: ${isAscending ? "black" : "grey"};
@@ -71,7 +71,7 @@ function Goals() {
             )}
             {orderBy && (
               <IconButton>
-                <TbArrowDown
+                <ArrowDown
                   onClick={onDescendingClick}
                   css={css`
                     color: ${isAscending ? "grey" : "black"};

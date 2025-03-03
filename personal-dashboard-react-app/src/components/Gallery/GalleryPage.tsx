@@ -1,13 +1,27 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import images from "./gallery-images";
+import images from "./gallery-images.json";
 import { IconButton } from "../shared";
 import { GalleryCaption } from "./GalleryWidget";
-import { IoOpenOutline } from "react-icons/io5";
+import { OpenIcon } from "../icons";
 import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { GalleryImage } from "@schemas/data";
 
 export default function GalleryPage() {
+  const [galleryImages, setGalleryImages] = useState<
+    (GalleryImage & { id: string })[]
+  >([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setGalleryImages(
+      images.map((image) => ({
+        ...image,
+        id: image.name.toLowerCase().replace(",", "").split(" ").join("-"),
+      }))
+    );
+  }, []);
 
   return (
     <div
@@ -20,8 +34,8 @@ export default function GalleryPage() {
         gap: 10px;
       `}
     >
-      {images.length > 0
-        ? images.map((image) => (
+      {galleryImages.length > 0
+        ? galleryImages.map((image) => (
             <div
               css={css`
                 display: flex;
@@ -50,7 +64,7 @@ export default function GalleryPage() {
               >
                 <GalleryCaption image={image} />
                 <IconButton onClick={() => navigate(`/gallery/${image.id}`)}>
-                  <IoOpenOutline />
+                  <OpenIcon />
                 </IconButton>
               </div>
             </div>

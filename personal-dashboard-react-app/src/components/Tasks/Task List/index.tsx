@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import PriorityIcon from "../Priority Icon/index";
-import { RiDeleteBinLine } from "react-icons/ri";
+import { DeleteIcon } from "../../icons";
 import { Priority, Status, Task } from "@schemas/data";
 import {
   EditableTextInput,
@@ -56,13 +56,7 @@ export default function TaskList({
               <PriorityIcon priority={task.priority} />
             </IconButton>
             <EditableTextInput
-              id={task._id}
-              textElementCss={css`
-                ${task.status === Status.completed &&
-                css`
-                  text-decoration: line-through;
-                `};
-              `}
+              crossThroughText={task.status === Status.completed}
               textValue={task.name}
               onBlur={(updatedName?: string) => {
                 if (updatedName) {
@@ -149,7 +143,7 @@ export default function TaskList({
               }}
             />
             <IconButton>
-              <RiDeleteBinLine
+              <DeleteIcon
                 css={css`
                   font-size: 18px;
                   align-self: center;

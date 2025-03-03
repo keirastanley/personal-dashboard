@@ -1,8 +1,8 @@
-import { DbError, DbSuccess } from "@schemas/api";
+import { Collection, DbError, DbSuccess } from "@schemas/api";
 import { API_BASE_URL } from "./constants";
 import { ObjectId, WithoutId } from "@schemas/data";
 
-export const getItems = <ItemType>(path: string) =>
+export const getItems = <ItemType>(path: Collection) =>
   fetch(`${API_BASE_URL}/${path}`, {
     method: "GET",
   })
@@ -10,7 +10,10 @@ export const getItems = <ItemType>(path: string) =>
     .then((data) => data as DbSuccess<ItemType>)
     .catch((error) => error as DbError);
 
-export const addItem = <ItemType>(path: string, body: WithoutId<ItemType>) =>
+export const addItem = <ItemType>(
+  path: Collection,
+  body: WithoutId<ItemType>
+) =>
   fetch(`${API_BASE_URL}/${path}`, {
     method: "POST",
     headers: {
@@ -23,7 +26,7 @@ export const addItem = <ItemType>(path: string, body: WithoutId<ItemType>) =>
     .catch((error) => error as DbError);
 
 export const editItem = <ItemType>(
-  path: string,
+  path: Collection,
   id: ObjectId,
   body: Partial<ItemType>
 ) =>
@@ -38,7 +41,7 @@ export const editItem = <ItemType>(
     .then((data) => data as DbSuccess<ItemType>)
     .catch((error) => error as DbError);
 
-export const deleteItem = (path: string, id: ObjectId) =>
+export const deleteItem = (path: Collection, id: ObjectId) =>
   fetch(`${API_BASE_URL}/${path}/${id}`, {
     method: "DELETE",
   })

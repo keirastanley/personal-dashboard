@@ -1,13 +1,12 @@
-import { useState } from "react";
-import { Button, InputColumn, InputSectionColumn } from "../../shared";
-import { Favourite } from "personal-dashboard-schemas/data";
+import { Dispatch, SetStateAction, useState } from "react";
+import { Button, Input, InputSectionColumn } from "../../shared";
+import { Favourite } from "@schemas/data";
+import { addItem } from "../../api";
 
 function FavouritesInput({
-  favourites,
   setFavourites,
 }: {
-  favourites: Favourite[];
-  setFavourites: (favourites: Favourite[]) => void;
+  setFavourites: Dispatch<SetStateAction<Favourite[]>>;
 }) {
   const [newFavourite, setNewFavourite] = useState<
     Pick<Favourite, "name" | "href">
@@ -18,7 +17,7 @@ function FavouritesInput({
 
   return (
     <InputSectionColumn>
-      <InputColumn
+      <Input
         type="text"
         placeholder="Enter a link..."
         name="favourites-link"
@@ -29,9 +28,9 @@ function FavouritesInput({
           });
         }}
       />
-      <InputColumn
+      <Input
         type="text"
-        placeholder="Display as.."
+        placeholder="Display as..."
         name="favourites-display"
         onChange={(e) => {
           setNewFavourite({
@@ -42,8 +41,14 @@ function FavouritesInput({
       />
       <Button
         onClick={() => {
-          setFavourites([...favourites, { ...newFavourite, starred: false }]);
-          setNewFavourite({ name: "", href: "" });
+          addItem<Favourite>("favourites", {
+            ...newFavourite,
+            starred: false,
+          }).then((response) => {
+            if (response.success) {
+              setFavourites((prevTasks) => [...prevTasks, response.payload]);
+            }
+          });
         }}
       >
         Add new

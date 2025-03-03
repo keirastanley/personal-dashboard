@@ -1,8 +1,7 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import { Dispatch, SetStateAction, useState } from "react";
 import { Priority, Status, Task } from "@schemas/data";
-import { Button, InputSectionRow } from "../../shared";
+import { Button, Input, InputSectionRow } from "../../shared";
 import { addItem } from "../../api";
 
 export default function TaskInput({
@@ -15,13 +14,8 @@ export default function TaskInput({
   >({ name: "", priority: Priority.low, deadline: "" });
   return (
     <InputSectionRow>
-      <input
+      <Input
         onChange={(e) => setNewTask({ ...newTask, name: e.target.value })}
-        css={css`
-          width: 250px;
-          max-width: 300px;
-          height: 17px;
-        `}
         type="text"
         name="task"
         placeholder="Enter a task..."
@@ -46,7 +40,7 @@ export default function TaskInput({
         <option value={Priority.high}>High</option>
       </select>
       <Button
-        onClick={() =>
+        onClick={() => {
           addItem<Task>("tasks", {
             ...newTask,
             status: Status.notStarted,
@@ -54,8 +48,9 @@ export default function TaskInput({
             if (response.success) {
               setTasks((prevTasks) => [...prevTasks, response.payload]);
             }
-          })
-        }
+          });
+          setNewTask({ name: "", priority: Priority.low, deadline: "" });
+        }}
       >
         Add new
       </Button>

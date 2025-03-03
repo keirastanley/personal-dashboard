@@ -1,8 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useEffect, useState } from "react";
-import { TbRefresh } from "react-icons/tb";
-import { RiDeleteBinLine } from "react-icons/ri";
+import { useEffect, useMemo, useState } from "react";
+import { RefreshIcon, DeleteIcon } from "../icons";
 import IdeasInput from "./Ideas Input";
 import {
   Heading3,
@@ -12,37 +11,28 @@ import {
   MainContainer,
   TopSection,
 } from "../shared";
-import { Idea } from "personal-dashboard-schemas/data";
-
-const initialIdeas: Idea[] = [
-  { name: "Play a game of chess", href: "www.lichess.com" },
-  { name: "Practise on Codewars", href: "www.codewars.com" },
-  { name: "Read a book", href: undefined },
-  { name: "Clean the kitchen", href: undefined },
-  { name: "Make a dessert", href: undefined },
-  { name: "Paint nails", href: undefined },
-  { name: "Play the piano", href: undefined },
-  { name: "Tidy your room", href: undefined },
-  { name: "Do laundry", href: undefined },
-  {
-    name: "Yoga or stretching",
-    href: "https://www.youtube.com/c/yogawithadriene",
-  },
-];
+import { Idea } from "@schemas/data";
+import { getItems } from "../api";
 
 function Ideas() {
-  const [ideas, setIdeas] = useState<Idea[]>(initialIdeas);
+  const [ideas, setIdeas] = useState<Idea[]>([]);
   const [idea, setIdea] = useState<Idea>();
 
-  const getRandomNumber = () => Math.floor(Math.random() * ideas.length);
+  const randomNumber = useMemo(
+    () => Math.floor(Math.random() * ideas.length),
+    [ideas]
+  );
 
   function handleRefresh() {
-    const randomNumber = getRandomNumber();
     setIdea(ideas[randomNumber]);
   }
 
   useEffect(() => {
-    const randomNumber = getRandomNumber();
+    getItems<Idea[]>("ideas").then((response) => {
+      if (response.success) {
+        setIdeas(response.payload);
+      }
+    });
     setIdea(ideas[randomNumber]);
   }, []);
 
@@ -53,9 +43,11 @@ function Ideas() {
         <LinkStyled href="www.temporarylink.com">See all</LinkStyled>
       </TopSection>
       <InnerBox>
-        <IconButton onClick={handleRefresh}>
-          <TbRefresh />
-        </IconButton>
+        {idea && (
+          <IconButton onClick={handleRefresh}>
+            <RefreshIcon />
+          </IconButton>
+        )}
         <div
           css={css`
             display: flex;
@@ -66,18 +58,30 @@ function Ideas() {
             gap: 10px;
           `}
         >
-          {idea?.href ? (
-            <LinkStyled href={idea.href} fontSize="16px">
-              {idea.name}
-            </LinkStyled>
+          {idea ? (
+            idea?.href ? (
+              <LinkStyled href={idea.href} fontSize="16px">
+                {idea.name}
+              </LinkStyled>
+            ) : (
+              idea?.name
+            )
           ) : (
-            idea?.name
+            <i
+              css={css`
+                font-size: 12px;
+              `}
+            >
+              Add some ideas to start generating random suggestions
+            </i>
           )}
-          <IconButton>
-            <RiDeleteBinLine />
-          </IconButton>
+          {idea && (
+            <IconButton>
+              <DeleteIcon />
+            </IconButton>
+          )}
         </div>
-        <IdeasInput ideas={ideas} setIdeas={setIdeas} />
+        <IdeasInput setIdeas={setIdeas} />
       </InnerBox>
     </MainContainer>
   );

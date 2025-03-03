@@ -1,10 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FavouritesList from "./Favourites List";
 import FavouritesInput from "./Favourites Input";
 import { Favourite } from "@schemas/data";
-import { initialFavourites } from "./favourites";
 import "./index.css";
 import {
   TopSection,
@@ -17,10 +16,19 @@ import {
   Select,
 } from "../shared";
 import { useOrderBy } from "../../hooks/useOrderBy";
-import { TbArrowDown, TbArrowUp } from "react-icons/tb";
+import { ArrowDown, ArrowUp } from "../icons";
+import { getItems } from "../api";
 
 function Favourites() {
-  const [favourites, setFavourites] = useState<Favourite[]>(initialFavourites);
+  const [favourites, setFavourites] = useState<Favourite[]>([]);
+
+  useEffect(() => {
+    getItems<Favourite[]>("favourites").then((response) => {
+      if (response.success) {
+        setFavourites(response.payload);
+      }
+    });
+  }, []);
 
   const {
     orderBy,
@@ -43,9 +51,8 @@ function Favourites() {
             <option value="starred">Starred</option>
           </Select>
           {orderBy && (
-            <IconButton>
-              <TbArrowUp
-                onClick={onAscendingClick}
+            <IconButton onClick={onAscendingClick}>
+              <ArrowUp
                 css={css`
                   color: ${isAscending ? "black" : "grey"};
                 `}
@@ -53,9 +60,8 @@ function Favourites() {
             </IconButton>
           )}
           {orderBy && (
-            <IconButton>
-              <TbArrowDown
-                onClick={onDescendingClick}
+            <IconButton onClick={onDescendingClick}>
+              <ArrowDown
                 css={css`
                   color: ${isAscending ? "grey" : "black"};
                 `}
@@ -65,10 +71,7 @@ function Favourites() {
           <LinkStyled href="favourites">See all</LinkStyled>
         </ControlsContainer>
         <FavouritesList favourites={favourites} setFavourites={setFavourites} />
-        <FavouritesInput
-          favourites={favourites}
-          setFavourites={setFavourites}
-        />
+        <FavouritesInput setFavourites={setFavourites} />
       </InnerBox>
     </MainContainer>
   );

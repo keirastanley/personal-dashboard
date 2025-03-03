@@ -1,12 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import { RiDeleteBinLine } from "react-icons/ri";
-import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
+import { DeleteIcon, PlusIcon, MinusIcon } from "../../icons";
 import { Goal } from "@schemas/data";
 import styled from "@emotion/styled";
 import { Dispatch, HTMLAttributes, SetStateAction } from "react";
 import {
+  EditableLinkInput,
   IconButton,
-  LinkStyled,
   ListItem,
   ListItemLeft,
   ListItemRight,
@@ -83,13 +82,40 @@ function GoalsList({
             >
               <StarIcon starred={goal.starred} />
             </IconButton>
-            {goal.href ? (
-              <LinkStyled href={goal.href} fontSize="16px">
-                {goal.name}
-              </LinkStyled>
-            ) : (
-              goal.name
-            )}
+            <EditableLinkInput
+              displayText={goal.name}
+              onDisplayTextBlur={(updatedName?: string) => {
+                if (updatedName) {
+                  editItem<Goal>("goals", goal._id, {
+                    name: updatedName,
+                  }).then((response) => {
+                    if (response.success) {
+                      setGoals((prevGoals) => [
+                        ...prevGoals.slice(0, i),
+                        response.payload,
+                        ...prevGoals.slice(i + 1),
+                      ]);
+                    }
+                  });
+                }
+              }}
+              href={goal.href}
+              onHrefBlur={(updatedHref?: string) => {
+                if (updatedHref) {
+                  editItem<Goal>("goals", goal._id, {
+                    href: updatedHref,
+                  }).then((response) => {
+                    if (response.success) {
+                      setGoals((prevGoals) => [
+                        ...prevGoals.slice(0, i),
+                        response.payload,
+                        ...prevGoals.slice(i + 1),
+                      ]);
+                    }
+                  });
+                }
+              }}
+            />
           </ListItemLeft>
           <ListItemRight width="80%">
             <ProgressBar>
@@ -110,7 +136,7 @@ function GoalsList({
                 });
               }}
             >
-              <AiOutlinePlusSquare />
+              <PlusIcon />
             </IconButton>
             <IconButton
               onClick={() => {
@@ -127,7 +153,7 @@ function GoalsList({
                 });
               }}
             >
-              <AiOutlineMinusSquare />
+              <MinusIcon />
             </IconButton>
             <IconButton
               onClick={() => {
@@ -142,7 +168,7 @@ function GoalsList({
                 }
               }}
             >
-              <RiDeleteBinLine />
+              <DeleteIcon />
             </IconButton>
           </ListItemRight>
         </ListItem>

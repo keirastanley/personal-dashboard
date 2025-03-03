@@ -1,20 +1,21 @@
 /** @jsxImportSource @emotion/react */
-import { useState } from "react";
-import { Idea } from "personal-dashboard-schemas/data";
-import { Button, InputColumn, InputSectionColumn } from "../../shared";
+import { Dispatch, SetStateAction, useState } from "react";
+import { Idea } from "@schemas/data";
+import { Button, Input, InputSectionColumn } from "../../shared";
+import { addItem } from "../../api";
 
 export default function IdeasInput({
-  ideas,
   setIdeas,
 }: {
-  ideas: Idea[];
-  setIdeas: (ideas: Idea[]) => void;
+  setIdeas: Dispatch<SetStateAction<Idea[]>>;
 }) {
-  const [newIdea, setNewIdea] = useState<Idea>({ name: "" });
+  const [newIdea, setNewIdea] = useState<Pick<Idea, "name" | "href">>({
+    name: "",
+  });
 
   return (
     <InputSectionColumn>
-      <InputColumn
+      <Input
         value={newIdea.name}
         name="idea-text-input"
         placeholder="Enter an idea..."
@@ -22,7 +23,7 @@ export default function IdeasInput({
           setNewIdea({ ...newIdea, name: e.target.value as string });
         }}
       />
-      <InputColumn
+      <Input
         value={newIdea.href ?? ""}
         name={"idea-link-input"}
         placeholder="(Optional) Enter a link"
@@ -32,8 +33,12 @@ export default function IdeasInput({
       />
       <Button
         onClick={() => {
-          setIdeas([...ideas, newIdea]);
-          setNewIdea({ name: "" });
+          addItem<Idea>("ideas", newIdea).then((response) => {
+            if (response.success) {
+              setIdeas((prevIdeas) => [...prevIdeas, response.payload]);
+            }
+          });
+          setNewIdea({ name: "", href: undefined });
         }}
       >
         Add new

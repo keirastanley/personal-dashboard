@@ -1,0 +1,15 @@
+[
+  { "name": "Play a game of chess", "href": "www.lichess.com" },
+  { "name": "Practise on Codewars", "href": "www.codewars.com" },
+  { "name": "Read a book" },
+  { "name": "Clean the kitchen" },
+  { "name": "Make a dessert" },
+  { "name": "Paint nails" },
+  { "name": "Play the piano" },
+  { "name": "Tidy your room" },
+  { "name": "Do laundry" },
+  {
+    "name": "Yoga or stretching",
+    "href": "https://www.youtube.com/c/yogawithadriene"
+  }
+]

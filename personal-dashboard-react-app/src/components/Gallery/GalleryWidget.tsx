@@ -1,19 +1,22 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { GrGallery } from "react-icons/gr";
-import { TbRefresh } from "react-icons/tb";
+import {
+  HeartOutlineIcon,
+  HeartFillIcon,
+  RefreshIcon,
+  GalleryIcon,
+} from "../icons";
 import {
   ControlsContainer,
   IconButton,
   LinkStyled,
   MainContainer,
 } from "../shared";
-import { Image } from "./gallery-images";
-import images from "./gallery-images";
+import images from "./gallery-images.json";
+import { GalleryImage } from "@schemas/data";
 
-export const GalleryCaption = ({ image }: { image: Image }) => (
+export const GalleryCaption = ({ image }: { image: GalleryImage }) => (
   <div
     css={css`
       display: flex;
@@ -24,7 +27,7 @@ export const GalleryCaption = ({ image }: { image: Image }) => (
     `}
   >
     <i>
-      {image.title}, {image.artist}, {image.medium}, {image.year}
+      {image.name}, {image.artist}, {image.medium}, {image.year}
     </i>
   </div>
 );
@@ -78,18 +81,18 @@ function Gallery({ imageHeight }: { imageHeight?: string }) {
           <ControlsContainer>
             <IconButton onClick={() => setHeartIsFilled(!heartIsFilled)}>
               {heartIsFilled ? (
-                <AiFillHeart color="var(--filled-heart)" />
+                <HeartFillIcon color="var(--filled-heart)" />
               ) : (
-                <AiOutlineHeart color="black" />
+                <HeartOutlineIcon color="black" />
               )}
             </IconButton>
             <IconButton>
               <LinkStyled href="gallery">
-                <GrGallery color="black" />
+                <GalleryIcon color="black" />
               </LinkStyled>
             </IconButton>
             <IconButton onClick={handleRefresh}>
-              <TbRefresh color="black" />
+              <RefreshIcon color="black" />
             </IconButton>
           </ControlsContainer>
         </div>
