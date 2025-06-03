@@ -21,6 +21,7 @@ MongoClient.connect(process.env.MONGO_URI!)
     app.use("/api/favourites", getRoutes(db, "favourites"));
     app.use("/api/ideas", getRoutes(db, "ideas"));
     app.use("/api/poems", getRoutes(db, "poems"));
+    app.use("/api/diary", getRoutes(db, "diary"));
 
     app.listen(port, () => {
       console.log(`Listening on port ${port}`);

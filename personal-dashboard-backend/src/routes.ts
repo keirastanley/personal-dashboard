@@ -6,6 +6,7 @@ import {
   ideaSchema,
   taskSchema,
   poemSchema,
+  diarySchema,
 } from "../../schemas/src/data";
 import { Collection, DbError, DbSuccess } from "../../schemas/src/api";
 
@@ -29,6 +30,8 @@ const getSchema = (collection: Collection) => {
       return goalSchema;
     case "poems":
       return poemSchema;
+    case "diary":
+      return diarySchema;
     case "ideas":
     default:
       return ideaSchema;
@@ -40,7 +43,6 @@ export const getRoutes = (db: Db, collection: Collection) => {
 
   router.get("/", async (req: Request, res: Response) => {
     try {
-      console.log({ collection });
       const items = await db.collection(collection).find().toArray();
       res.status(200).json(getSuccessResponse(items));
     } catch (error) {
