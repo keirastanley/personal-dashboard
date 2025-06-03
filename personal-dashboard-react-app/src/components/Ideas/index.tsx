@@ -7,12 +7,14 @@ import {
   Heading3,
   IconButton,
   InnerBox,
+  InputSectionColumn,
   LinkStyled,
   MainContainer,
   TopSection,
 } from "../shared";
 import { Idea } from "@schemas/data";
 import { getItems } from "../api";
+import { pages } from "../../constants";
 
 function Ideas() {
   const [ideas, setIdeas] = useState<Idea[]>([]);
@@ -40,7 +42,7 @@ function Ideas() {
     <MainContainer color="#dad1d4">
       <TopSection>
         <Heading3>Something to do...</Heading3>
-        <LinkStyled href="www.temporarylink.com">See all</LinkStyled>
+        <LinkStyled href={pages.ideas}>See all</LinkStyled>
       </TopSection>
       <InnerBox>
         {idea && (
@@ -81,7 +83,9 @@ function Ideas() {
             </IconButton>
           )}
         </div>
-        <IdeasInput setIdeas={setIdeas} />
+        <InputSectionColumn>
+          <IdeasInput setIdeas={setIdeas} />
+        </InputSectionColumn>
       </InnerBox>
     </MainContainer>
   );

@@ -16,6 +16,7 @@ import { Task } from "@schemas/data";
 import { useOrderBy } from "../../hooks/useOrderBy";
 import { TbArrowDown, TbArrowUp } from "react-icons/tb";
 import { getItems } from "../api";
+import { pages } from "../../constants";
 
 function Tasks() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -71,7 +72,7 @@ function Tasks() {
               />
             </IconButton>
           )}
-          <LinkStyled href="tasks">See all</LinkStyled>
+          <LinkStyled href={pages.tasks}>See all</LinkStyled>
         </ControlsContainer>
         <TaskList tasks={tasks} setTasks={setTasks} />
       </InnerBox>

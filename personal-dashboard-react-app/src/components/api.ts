@@ -7,6 +7,17 @@ export const getItems = <ItemType>(path: Collection) =>
     method: "GET",
   })
     .then((response) => response.json())
+    .then((data) => {
+      console.log({ data });
+      return data as DbSuccess<ItemType>;
+    })
+    .catch((error) => error as DbError);
+
+export const getItem = <ItemType>(path: Collection, id: ObjectId) =>
+  fetch(`${API_BASE_URL}/${path}/${id}`, {
+    method: "GET",
+  })
+    .then((response) => response.json())
     .then((data) => data as DbSuccess<ItemType>)
     .catch((error) => error as DbError);
 

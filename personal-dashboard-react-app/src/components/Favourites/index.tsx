@@ -18,6 +18,7 @@ import {
 import { useOrderBy } from "../../hooks/useOrderBy";
 import { ArrowDown, ArrowUp } from "../icons";
 import { getItems } from "../api";
+import { pages } from "../../constants";
 
 function Favourites() {
   const [favourites, setFavourites] = useState<Favourite[]>([]);
@@ -68,7 +69,7 @@ function Favourites() {
               />
             </IconButton>
           )}
-          <LinkStyled href="favourites">See all</LinkStyled>
+          <LinkStyled href={pages.favourites}>See all</LinkStyled>
         </ControlsContainer>
         <FavouritesList favourites={favourites} setFavourites={setFavourites} />
         <FavouritesInput setFavourites={setFavourites} />

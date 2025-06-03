@@ -1,0 +1,36 @@
+[
+  {
+    "type": "log",
+    "title": "Morvern Callar",
+    "author": "Alan Warner",
+    "mediaType": "book",
+    "year": "2002",
+    "date": "2025-02-27",
+    "src": "https://d3525k1ryd2155.cloudfront.net/h/697/608/642608697.0.x.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consequat, ante placerat pellentesque suscipit, sapien mauris rutrum ante, sed viverra ipsum est quis turpis. Quisque sed augue sed purus molestie pulvinar et eu neque. Quisque vel egestas nulla. Aenean maximus purus nulla, et porttitor metus consectetur at. Suspendisse vestibulum nisi a accumsan suscipit. Ut condimentum quam sed ipsum venenatis, id tempus ex porttitor. Praesent quis nisi et ex rhoncus ultricies suscipit vel dolor. Vivamus suscipit neque tellus, id pharetra sapien dictum quis. Nulla facilisi."
+  },
+  {
+    "type": "log",
+    "title": "Kill Bill: Volume 1",
+    "mediaType": "film",
+    "year": "2003",
+    "date": "2025-03-11",
+    "src": "https://a.ltrbxd.com/resized/sm/upload/sw/w2/ep/v4/9O50TVszkz0dcP5g6Ej33UhR7vw-0-1000-0-1500-crop.jpg?v=5a65f5202f",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consequat, ante placerat pellentesque suscipit, sapien mauris rutrum ante, sed viverra ipsum est quis turpis. Quisque sed augue sed purus molestie pulvinar et eu neque. Quisque vel egestas nulla. Aenean maximus purus nulla, et porttitor metus consectetur at. Suspendisse vestibulum nisi a accumsan suscipit. Ut condimentum quam sed ipsum venenatis, id tempus ex porttitor. Praesent quis nisi et ex rhoncus ultricies suscipit vel dolor. Vivamus suscipit neque tellus, id pharetra sapien dictum quis. Nulla facilisi."
+  },
+  {
+    "type": "free",
+    "title": "Lorem ipsum dolor sit ame...",
+    "date": "2025-03-12",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consequat, ante placerat pellentesque suscipit, sapien mauris rutrum ante, sed viverra ipsum est quis turpis. Quisque sed augue sed purus molestie pulvinar et eu neque. Quisque vel egestas nulla. Aenean maximus purus nulla, et porttitor metus consectetur at. Suspendisse vestibulum nisi a accumsan suscipit. Ut condimentum quam sed ipsum venenatis, id tempus ex porttitor. Praesent quis nisi et ex rhoncus ultricies suscipit vel dolor. Vivamus suscipit neque tellus, id pharetra sapien dictum quis. Nulla facilisi."
+  },
+  {
+    "type": "log",
+    "mediaType": "book",
+    "title": "Paradise Rot",
+    "date": "2025-03-13",
+    "year": "2018",
+    "author": "Jenny Hval",
+    "text": "A trippy strange read. I took this book with me to Leamington Spa when I went for a work trip and was locked in pretty much immediately upon starting it. I really enjoyed the outsider's perspective on Anglo culture (I thought the book was set in Australia but it seems like it was actually set in Australia! Anyway, the setting felt very familiar to me, but reading it through the eyes of Paradise Rot's protagonist, it seemed strange and other-wordly."
+  }
+]

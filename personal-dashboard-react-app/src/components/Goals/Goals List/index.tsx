@@ -56,14 +56,16 @@ const Progress = styled.div`
 function GoalsList({
   goals,
   setGoals,
+  isEditing,
 }: {
   goals: Goal[];
   setGoals: Dispatch<SetStateAction<Goal[]>>;
+  isEditing: boolean;
 }) {
   return (
     <ListItemsContainer>
       {goals.map((goal, i) => (
-        <ListItem key={goal.name + i}>
+        <ListItem key={goal._id.toString()}>
           <ListItemLeft width="50%">
             <IconButton
               onClick={() => {
@@ -83,6 +85,7 @@ function GoalsList({
               <StarIcon starred={goal.starred} />
             </IconButton>
             <EditableLinkInput
+              isEditing={isEditing}
               displayText={goal.name}
               onDisplayTextBlur={(updatedName?: string) => {
                 if (updatedName) {

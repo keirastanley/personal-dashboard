@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import {
   ChangeEvent,
   ComponentProps,
+  DialogHTMLAttributes,
   HTMLAttributes,
   PropsWithChildren,
   useEffect,
@@ -11,8 +12,8 @@ import {
   useState,
 } from "react";
 import { IoStarSharp } from "react-icons/io5";
-import { FiEdit2 } from "react-icons/fi";
 import { MdDone } from "react-icons/md";
+import { EditIcon } from "./icons";
 
 export const MainContainer = styled.div`
   width: 100%;
@@ -47,7 +48,7 @@ export const ControlsContainer = styled.div`
   background-color: ${({ color }) => color};
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: ${({ gap }: { gap?: string }) => gap ?? "10px"};
   padding: 5px;
 `;
 
@@ -164,7 +165,7 @@ export const InputSectionRow = styled(InputSectionColumn)`
 
 export const Button = styled.button`
   background-color: #f9dfdf;
-  width: 62px;
+  width: max-content;
   align-self: center;
 `;
 
@@ -290,19 +291,21 @@ export const EditableTextInput = ({
           }
         }}
       >
-        <FiEdit2 />
+        <EditIcon />
       </IconButton>
     </div>
   );
 };
 
 export const EditableLinkInput = ({
+  isEditing,
   displayText,
   href,
   onDisplayTextBlur,
   onHrefBlur,
   crossThroughText,
 }: {
+  isEditing?: boolean;
   displayText: string;
   href?: string;
   onDisplayTextBlur: (updatedDisplayText?: string) => void;
@@ -324,7 +327,7 @@ export const EditableLinkInput = ({
         gap: 5px;
       `}
     >
-      {isEditingDisplayText && (
+      {isEditing && isEditingDisplayText && (
         <input
           autoFocus
           ref={displayTextInputRef}
@@ -337,7 +340,7 @@ export const EditableLinkInput = ({
           }}
         />
       )}
-      {isEditingHref ? (
+      {isEditing && isEditingHref ? (
         <div
           css={css`
             display: flex;
@@ -372,7 +375,12 @@ export const EditableLinkInput = ({
               setIsEditingDisplayText(false);
             }}
           >
-            <MdDone />
+            <MdDone
+              onClick={() => {
+                setIsEditingHref(false);
+                setIsEditingDisplayText(false);
+              }}
+            />
           </IconButton>
         </div>
       ) : (
@@ -395,14 +403,16 @@ export const EditableLinkInput = ({
               {displayText}
             </span>
           </a>
-          <IconButton
-            onClick={() => {
-              setIsEditingHref(true);
-              setIsEditingDisplayText(true);
-            }}
-          >
-            <FiEdit2 />
-          </IconButton>
+          {isEditing && (
+            <IconButton
+              onClick={() => {
+                setIsEditingHref(true);
+                setIsEditingDisplayText(true);
+              }}
+            >
+              <EditIcon />
+            </IconButton>
+          )}
         </div>
       )}
     </div>
@@ -412,3 +422,49 @@ export const EditableLinkInput = ({
 export const HighlightedText = styled.span`
   background-color: #f6f699;
 `;
+
+export const Label = styled.div`
+  padding: 2px;
+  border-radius: 5px;
+  font-size: 8px;
+  width: 30px;
+  text-align: center;
+  background-color: ${({ color }: { color: string }) => color};
+`;
+
+export const Dialog = ({
+  open,
+  children,
+  height,
+  width,
+}: DialogHTMLAttributes<HTMLDialogElement> & {
+  height?: string;
+  width?: string;
+}) => (
+  <div
+    css={css`
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(128, 128, 128, 0.5);
+      display: ${open ? "block" : "none"};
+    `}
+  >
+    <dialog
+      open={open}
+      css={css`
+        position: fixed;
+        top: 50vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+        height: ${height ?? "350px"};
+        width: ${width ?? "600px"};
+        background-color: white;
+      `}
+    >
+      {children}
+    </dialog>
+  </div>
+);

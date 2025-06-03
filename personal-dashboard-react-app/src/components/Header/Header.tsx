@@ -95,7 +95,7 @@ function Header() {
               gap: 15px;
             `}
           >
-            {time.split("at").map((t) => (
+            {time.split(" at ").map((t) => (
               <span key={t}>{t}</span>
             ))}
           </p>

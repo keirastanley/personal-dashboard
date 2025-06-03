@@ -14,7 +14,7 @@ export default function IdeasInput({
   });
 
   return (
-    <InputSectionColumn>
+    <>
       <Input
         value={newIdea.name}
         name="idea-text-input"
@@ -43,6 +43,6 @@ export default function IdeasInput({
       >
         Add new
       </Button>
-    </InputSectionColumn>
+    </>
   );
 }

@@ -12,13 +12,16 @@ import {
   InnerBox,
   MainContainer,
   LinkStyled,
+  Button,
 } from "../shared";
 import { Goal } from "@schemas/data";
 import { useOrderBy } from "../../hooks/useOrderBy";
 import { getItems } from "../api";
+import { pages } from "../../constants";
 
 function Goals() {
   const [goals, setGoals] = useState<Goal[]>([]);
+  const [isEditing, setIsEditing] = useState<boolean>();
 
   useEffect(() => {
     getItems<Goal[]>("goals").then((response) => {
@@ -80,9 +83,26 @@ function Goals() {
               </IconButton>
             )}
           </div>
-          <LinkStyled href="goals">See all</LinkStyled>
+          <LinkStyled href={pages.goals}>See all</LinkStyled>
+          {isEditing ? (
+            <Button onClick={() => setIsEditing(false)}>Done</Button>
+          ) : (
+            <button
+              css={css`
+                background: transparent;
+                border: none;
+                font-size: 12px;
+                text-decoration: underline;
+                padding: 0px;
+                margin: 0;
+              `}
+              onClick={() => setIsEditing(true)}
+            >
+              Edit
+            </button>
+          )}
         </ControlsContainer>
-        <GoalsList goals={goals} setGoals={setGoals} />
+        <GoalsList goals={goals} setGoals={setGoals} isEditing={isEditing} />
       </InnerBox>
     </MainContainer>
   );

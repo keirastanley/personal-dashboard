@@ -7,6 +7,7 @@ import { OpenIcon } from "../icons";
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { GalleryImage } from "@schemas/data";
+import { pages } from "../../constants";
 
 export default function GalleryPage() {
   const [galleryImages, setGalleryImages] = useState<
@@ -26,50 +27,61 @@ export default function GalleryPage() {
   return (
     <div
       css={css`
-        width: calc(100% - 20px);
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        padding: 10px;
-        gap: 10px;
+        justify-content: center;
       `}
     >
-      {galleryImages.length > 0
-        ? galleryImages.map((image) => (
-            <div
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                width: calc(100% / 3 - 30px);
-                padding: 10px;
-                background-color: var(--header);
-              `}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                css={css`
-                  height: 200px;
-                `}
-              />
+      <div
+        css={css`
+          width: calc(80% - 20px);
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          padding: 10px;
+          gap: 10px;
+          overflow-y: auto;
+          max-height: calc(100vh - 40px);
+        `}
+      >
+        {galleryImages.length > 0
+          ? galleryImages.map((image) => (
               <div
                 css={css`
                   display: flex;
+                  flex-direction: column;
+                  justify-content: center;
                   align-items: center;
-                  gap: 10px;
+                  width: calc(100% / 3 - 30px);
                   padding: 10px;
+                  background-color: var(--header);
                 `}
               >
-                <GalleryCaption image={image} />
-                <IconButton onClick={() => navigate(`/gallery/${image.id}`)}>
-                  <OpenIcon />
-                </IconButton>
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  css={css`
+                    height: 200px;
+                  `}
+                />
+                <div
+                  css={css`
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 10px;
+                  `}
+                >
+                  <GalleryCaption image={image} />
+                  <IconButton
+                    onClick={() => navigate(`/${pages.gallery}/${image.id}`)}
+                  >
+                    <OpenIcon />
+                  </IconButton>
+                </div>
               </div>
-            </div>
-          ))
-        : null}
+            ))
+          : null}
+      </div>
     </div>
   );
 }

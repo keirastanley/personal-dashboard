@@ -11,6 +11,12 @@ import Ideas from "./components/Ideas/index";
 import Goals from "./components/Goals/index";
 import { WidgetPageWrapper } from "./components/shared";
 import { PoetryPage } from "./components/Poetry/PoetryPage";
+import { IdeasPage } from "./components/Ideas/IdeasPage";
+import { PoemPage } from "./components/Poetry/PoemPage";
+import { PageNavWrapper } from "./components/PageNavWrapper";
+import { pages } from "./constants";
+import { DiaryPage } from "./components/Diary/DiaryPage";
+import { Diary } from "./components/Diary/Diary";
 
 const routes = [
   {
@@ -19,44 +25,79 @@ const routes = [
     element: <App />,
   },
   {
-    path: "tasks",
+    path: pages.tasks,
     element: (
-      <WidgetPageWrapper>
-        <Tasks />
-      </WidgetPageWrapper>
+      <PageNavWrapper>
+        <WidgetPageWrapper>
+          <Tasks />
+        </WidgetPageWrapper>
+      </PageNavWrapper>
     ),
   },
   {
-    path: "favourites",
+    path: pages.favourites,
     element: (
-      <WidgetPageWrapper>
-        <Favourites />
-      </WidgetPageWrapper>
+      <PageNavWrapper>
+        <WidgetPageWrapper>
+          <Favourites />
+        </WidgetPageWrapper>
+      </PageNavWrapper>
     ),
   },
   {
-    path: "gallery",
-    element: <GalleryPage />,
-  },
-  { path: "gallery/:id", element: <ImagePage /> },
-  {
-    path: "ideas",
-    element: <Ideas />,
-  },
-  // {
-  //   path: "help",
-  //   element: <HelpPage />,
-  // },
-  {
-    path: "poetry",
-    element: <PoetryPage />,
-  },
-  {
-    path: "goals",
+    path: pages.gallery,
     element: (
-      <WidgetPageWrapper>
-        <Goals />
-      </WidgetPageWrapper>
+      <PageNavWrapper>
+        <GalleryPage />
+      </PageNavWrapper>
+    ),
+  },
+  {
+    path: `${pages.gallery}/:id`,
+    element: (
+      <PageNavWrapper>
+        <ImagePage />
+      </PageNavWrapper>
+    ),
+  },
+  {
+    path: pages.ideas,
+    element: (
+      <PageNavWrapper>
+        <WidgetPageWrapper>
+          <IdeasPage />
+        </WidgetPageWrapper>
+      </PageNavWrapper>
+    ),
+  },
+  {
+    path: "diary",
+    element: <Diary />,
+  },
+  {
+    path: pages.poetry,
+    element: (
+      <PageNavWrapper>
+        <PoetryPage />
+      </PageNavWrapper>
+    ),
+  },
+  {
+    path: `${pages.poetry}/:id`,
+    element: (
+      <PageNavWrapper>
+        <PoemPage />
+      </PageNavWrapper>
+    ),
+  },
+  {
+    path: pages.goals,
+    element: (
+      <PageNavWrapper>
+        <WidgetPageWrapper>
+          <Goals />
+        </WidgetPageWrapper>
+      </PageNavWrapper>
     ),
   },
   // {

@@ -9,22 +9,26 @@ import Tasks from "./components/Tasks";
 import Goals from "./components/Goals";
 import Favourites from "./components/Favourites";
 import Header from "./components/Header/Header";
+import { Diary } from "./components/Diary/Diary";
+import useScreenSize from "./hooks/useScreenSize";
+import { Mobile } from "./AppMobile";
 
-const Footer = () => (
-  <div
-    css={css`
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-    `}
-  >
-    Footer
-  </div>
-);
+// const Footer = () => (
+//   <div
+//     css={css`
+//       position: fixed;
+//       left: 0;
+//       bottom: 0;
+//       width: 100%;
+//       text-align: center;
+//     `}
+//   >
+//     Footer
+//   </div>
+// );
 
 function App() {
+  const { width } = useScreenSize();
   return (
     <main
       css={css`
@@ -33,85 +37,87 @@ function App() {
       `}
     >
       <Header />
-      <div
-        css={css`
-          margin-bottom: 20px;
-          display: grid;
-          padding: 30px;
-          height: 100%;
-          grid-template-columns: 1.5fr 3fr 1.4fr;
-          grid-template-rows:
-            calc(25% - 30px) calc(5% - 30px) calc(13% - 30px) calc(18% - 30px)
-            calc(39% - 30px);
-          gap: 10px;
-        `}
-      >
-        {" "}
+      {width > 800 ? (
         <div
           css={css`
-            grid-column: 1;
-            grid-row-start: 1;
-            grid-row-end: span 2;
-            border: 1px solid green;
+            display: grid;
+            padding: 30px;
+            height: 100%;
+            grid-template-columns: 1.5fr 3fr 1.4fr;
+            grid-template-rows:
+              calc(23%) calc(5%) calc(7%) calc(25% - 10px)
+              calc(40% - 10px);
+            gap: 10px;
+            max-height: 85vh;
           `}
         >
-          <Weather />
+          {" "}
+          <div
+            css={css`
+              grid-column: 1;
+              grid-row-start: 1;
+              grid-row-end: span 2;
+            `}
+          >
+            <Diary asWidget />
+          </div>
+          <div
+            css={css`
+              grid-column: 2;
+              grid-row: 1;
+            `}
+          >
+            <Poetry />
+          </div>
+          <div
+            css={css`
+              grid-column: 3;
+              grid-row-start: 1;
+              grid-row-end: span 3;
+            `}
+          >
+            <Gallery />
+          </div>
+          <div
+            css={css`
+              grid-column: 1;
+              grid-row-start: 3;
+              grid-row-end: 5;
+            `}
+          >
+            <Ideas />
+          </div>
+          <div
+            css={css`
+              grid-column-start: 1;
+              grid-column-end: span 2;
+              grid-row: 5;
+            `}
+          >
+            <Tasks />
+          </div>
+          <div
+            css={css`
+              grid-column: 2;
+              grid-row-start: 2;
+              grid-row-end: 5;
+            `}
+          >
+            <Goals />
+          </div>
+          <div
+            css={css`
+              grid-column: 3;
+              grid-row-start: 4;
+              grid-row-end: 6;
+            `}
+          >
+            <Favourites />
+          </div>
         </div>
-        <div
-          css={css`
-            grid-column: 2;
-            grid-row: 1;
-          `}
-        >
-          <Poetry />
-        </div>
-        <div
-          css={css`
-            grid-column: 3;
-            grid-row-start: 1;
-            grid-row-end: span 3;
-          `}
-        >
-          <Gallery />
-        </div>
-        <div
-          css={css`
-            grid-column: 1;
-            grid-row-start: 3;
-            grid-row-end: 5;
-          `}
-        >
-          <Ideas />
-        </div>
-        <div
-          css={css`
-            grid-column-start: 1;
-            grid-column-end: span 2;
-            grid-row: 5;
-          `}
-        >
-          <Tasks />
-        </div>
-        <div
-          css={css`
-            grid-column: 2;
-            grid-row-start: 2;
-            grid-row-end: 5;
-          `}
-        >
-          <Goals />
-        </div>
-        <div
-          css={css`
-            grid-column: 3;
-            grid-row-start: 4;
-            grid-row-end: 6;
-          `}
-        >
-          <Favourites />
-        </div>
-      </div>
-      <Footer />
+      ) : (
+        <Mobile />
+      )}
     </main>
   );
 }

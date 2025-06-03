@@ -15,6 +15,7 @@ import {
 } from "../shared";
 import images from "./gallery-images.json";
 import { GalleryImage } from "@schemas/data";
+import { pages } from "../../constants";
 
 export const GalleryCaption = ({ image }: { image: GalleryImage }) => (
   <div
@@ -87,7 +88,7 @@ function Gallery({ imageHeight }: { imageHeight?: string }) {
               )}
             </IconButton>
             <IconButton>
-              <LinkStyled href="gallery">
+              <LinkStyled href={pages.gallery}>
                 <GalleryIcon color="black" />
               </LinkStyled>
             </IconButton>

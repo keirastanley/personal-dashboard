@@ -1,4 +1,10 @@
-export type Collection = "tasks" | "goals" | "favourites" | "ideas" | "poems";
+export type Collection =
+  | "tasks"
+  | "goals"
+  | "favourites"
+  | "ideas"
+  | "poems"
+  | "diary";
 
 export type DbSuccess<PayloadItem> = {
   success: true;

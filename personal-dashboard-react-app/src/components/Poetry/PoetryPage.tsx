@@ -1,13 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { JSX, useEffect, useMemo, useState } from "react";
-import {
-  Button,
-  ControlsContainer,
-  Heading2,
-  IconButton,
-  MainContainer,
-} from "../shared";
-import PoetryWidget from "./PoetryWidget";
+import { Button, ControlsContainer, Heading2, MainContainer } from "../shared";
 import { ObjectId, Poem } from "@schemas/data";
 import { getItems } from "../api";
 import { css } from "@emotion/react";
@@ -15,6 +8,9 @@ import { SearchIcon } from "../icons";
 import { getSearchResults } from "../getSearchResults";
 import { HighlightedResultsText } from "../HighlightedResultsText";
 import parse from "html-react-parser";
+import { PoetryDisplay } from "./PoetryDisplay";
+import { PoetryMainWrapper } from "./PoetryMainWrapper";
+import { PoetryControls } from "./PoetryControls";
 
 export type SearchResult = {
   searchTerm: string;
@@ -32,6 +28,9 @@ export interface PoemToRender {
   lines: JSX.Element | string;
   numberOfMatches?: number;
 }
+
+const isPoemToRender = (poem: Poem | PoemToRender): poem is PoemToRender =>
+  !!(typeof poem.lines === "string" || typeof poem.lines === "symbol");
 
 export const PoetryPage = () => {
   const [poems, setPoems] = useState<Poem[]>([]);
@@ -169,26 +168,40 @@ export const PoetryPage = () => {
         css={css`
           display: flex;
           flex-direction: column;
-          width: 100%;
+          width: max-content;
           align-items: center;
           gap: 20px;
+          max-height: calc(80vh - 20px);
+          overflow-y: scroll;
+          padding: 20px;
         `}
       >
         {poemsWithSearchResults.map((poem) => {
           return (
-            <div
-              css={css`
-                width: 40%;
-                height: 200px;
-                background-color: #cfd4db;
-              `}
+            <PoetryMainWrapper
               key={poem._id.toString()}
+              css={css`
+                height: 200px;
+              `}
             >
-              <PoetryWidget savedPoem={poem as PoemToRender} />
-              <ControlsContainer>
-                <IconButton></IconButton>
-              </ControlsContainer>
-            </div>
+              <PoetryDisplay
+                poem={{
+                  ...poem,
+                  ...(!poem.numberOfMatches && { numberOfMatches: 0 }),
+                }}
+              />
+              <PoetryControls
+                controls={[
+                  { type: "expand" as const, poemId: poem._id },
+                  !isPoemToRender(poem)
+                    ? {
+                        type: "save" as const,
+                        poem,
+                      }
+                    : undefined,
+                ].flatMap((control) => (control ? [control] : []))}
+              />
+            </PoetryMainWrapper>
           );
         })}
       </div>

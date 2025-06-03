@@ -72,6 +72,36 @@ export const poemSchema = z.object({
   lines: z.array(z.string()),
 });
 
+export enum EntryType {
+  free = "free",
+  log = "log",
+}
+
+export enum MediaType {
+  book = "book",
+  film = "film",
+}
+
+const baseEntry = z.object({
+  title: z.string(),
+  date: z.string(),
+  src: z.string().optional(),
+  text: z.string().optional(),
+  type: z.nativeEnum(EntryType),
+});
+
+const logEntryFields = z.object({
+  mediaType: z.nativeEnum(MediaType),
+  author: z.string().optional(),
+  year: z.string(),
+});
+
+const logEntry = baseEntry.merge(logEntryFields);
+
+export type LogEntry = z.infer<typeof logEntry>;
+
+export const diarySchema = baseEntry.merge(logEntryFields.partial());
+
 export type ObjectId = ObjectIdMongoDb;
 export type WithId<T> = WithIdMongoDb<T>;
 export type WithoutId<T> = WithoutIdMongoDb<T>;
@@ -83,5 +113,6 @@ export type Goal = WithId<z.infer<typeof goalSchema>>;
 export type Idea = WithId<z.infer<typeof ideaSchema>>;
 export type Task = WithId<z.infer<typeof taskSchema>>;
 export type Poem = WithId<z.infer<typeof poemSchema>>;
+export type DiaryEntry = WithId<z.infer<typeof diarySchema>>;
 
 export type Item = Favourite | Goal | Idea | Task;

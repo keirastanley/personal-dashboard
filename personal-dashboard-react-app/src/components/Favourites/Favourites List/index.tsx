@@ -20,6 +20,7 @@ function FavouritesList({
   favourites: Favourite[];
   setFavourites: Dispatch<SetStateAction<Favourite[]>>;
 }) {
+  console.log(favourites);
   return (
     <ListItemsContainer>
       {favourites.map((favourite, i) => (

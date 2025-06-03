@@ -24,7 +24,7 @@ function FavouritesInput({
         onChange={(e) => {
           setNewFavourite({
             ...newFavourite,
-            name: e.target.value as string,
+            href: e.target.value as string,
           });
         }}
       />
@@ -35,7 +35,7 @@ function FavouritesInput({
         onChange={(e) => {
           setNewFavourite({
             ...newFavourite,
-            href: e.target.value as string,
+            name: e.target.value as string,
           });
         }}
       />
